@@ -4,7 +4,7 @@
 		<EventpageHeader @update-list-event="SearchEvent" :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" @load-more-event="LoadListEvent" :categories="categories" ref="eventChild"/>
 
 		<!-- List event page content -->
-		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
+		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :loading_more="loading_more" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
 
 	</div>
 </template>
@@ -23,7 +23,8 @@
 				listToShow: 6,
 				message:'',
 				empty: null,
-				error_search: null
+				error_search: null,
+				loading_more: null
 			}
 		},
 
@@ -48,9 +49,10 @@
 					if(data.list_kegiatan_terdekat.length > 0){
 						this.empty = false
 						this.lists = data.list_kegiatan_terdekat
-	
+
 						if(this.lists.length <= 3){
 							SampleEvents.map(d => this.lists.push(d))
+							this.lists.slice(3)
 						}
 					}else{
 						this.empty = true
@@ -85,10 +87,16 @@
 				// if(page == 1){
 				// 	page = 0
 				// }
-				console.log(page)
-				this.listToShow = (this.lists.length - this.listToShow) + this.listToShow
-				this.FetchListEvent(page,'', '', '', true)
-
+				// console.log(page)
+				window.scrollTo(0,document.body.scrollHeight);
+				this.loading_more=true
+				setTimeout(() => {
+					this.listToShow = (this.lists.length - this.listToShow) + this.listToShow
+					this.loading_more=false
+				}, 1000)
+				setTimeout(() => {
+					this.FetchListEvent(page,'', '', '', false)
+				}, 1500)
 			},
 
 			SearchEvent(page, keyword, category, month, loadingBtn){

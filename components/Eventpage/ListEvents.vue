@@ -1,7 +1,7 @@
 <template>
 	<div class="card__content-lists">
 		<mdb-container>
-			<mdb-row v-if="loading" col="12" class="d-flex justify-content-start align-items-stretch mb-5 mt-2">
+			<mdb-row v-if="loading && !load_more" col="12" class="d-flex justify-content-start align-items-stretch mb-5 mt-2">
 				
 				<mdb-col v-if="empty" lg="12" xs="12" sm="12">
 					<center>						
@@ -11,7 +11,7 @@
 					</center>
 				</mdb-col>
 
-				<mdb-col v-else v-for="(item, index) in lists" md="4" :key="item.id" class="mb-4">
+				<mdb-col v-else v-for="(item, index) in lists" md="4" :key="item.kegiatan_id" class="mb-4">
 					<b-card>
 						<b-row>
 							<b-col cols="12" class="mb-3">
@@ -29,49 +29,53 @@
 			</mdb-row>
 
 			<mdb-row v-else col="12" class="d-flex justify-content-start align-items-stretch mb-5 webinar__content">
+				<!-- <pre>
+					{{lists.slice(0,6)}}
+				</pre> -->
+
 				<mdb-col v-if="empty || error_search" lg="12" xs="12" sm="12">
 					<mdb-alert :color="`${error_search ? 'danger' : 'info'}`" class="text-center">
 						<mdb-icon icon="info-circle" size="lg"/> {{message}}
 					</mdb-alert>
 				</mdb-col>
-				
+
 				<mdb-col
-				v-for="(item,index) in lists"
+				v-for="listIndex in listToShow"
 				col="12"
 				md="4"
 				class="mb-4"
-				:key="item.kegiatan_id"
+				:key="lists[listIndex-1].kegiatan_id"
 				>
 				<mdb-card>
 					<mdb-card-image
-					:src="item.photo"
-					:alt="item.kegiatan_title"
+					:src="lists[listIndex-1].photo"
+					:alt="lists[listIndex-1].kegiatan_title"
 					></mdb-card-image>
 
 					<mdb-card-body>
 						<mdb-badge class="mb-2 badge__category shadow-none">{{
-							item.kategori_value
+							lists[listIndex-1].kategori_value
 						}}</mdb-badge>
 
 						<mdb-card-title
 						class="truncate"
 						style="color: #004899; font-weight: bold; min-height: 80px"
-						>{{ item.kegiatan_title }}</mdb-card-title
+						>{{ lists[listIndex-1].kegiatan_title }}</mdb-card-title
 						>
 						<mdb-card-text
 						class="truncate2 mt-2"
 						style="width: 200px; min-height: 45px"
-						>{{ item.kegiatan_desc }}</mdb-card-text
+						>{{ lists[listIndex-1].kegiatan_desc }}</mdb-card-text
 						>
 
 						<h6 class="mt-2 idr__color">
-							{{ $format(item.harga) }}
+							{{ $format(lists[listIndex-1].harga) }}
 						</h6>
 
 						<span style="font-size: 12px; margin-top: 1.5rem"
 						><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
-						{{ $moment(item.tgl_awal).format("LL") }} -
-						{{ $moment(item.tgl_akhir).format("LL") }}</span
+						{{ $moment(lists[listIndex-1].tgl_awal).format("LL") }} -
+						{{ $moment(lists[listIndex-1].tgl_akhir).format("LL") }}</span
 						>
 
 						<!-- <mdb-btn @click="ToDetailEvent(lists[listIndex-1].kegiatan_id)" block class="btn btn-outline-primary mt-3 mb-2" color="primary">Detail Event</mdb-btn> -->
@@ -79,10 +83,10 @@
 						<a
 						@click="
 						SetKeranjang(
-							item.kegiatan_id,
-							item.photo,
-							item.kegiatan_title,
-							item.harga
+							lists[listIndex-1].kegiatan_id,
+							lists[listIndex-1].photo,
+							lists[listIndex-1].kegiatan_title,
+							lists[listIndex-1].harga
 							)
 							"
 							:class="`btn my__btn-primary rounded-pill mt-3 mb-2 btn-block shadow-none ${
@@ -96,8 +100,8 @@
 							:to="{
 								name: `detail-event-id-slug`,
 								params: {
-									id: item.kegiatan_id,
-									slug: $slug(item.kegiatan_title),
+									id: lists[listIndex-1].kegiatan_id,
+									slug: $slug(lists[listIndex-1].kegiatan_title),
 								},
 							}"
 							:class="`btn my__btn-secondary rounded-pill mt-3 mb-2 btn-block shadow-none ${
@@ -108,9 +112,16 @@
 						</mdb-card-body>
 					</mdb-card>
 				</mdb-col>
+				<mdb-col v-if="loading_more" lg="12" xs="12" sm="12">
+					<center>						
+						<div class="spinner-border text-primary" style="width:7rem; height: 7rem;" role="status">
+							<span class="sr-only">Loading...</span>
+						</div>
+					</center>
+				</mdb-col>
 			</mdb-row>
 
-			<!-- <mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
+			<mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
 				<mdb-col
 				col="12"
 				xl="5"
@@ -126,7 +137,7 @@
 				}`"
 				>Lihat Semua Kelas</mdb-btn>
 			</mdb-col>
-		</mdb-row> -->
+		</mdb-row>
 
 		</mdb-container>
 	</div>
@@ -134,20 +145,20 @@
 
 <script>
 	export default{
-		props: ['loading', 'lists', 'listToShow', 'token', 'data_event', 'empty', 'message', 'error_search'],
+		props: ['loading', 'lists', 'listToShow', 'loading_more', 'token', 'data_event', 'empty', 'message', 'error_search'],
 
 		data(){
 			return {
 				timer: 0,
 				value: 0,
-				max: 500
+				max: 500,
+				load_more: null
 			}
 		},
 
 		mounted(){
 			this.VenoBox(),
-			this.startTimer(),
-			console.log(this.error_search)
+			this.startTimer()
 		},
 
 		methods: {
@@ -203,6 +214,7 @@
 		    },
 
 		    LoadMore(){
+		    	this.load_more = true
 		    	this.$emit('load-more-event', 0)
 		    }
 		}

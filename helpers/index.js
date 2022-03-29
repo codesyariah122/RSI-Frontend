@@ -104,37 +104,43 @@ export const SampleNews = [
 		id:1,
 		foto_url: require('~/assets/images/samples/Card/7.jpg'),
 		judul: 'penyerahan sertifikat akreditasi institusi pelatihan',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+		created_at: new Date(2022, 11, 17, 9, 45, 0),
 	},
 	{
 		id:2,
 		foto_url: require('~/assets/images/samples/Card/9.jpg'),
 		judul: 'sibuk kerja dan cuma geber olahraga sabtu-minggu',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		created_at: new Date(2022, 11, 17, 8, 0, 0),
 	},
 	{
 		id:3,
 		foto_url: require('~/assets/images/samples/Card/8.jpg'),
 		judul: 'dua aktivitas fisik ini paling cocok untuk pasien diabetes',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		created_at: new Date(2022, 11, 17, 9, 23, 0),
 	},
 	{
 		id:4,
 		foto_url: require('~/assets/images/samples/Card/7.jpg'),
 		judul: 'penyerahan sertifikat akreditasi institusi pelatihan',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		created_at: new Date(2022, 11, 17, 11, 21, 0),
 	},
 	{
 		id:5,
 		foto_url: require('~/assets/images/samples/Card/9.jpg'),
 		judul: 'sibuk kerja dan cuma geber olahraga sabtu-minggu',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		created_at: new Date(2022, 11, 17, 17, 11, 0),
 	},
 	{
 		id:6,
 		foto_url: require('~/assets/images/samples/Card/8.jpg'),
 		judul: 'dua aktivitas fisik ini paling cocok untuk pasien diabetes',
-		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+		konten: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		created_at: new Date(2022, 11, 17, 15, 4, 0),
 	}
 ]
 
@@ -185,3 +191,5 @@ export const TestimoniSamples = [
 		testimoni: 'Kelas yang saya ikuti menjadi salah satu investasi ilmu yang sangat berharga. Sangat menguntungkan!.'
 	}
 ]
+
+export const RSISampleSejarah = ""
