@@ -1,0 +1,869 @@
+// made with love
+// Bandung 22 januari 2022
+
+// For main component base on main.scss
+// Navigation
+@mixin navbar_desktop{
+	text-transform: capitalize;
+	font-size:14px;
+	font-weight: 600;
+	line-height: 21.79px;
+}
+
+@mixin navbar_mobile {
+	margin-top: .2rem;
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 21.79px;
+	a{
+		color: $nav-item;
+	}
+	&:hover{
+		color:$color-secondary;
+	}
+}
+// end navigation
+
+// Jumbotron
+@mixin container_jumbotron{
+	z-index: 1;
+	position: relative;
+}
+@mixin jumbotron_mobile($color) {
+	.container__jumbotron{
+		margin-top: -2rem;
+		@include container_jumbotron();
+	}
+	
+	.display-6{
+		color:$second-black;
+		margin-top: 1rem;
+		font-weight: 700;
+		font-size:23px;
+		line-height: 31px;
+	}
+	p{
+		color:$second-gray;
+		font-weight: 500;
+		width: 100%;
+		font-size:14px;
+		text-align: justify;
+		line-height: 21px;
+		word-spacing: 12px;
+	}
+
+	.jumbo__art-img{
+		width: 100%;
+		margin-top:4rem;
+		.col-card-1{
+			z-index: 9999;
+			position:absolute;
+			.card{
+				margin-left: 8.5rem;
+				margin-top: -3.5rem;
+				border-radius:13px;
+				width: 165px!important;
+				height: 80px!important;
+				img{
+					margin-left: 7.7rem;
+					margin-top: -9rem;
+					border-radius:10px;
+					height: 55px;
+				}
+				.container{
+					margin-top: .3rem;					
+					h1{
+						color:$primary-button;
+						font-weight: 800;
+						font-size: 18px;
+					}
+					p{
+						color: $second-black;
+						font-size:11px;
+						text-align: left;
+						width: 100%;
+						font-weight:500;
+					}
+				}
+			}
+		}
+		.first-box{
+			box-sizing: content-box;
+			border: solid $primary-button 2px;
+			border-radius:13px;
+			border-style: dashed;
+			height:25vh;
+			width: 165px;
+			background-color: transparent;
+			z-index: -1;
+			position: absolute;
+			margin-top: -1rem;
+		}
+
+		.card__image-box{
+			z-index: 3;
+			position: absolute;
+			margin-left: -.1rem;
+			margin-top: .1rem;
+			.card{
+				border-radius:13px;
+				width: 270px!important;
+				height: 270px!important;
+				img{
+					border-radius: 13px;
+				}
+			}
+		}
+
+		.second-box{
+			box-sizing: content-box;
+			border: solid $primary-button 2px;
+			border-radius:13px;
+			padding: 5px;
+			margin-top: 5rem;
+			margin-left:6rem!important;
+			height: 33vh;
+			background-color: transparent;
+			z-index: -1;
+		}
+		.col-card-2{
+			z-index: 9999;
+			position:relative;
+			.card{
+				margin-left: -.9rem;
+				margin-top: -3rem;
+				border-radius:13px;
+				width: 175px!important;
+				height: 100px!important;
+				img{
+					margin-left: 7.9rem;
+					margin-top: -11.5rem;
+					border-radius:10px;
+					height: 50px;
+					width: 50px;
+				}
+				.container{
+					margin-top: .8rem;					
+					h1{
+						color:$primary-button;
+						font-weight: 800;
+						font-size: 25px;
+					}
+					p{
+						color: $second-black;
+						font-size:11px;
+						text-align: left;
+						width: 150px;
+						font-weight:500;
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+@mixin jumbotron_desktop($color) {
+	
+	.container__jumbotron{
+		@include container_jumbotron;
+	}
+	.display-6{
+		color:$second-black;
+		margin-top: 190px;
+		font-weight: 700;
+		font-size:45px;
+		width: 80%;
+		line-height: 55px;
+	}
+	p{
+		color:$second-gray;
+		font-weight: 400;
+		font-size:16px;
+		text-align: left;
+		line-height: 21px;
+		word-spacing: 12px;
+		width:80%;
+	}
+	.jumbo__art-img{
+		width: 100%;
+		margin-top:5rem;
+		.col-card-1{
+			z-index: 9999;
+			position: absolute;
+			.card{
+				margin-left: 12.5rem;
+				margin-top: -4.5rem;
+				border-radius:13px;
+				width: 250px!important;
+				height: 110px!important;
+				img{
+					margin-left: .2rem;
+					margin-top: -.1rem;
+					border-radius:10px;
+					height: 105px;
+				}
+				.container{
+					margin-top: 1rem;					
+					h1{
+						color:$primary-button;
+						font-weight: 800;
+						font-size: 25px;
+					}
+					p{
+						color: $second-black;
+						font-size:13px;
+						text-align: left;
+						width: 150px;
+						font-weight:500;
+					}
+				}
+			}
+		}
+		.first-box{
+			box-sizing: content-box;
+			border: solid $primary-button 4px;
+			border-radius:13px;
+			border-style: dashed;
+			height:37vh;
+			width: 270px;
+			background-color: transparent;
+			z-index: 1;
+			position: absolute;
+			margin-top: -1rem;
+		}
+
+		.card__image-box{
+			z-index: 3;
+			position: absolute;
+			margin-left: 1rem;
+			margin-top: 1rem;
+			.card{
+				border-radius:13px;
+				width: 400px!important;
+				height: 400px!important;
+				img{
+					border-radius: 13px;
+				}
+			}
+		}
+
+		.second-box{
+			box-sizing: content-box;
+			border: solid $primary-button 4px;
+			border-radius:13px;
+			padding: 5px;
+			margin-top: 8.5rem!important;
+			margin-left: 7.5rem!important;
+			height: 37vh;
+			background-color: transparent;
+			z-index: -1;
+		}
+		.col-card-2{
+			z-index: 9999;
+			position:relative;
+			.card{
+				margin-left: -3rem;
+				margin-top: -5rem;
+				border-radius:13px;
+				width: 250px!important;
+				height: 115px!important;
+				img{
+					margin-left: -1.9rem;
+					margin-top: 0rem;
+					border-radius:10px;
+					height: 75px;
+					width: 70px;
+				}
+				.container{
+					margin-top: .5rem;					
+					h1{
+						color:$primary-button;
+						font-weight: 800;
+						font-size: 33px;
+					}
+					p{
+						color: $second-black;
+						font-size:13px;
+						text-align: left;
+						width: 200px;
+						font-weight:500;
+					}
+				}
+			}
+		}
+	}
+}
+// end jumbotron
+
+@mixin button_primary {
+	background-color:$primary-button!important;
+	color:$default;
+	font-weight: 600;
+	font-size:14px;
+	text-transform: capitalize;
+	letter-spacing: 1.3px;
+	&:hover{
+		color: $bg-blue-gray!important;
+	}
+}
+
+@mixin button_secondary{
+	background-color:$button-gray!important;
+	color:$default-black;
+	font-weight: 600;
+	font-size:14px;
+	text-transform: capitalize;
+	letter-spacing: 1.3px;
+	&:hover{
+		color: $scroll-bar-color!important;
+		background-color: $bg-hover-first;
+	}
+}
+
+// Card pelatihan
+@mixin listDesktop($color){
+	margin-left: 2rem;
+	h5{
+		font-size:16px;
+		font-weight: 600;
+		color:$color;
+		line-height: 40.85px;
+	}
+
+	h2{
+		color: $second-black;
+		font-weight: 800!important;
+		width: 85%!important;
+		text-align: left;
+		line-height: 40px!important;
+		font-size: 31px!important;
+	}
+
+}
+
+@mixin listMobile($color){
+	// margin-left: 2rem;
+	margin-top: -5rem;
+	h5{
+		font-size:14px!important;
+		font-weight: 600!important;
+		color:$color!important;
+		line-height: 40.85px!important;
+	}
+
+	h2{
+		color: $second-black!important;
+		font-weight: 600!important;
+		width: 100%!important;
+		text-align: left!important;
+		line-height: 31px!important;
+		font-size: 21px!important;
+	}
+
+
+}
+
+// Rounded card
+@mixin card_rounded_desktop{
+	border-radius: 13px!important;
+	// height: 115vh!important;
+	.card-title, h4{
+		color: $second-black!important;
+		font-size:16px;
+		font-weight:700;
+		line-height: 27.24px;
+		// margin-top: 1rem;
+	}
+
+	.card-text{
+		font-size: 14px;
+		font-weight:400px;
+		margin-top: -2rem;
+	}
+
+	img{
+		border-radius:13px!important;
+		object-fit: cover;
+		width: 350px;
+		height: 450px;
+	}
+
+	.view{
+		border-radius:8px;
+	}
+	.card-body{		
+		.idr__color {
+			color: $color-primary;
+			font-weight: 700;
+			font-size:18px;
+			line-height: 24.51px;
+		}
+	}
+}
+
+@mixin card_rounded_mobile{
+	border-radius: 8px!important;
+	.view{
+		border-radius:8px;
+	}
+	.card-title, h4{
+		color: $default-black;
+		font-size:16px;
+		font-weight:700;
+		line-height: 27.24px;
+	}
+	p{
+		font-size: 12px;
+	}
+	span{
+		color: $default-gray;
+		font-size: 10px;
+	}
+	.card-body{
+		.idr__color {
+			color: $idr-color;
+			font-weight: 700;
+			font-size:18px;
+			line-height: 24.51px;
+		}
+	}
+	
+}
+// end card pelatihan
+
+// parallax home
+@mixin parallax_mobile{
+	min-height: 190px; 
+	background-attachment: scroll;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin:0;
+	z-index: 1;
+	.caption {
+		background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+		position: absolute;
+		margin-top: -2.3rem;
+		width: 100%;
+		height: 228px;
+		text-align: left;
+		color: $default;
+		img{
+			width: 50%;
+			margin-top: -1rem;
+		}
+		h2{
+			text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 38.68px;
+		}
+		blockquote{
+			width: 70%;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 19.07px;
+		}
+	}
+}
+
+@mixin parallax_desktop{
+	min-height: 180px; 
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin:0;
+	z-index: 1;
+	.caption {
+		background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+		position: absolute;
+		z-index: 9999;
+		margin-top: .1rem;
+		width: 100%;
+		height: 99%;
+		text-align: left;
+		color: $default;
+		img{
+			width: 70%;
+		}
+		h2{
+			text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 38.68px;
+		}
+		blockquote{
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 19.07px;
+		}
+	}
+}
+
+@mixin parallax_overlay{
+	.overlay {
+		position: relative;
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.4;
+			background: #081828;
+			content: "";
+			-webkit-transition: all 0.4s ease;
+			transition: all 0.4s ease;
+			z-index: -1;
+		}
+	}
+}
+
+// end parallax home
+
+
+// For header inside container
+@mixin header_inside_list_desktop($color){
+	.header__inside-content{
+		margin-left: 2rem;
+		h5{
+			font-size:16px;
+			font-weight: 600;
+			color:$color;
+			line-height: 40.85px;
+		}
+
+		h2{
+			color: $second-black!important;
+			font-weight: 800!important;
+			width: 85%!important;
+			text-align: left;
+			line-height: 40px!important;
+			font-size: 31px!important;
+		}
+		a{
+			background-color:$button-gray!important;
+			color:$default-black;
+			font-weight: 600;
+			font-size:13px;
+			text-transform: capitalize;
+			letter-spacing: 1.3px;
+			&:hover{
+				color: $second-gray!important;
+			}
+		}
+	}
+	
+}
+
+@mixin header_inside_list_mobile($color){
+	.header__inside-content{
+		margin-left: .1rem;
+		h5{
+			font-size:16px;
+			font-weight: 600;
+			color:$color;
+			line-height: 40.85px;
+		}
+
+		h2{
+			color: $second-black;
+			font-weight: 800!important;
+			width: 85%!important;
+			text-align: left;
+			line-height: 40px!important;
+			font-size: 31px!important;
+		}
+		a{
+			background-color:$button-gray!important;
+			color:$default-black;
+			font-weight: 600;
+			font-size:13px;
+			text-transform: capitalize;
+			letter-spacing: 1.3px;
+			&:hover{
+				color: $second-gray!important;
+			}
+		}
+	}
+}
+// end header inside container
+
+// card testimoni content
+@mixin card_testimonial_mobile{
+	.card__testimoni-content {
+		position: relative;
+		background-color: $default;
+		border-radius: 13px;
+		width:95%;
+		height: auto!important;
+		margin-top: 1rem;
+		.card-title{
+			color: $second-black;
+			font-weight: 800!important;
+			line-height: 21px;
+		}
+		h6{
+			color:$second-gray;
+		}
+		.card-text{
+			margin-top: 1rem;
+			font-weight: 500;
+			line-height: 33px;
+		}
+	}
+
+}
+@mixin card_testimonial_desktop{
+	.card__testimoni-content {
+		position: relative;
+		background-color: $default;
+		border-radius: 13px;
+		width:95%;
+		height: auto!important;
+		margin-top: 1rem;
+		
+		.card-title{
+			color: $second-black;
+			font-weight: 800!important;
+			line-height: 21px;
+		}
+		h6{
+			color:$second-gray;
+		}
+		.card-text{
+			margin-top: 1rem;
+			font-weight: 500;
+			line-height: 33px;
+		}
+	}
+
+}
+// end card testimoni
+// End main component base on main.scss
+
+// Inside auth card
+// For auth component base on auth.scss
+@mixin inside_card_auth_mobile{
+	.form__auth{
+		color:$second-black;
+		h4{
+			font-size: 23px;
+			font-weight: 700;
+			line-height: 49.03px;
+		}
+		.has-input .form-control {
+			padding-left: 2.250rem;
+		}
+		.has-input .form-control-feedback {
+			position: absolute;
+			z-index: 2;
+			display: block;
+			width: 2.375rem;
+			height: 2.375rem;
+			line-height: 2.375rem;
+			text-align: center;
+			pointer-events: none;
+			color: $color-icon-primary;
+			font-size: 18px;
+		}
+		input{
+			font-size: 14px;
+		}
+		button{
+			text-transform: capitalize;
+			font-size: 13px;
+			font-weight: 700;
+			line-height: 21.79px;
+			color:$default;
+			background-color: $primary-button!important;
+		}
+		
+		.fa-google {
+			background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			font-size: 21px;
+		}
+		.form__daftar-link{
+			margin-top: 1.5rem;
+			a{
+				color:$color-primary;
+			}
+		}
+	}
+}
+
+@mixin inside_card_auth_desktop{
+	.form__auth{
+		margin-top: 1.9rem;
+		color:$second-black;
+		.alert{
+			margin-top: 3rem;
+		}
+		h4{
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 49.03px;
+		}
+
+		.has-input .form-control {
+			padding-left: 2.250rem;
+		}
+		.has-input .form-control-feedback {
+			position: absolute;
+			z-index: 2;
+			display: block;
+			width: 2.375rem;
+			height: 2.375rem;
+			line-height: 2.375rem;
+			text-align: center;
+			pointer-events: none;
+			color: $color-icon-primary;
+		}
+		button{
+			text-transform: capitalize;
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 21.79px;
+			color:$default;
+			background-color: $primary-button!important;
+		}
+		.line{
+			list-style: none;
+		}
+		.fa-google {
+			background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			font-size: 21px;
+		}
+
+		.form__daftar-link{
+			margin-top:2rem!important;
+			a{
+				color:$color-primary!important;
+			}
+		}
+	}
+}
+
+
+@mixin hover_image_display{
+	.hover__image-wrap{
+		position: relative;
+		width: 100%;
+		max-width: 400px;
+		.image {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.overlay {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 230px;
+			width: 100%;
+			opacity: 0;
+			transition: .3s ease;
+			background-color: rgba(205, 209, 228, 0.9);
+		}
+
+		&:hover .overlay {
+			opacity: 1;
+		}
+
+		.icon {
+			color: white;
+			font-weight: 700;
+			font-size: 100px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		.fa-zoom:hover {
+			color: #eee;
+		}
+	}
+}
+
+@mixin filtering_form_data{
+	margin-top: -3rem;
+	margin-left: 5rem;
+	select{
+		border: 1px solid $primary-button!important;
+		border-sizing: border-box!important;
+		background: $default!important;
+		color: $primary-button!important;
+		border-radius: 5px!important;
+		height:33.7px!important;
+		width:180px!important;
+		font-size: 12px!important;
+		margin-bottom: 1rem!important;
+	}
+	button{
+		margin-top:-.1em!important;
+		width: 185px!important;
+		left:-.3rem!important;
+		height: 33px!important;
+		border-radius:4px!important;
+		font-size:10px!important;
+		background-color: $primary-button!important;
+	}
+	h5{
+		color:$color-primary;
+		font-size: 16px;
+		font-weight: 800;
+		line-height: 27px;
+		text-transform: capitalize;
+	}
+	
+	@media (min-width: 992px) {
+		margin-left: 25rem;
+		select{
+			border: 1px solid $primary-button!important;
+			border-sizing: border-box!important;
+			background: $default!important;
+			color: $primary-button!important;
+			border-radius: 5px!important;
+			height:33.7px!important;
+			width:160px!important;
+			font-size: 15px!important;
+			margin-bottom: 1rem!important;
+			// margin-left: -2rem;
+		}
+		button{
+			margin-top:.1em!important;
+			width: 175px!important;
+			left:-.7rem!important;
+			height: 33px!important;
+			border-radius:4px!important;
+			font-size:13px!important;
+			background-color: $primary-button!important;
+			text-align: left;
+		}
+		h5{
+			color:$color-primary;
+			font-size: 20px;
+			font-weight: 800;
+			line-height: 27px;
+			text-transform: capitalize;
+		}
+	}
+}
+
+// End auth component base on auth.scss

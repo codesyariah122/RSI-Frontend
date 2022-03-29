@@ -1,0 +1,163 @@
+// Styling from layout component
+// navigation component
+.navbar-brand{
+	img{
+		width: 100px;
+	}
+}
+.nav-link {
+	@include navbar_mobile;
+	text-decoration: none!important;
+}
+.dropdown-menu{
+	a{
+		text-decoration: none!important;
+	}
+}
+.keranjang__dropdown{
+	z-index: 1;
+	margin-left: -5rem;
+	width:340px;
+	.container{
+		width: 100%;
+		h5{
+			font-weight: 800;
+			font-size:18px;
+			color: $second-black;
+		}
+		.dropdown-divider{
+			width: 400px;
+		}
+		.link__page{
+			margin-left: -6rem;
+			a{					
+				color:$color-primary;
+				font-size: 16px;
+				font-weight: 700;
+			}
+		}
+		.alert{
+			width:75%;
+		}
+
+		.list__cart{
+			.title__event{
+				font-size: 14px;
+				width:35%;
+			}
+		}
+	}
+
+	.link{
+		font-size: 18px;
+		font-weight: 700;
+	}
+}
+.no-caret::after{
+	display: none;
+}
+.dropdown-toggle::after {
+	color: $color-primary;
+}
+.my__btn-primary{
+	@include button_primary;
+}
+.my__btn-secondary{
+	@include button_secondary;
+}
+.my__btn-circle {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	padding: 0; 
+	border-radius: 45px;
+	background-color:$button-gray!important;
+	i{
+		font-size: 13px;
+		margin-top: .7rem;
+	}
+}
+@media (min-width: 992px) {
+	.navbar-brand{
+		img{
+			width: 100px;
+		}
+	}
+	.nav-link {
+		margin-left: 1.5rem;
+		@include navbar_desktop;
+	}
+	.dropdown-menu{
+		a{
+			text-decoration: none;
+		}
+	}
+	.keranjang__dropdown{
+		z-index: 1;
+		margin-left: -25rem;
+		width:450px;
+		margin-top:-3rem;
+		.container{
+			width: 100%;
+			h5{
+				font-weight: 800;
+				font-size:21px;
+				color: $second-black;
+			}
+			.dropdown-divider{
+				width: 400px;
+			}
+			.link__page{
+				margin-left: .7rem;
+				a{					
+					color:$color-primary;
+					font-size: 18px;
+					font-weight: 700;
+				}
+			}
+			.alert{
+				width:75%;
+			}
+
+			.list__cart{
+				.title__event{
+					font-size: 16px;
+					width:35%;
+				}
+			}
+
+		}
+		
+		.link{
+			font-size: 18px;
+			font-weight: 700;
+		}
+	}
+	.no-caret::after{
+		display: none;
+	}
+	.dropdown-toggle::after {
+		color: $color-primary;
+	}
+	.my__btn-primary{
+		@include button_primary;
+	}
+	.my__btn-secondary{
+		@include button_secondary;
+	}
+	.my__btn-circle {
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		padding: 0; 
+		border-radius: 45px;
+		background-color:$button-gray!important;
+		i{
+			font-size: 13px;
+			margin-top: .7rem;
+		}
+	}
+	.animated-icon2{
+		background-color:$default-black!important;
+	}
+}
