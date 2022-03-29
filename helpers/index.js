@@ -12,14 +12,14 @@ export const LoginProfile = async(url, data) => {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
-			'konten-Type': 'application/json'
+			'Content-Type': 'application/json'
 		},
 
 		body: JSON.stringify(data)
 	})
 
 	try{
-		return login.json()
+		return await login.json()
 	}catch(err){
 		console.log(err)
 	}

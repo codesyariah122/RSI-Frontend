@@ -4,7 +4,7 @@
 		<EventpageHeader @update-list-event="SearchEvent" :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" @load-more-event="LoadListEvent" :categories="categories" ref="eventChild"/>
 
 		<!-- List event page content -->
-		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
+		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
 
 	</div>
 </template>
@@ -32,10 +32,6 @@
 			this.FetchListEvent()
 		},
 
-		mounted(){
-			this.FetchListEvent()
-		},
-
 		methods:{
 			CheckToken(){
 				this.$store.dispatch('config/checkAuthLogin', 'token')
@@ -53,7 +49,7 @@
 						this.empty = false
 						this.lists = data.list_kegiatan_terdekat
 	
-						if(this.lists.length < 3){
+						if(this.lists.length <= 3){
 							SampleEvents.map(d => this.lists.push(d))
 						}
 					}else{

@@ -52,7 +52,7 @@
             <div :class="`p-2 bd-highlight mr-3 ${$device.isDesktop ? 'count__event' : ''}`">
               <div class="float-right">
                   <h6>
-                    Menampilkan <strong> {{listToShow}} </strong> dari <strong> {{lists.length}} </strong>
+                    Menampilkan <strong> {{listToShow}} </strong> dari <strong> {{lists.length < listToShow ? listToShow : lists.length}} </strong>
                   </h6>
               </div>
             </div>

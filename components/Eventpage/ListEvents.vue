@@ -36,43 +36,42 @@
 				</mdb-col>
 				
 				<mdb-col
-				v-if="listIndex <= listsToShow || listIndex <= lists.length"
-				v-for="listIndex in listToShow"
+				v-for="(item,index) in lists"
 				col="12"
 				md="4"
 				class="mb-4"
-				:key="lists[listIndex - 1].kegiatan_id"
+				:key="item.kegiatan_id"
 				>
 				<mdb-card>
 					<mdb-card-image
-					:src="lists[listIndex - 1].photo"
-					:alt="lists[listIndex - 1].kegiatan_title"
+					:src="item.photo"
+					:alt="item.kegiatan_title"
 					></mdb-card-image>
 
 					<mdb-card-body>
 						<mdb-badge class="mb-2 badge__category shadow-none">{{
-							lists[listIndex - 1].kategori_value
+							item.kategori_value
 						}}</mdb-badge>
 
 						<mdb-card-title
 						class="truncate"
 						style="color: #004899; font-weight: bold; min-height: 80px"
-						>{{ lists[listIndex - 1].kegiatan_title }}</mdb-card-title
+						>{{ item.kegiatan_title }}</mdb-card-title
 						>
 						<mdb-card-text
 						class="truncate2 mt-2"
 						style="width: 200px; min-height: 45px"
-						>{{ lists[listIndex - 1].kegiatan_desc }}</mdb-card-text
+						>{{ item.kegiatan_desc }}</mdb-card-text
 						>
 
 						<h6 class="mt-2 idr__color">
-							{{ $format(lists[listIndex - 1].harga) }}
+							{{ $format(item.harga) }}
 						</h6>
 
 						<span style="font-size: 12px; margin-top: 1.5rem"
 						><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
-						{{ $moment(lists[listIndex - 1].tgl_awal).format("LL") }} -
-						{{ $moment(lists[listIndex - 1].tgl_akhir).format("LL") }}</span
+						{{ $moment(item.tgl_awal).format("LL") }} -
+						{{ $moment(item.tgl_akhir).format("LL") }}</span
 						>
 
 						<!-- <mdb-btn @click="ToDetailEvent(lists[listIndex-1].kegiatan_id)" block class="btn btn-outline-primary mt-3 mb-2" color="primary">Detail Event</mdb-btn> -->
@@ -80,10 +79,10 @@
 						<a
 						@click="
 						SetKeranjang(
-							lists[listIndex - 1].kegiatan_id,
-							lists[listIndex - 1].photo,
-							lists[listIndex - 1].kegiatan_title,
-							lists[listIndex - 1].harga
+							item.kegiatan_id,
+							item.photo,
+							item.kegiatan_title,
+							item.harga
 							)
 							"
 							:class="`btn my__btn-primary rounded-pill mt-3 mb-2 btn-block shadow-none ${
@@ -97,8 +96,8 @@
 							:to="{
 								name: `detail-event-id-slug`,
 								params: {
-									id: lists[listIndex - 1].kegiatan_id,
-									slug: $slug(lists[listIndex - 1].kegiatan_title),
+									id: item.kegiatan_id,
+									slug: $slug(item.kegiatan_title),
 								},
 							}"
 							:class="`btn my__btn-secondary rounded-pill mt-3 mb-2 btn-block shadow-none ${
@@ -111,7 +110,7 @@
 				</mdb-col>
 			</mdb-row>
 
-			<mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
+			<!-- <mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
 				<mdb-col
 				col="12"
 				xl="5"
@@ -127,7 +126,7 @@
 				}`"
 				>Lihat Semua Kelas</mdb-btn>
 			</mdb-col>
-		</mdb-row>
+		</mdb-row> -->
 
 		</mdb-container>
 	</div>

@@ -152,6 +152,7 @@ export default {
         email: this.fields.email,
         password: this.fields.password,
       };
+      console.log(params)
       this.$emit("login-profile", params);
     },
 
