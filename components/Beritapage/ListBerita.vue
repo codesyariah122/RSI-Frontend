@@ -20,31 +20,33 @@
           <mdb-col lg="12" xs="12" sm="12">
             <div class="mt-5 card__content">
               <mdb-row class="card__berita-list">
+                
                 <mdb-col
                 id="show-event"
-                v-for="item in lists"
+                v-if="listIndex <= lists.length"
+                v-for="listIndex in listToShow"
                 md="4"
                 xs="12"
                 sm="12"
-                :key="item.id" :style="`${$device.isMobile ? 'margin-bottom: 2rem;' : ''}`"
+                :key="lists[listIndex-1].id" :style="`${$device.isMobile ? 'margin-bottom: 2rem;' : ''}`"
                 >
                   <mdb-card>
-                    <mdb-card-image :src="item.foto_url" alt="Card image cap"></mdb-card-image>
+                    <mdb-card-image :src="lists[listIndex-1].foto_url" alt="Card image cap"></mdb-card-image>
                     <mdb-card-body>
                       <mdb-card-title
                       class="truncate"
                       style="padding-top: 16px; min-height: 100px"
-                      >{{ item.judul }}</mdb-card-title
+                      >{{ lists[listIndex-1].judul }}</mdb-card-title
                       >
                       <mdb-card-text class="truncate2">
-                        {{item.konten}}
+                        {{lists[listIndex-1].konten}}
                       </mdb-card-text>
                       <nuxt-link
                       :to="{
                         name: `detail-berita-id-slug`,
                         params: {
-                          id: item.id,
-                          slug: $slug(item.judul),
+                          id: lists[listIndex-1].id,
+                          slug: $slug(lists[listIndex-1].judul),
                         },
                       }"
                       class="mb-2"
@@ -54,12 +56,13 @@
                     </mdb-card-body>
                   </mdb-card>
                 </mdb-col>
+                
               </mdb-row>
             </div>
           </mdb-col>
         </mdb-row>
 
-        <mdb-row v-if="loading" class="row justify-content-center">
+        <mdb-row v-if="loading || loading_more" class="row justify-content-center">
           <mdb-col lg="12" xs="12" sm="12">
             <div class="d-flex justify-content-center mt-5 mb-5">
               <div
@@ -73,14 +76,21 @@
           </mdb-col>
         </mdb-row>
 
-        <mdb-row
-          v-if="error"
-          class="row justify-content-center header__rsi-list-page"
-        >
-          <mdb-col lg="12" xs="12" sm="12">
-            <button type="button" @click="LoadBerita" class="btn btn-info">
-              Load More
-            </button>
+          <mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
+            <mdb-col
+            col="12"
+            xl="5"
+            lg="12"
+            xs="12"
+            sm="12"
+            :class="`${$device.isDesktop ? 'mb-5 shadow-none' : 'mb-2'}`"
+            >
+            <mdb-btn
+            @click="LoadBerita"
+            :class="`btn my__btn-primary rounded-pill  ${
+              $device.isMobile ? 'btn-block btn-sm' : 'btn-block'
+            }`"
+            >Lihat Berita Lainnya</mdb-btn>
           </mdb-col>
         </mdb-row>
       </mdb-container>
@@ -90,7 +100,7 @@
 
 <script>
 export default {
-  props: ["lists", "loading", "error", "end"],
+  props: ["lists", "loading", "error", "end", "listToShow", "loading_more"],
   data() {
     return {
       currentPage: 1,

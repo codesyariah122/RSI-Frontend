@@ -8,7 +8,8 @@
     :loading="loading"
     :error="error"
     :end="end"
-    @load-more-berita="ListBerita"
+    @load-more-berita="LoadMoreBerita"
+    :listToShow="listToShow" :loading_more="loading_more"
     />
   </div>
 </template>
@@ -25,18 +26,15 @@
         error: false,
         end: false,
         lists: [],
-        listToShow: 9,
+        listToShow: 6,
         repeat: 0,
         path: this.$route.name,
       };
     },
 
     beforeMount() {
-      this.ConfigApiUrl();
-    },
-
-    mounted() {
-      this.ListBerita();
+      this.ConfigApiUrl(),
+      this.ListBerita()
     },
 
     methods: {
@@ -54,6 +52,7 @@
             SampleNews.map(d => {
               this.lists.push(d)
             })
+            // this.lists.push(...SampleNews)
           }
         })
         .catch((err) => {
@@ -65,6 +64,15 @@
             this.loading = false;
           }, 1000);
         });
+      },
+
+      LoadMoreBerita(){
+        window.scrollTo(0,document.body.scrollHeight);
+        this.loading_more=true
+        setTimeout(() => {
+          this.listToShow = (this.lists.length - this.listToShow) + this.listToShow
+          this.loading_more=false
+        }, 1500)
       },
 
       ConfigApiUrl() {

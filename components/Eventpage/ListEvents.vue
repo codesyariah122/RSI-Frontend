@@ -130,14 +130,14 @@
 				sm="12"
 				:class="`${$device.isDesktop ? 'mb-5 shadow-none' : 'mb-2'}`"
 				>
-				<mdb-btn
-				@click="LoadMore"
-				:class="`btn my__btn-primary rounded-pill  ${
-					$device.isMobile ? 'btn-block btn-sm' : 'btn-block'
-				}`"
-				>Lihat Semua Kelas</mdb-btn>
-			</mdb-col>
-		</mdb-row>
+					<mdb-btn
+					@click="LoadMore"
+					:class="`btn my__btn-primary rounded-pill  ${
+						$device.isMobile ? 'btn-block btn-sm' : 'btn-block'
+					}`"
+					>Lihat kelas Lainnya</mdb-btn>
+				</mdb-col>
+			</mdb-row>
 
 		</mdb-container>
 	</div>

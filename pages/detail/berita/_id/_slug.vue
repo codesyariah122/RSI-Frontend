@@ -11,9 +11,8 @@
         </mdb-col>
 
         <mdb-col lg="12" xs="12" sm="12" class="col__berita-2">
-          <article class="content-desc">
-            {{ detail.konten }}
-          </article>
+          <div class="content-desc" v-html="detail.konten">
+          </div>
         </mdb-col>
         
         <mdb-col lg="12" xs="12" sm="12" class="mt-5">
