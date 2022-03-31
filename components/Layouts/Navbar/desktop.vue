@@ -201,8 +201,12 @@
     },
 
     beforeMount(){
-      this.scroll(),
-      this.CheckKeranjang()
+      this.scroll()
+    },
+
+    mounted(){
+      this.CheckKeranjang(),
+      console.log(this.data_carts)
     },
 
 
@@ -255,9 +259,11 @@
     },
 
     CheckKeranjang() {
-      this.data_cart=(localStorage.getItem("carts")
-        ? JSON.parse(localStorage.getItem("carts"))
-        : "");
+      // this.data_cart=(localStorage.getItem("carts")
+      //   ? JSON.parse(localStorage.getItem("carts"))
+      //   : "");
+      this.$store.dispatch("config/storeConfigGetCartEvent", "carts")
+      this.data_cart = this.data_carts
       this.notifs = this.data_cart.length
     }
   },
@@ -266,6 +272,9 @@
     set_event() {
       return this.$store.getters["config/ConfigSetEventLogin"];
     },
+    data_carts(){
+      return this.$store.getters["config/ConfigGetDataCart"]
+    }
   },
 };
 </script>

@@ -13,7 +13,7 @@
 				</pre> -->
 				<mdb-col v-if="data_cart.length == 0" col="12" lg="8" xs="8" sm="12">
 					<b-card no-body class="overflow-hidden shadow-none">
-						<b-alert class="mt-2" show variant="info">Belum ada event yang di tambahkan!</b-alert>
+						<b-alert class="mt-2" show variant="info"> {{message}} </b-alert>
 					</b-card>
 				</mdb-col>
 
@@ -31,7 +31,7 @@
 								</b-card-body>
 							</b-col>
 							<b-col md="1" sm="1" class="delete__data">
-								<i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
+								<i @click="DeleteEventCart(index)" class="fa fa-times fa-fw fa-lg" aria-hidden="true" style="cursor: pointer;"></i>
 							</b-col>
 						</b-row>
 
@@ -102,7 +102,8 @@
 			return {
 				data_cart: [],
 				total_lists: [],
-				total:''
+				total:'',
+				message: 'Tidak ada event yang di tambahkan!'
 			}
 		},
 
@@ -167,6 +168,15 @@
 					})
 					break;
 				}
+			},
+
+			DeleteEventCart(index){
+				this.data_cart.splice(index, 1)
+				this.total_lists.splice(index,1)
+				this.$store.dispatch("config/storeRemoveCartEvent", index)
+				setTimeout(() => {
+					location.reload()
+				}, 1000)
 			}
 		},
 		computed:{
