@@ -29,7 +29,7 @@
       </mdb-nav-item>
       <mdb-dropdown tag="li" class="nav-item">
         <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed class="no-caret">
-          RSI Sultan Agung <mdb-icon icon="external-link-alt" />
+          Tentang Diklat <mdb-icon icon="external-link-alt" />
         </mdb-dropdown-toggle>
         <mdb-dropdown-menu :class="`${$device.isDesktop ? 'mt-4' : ''}`">
           <mdb-dropdown-item v-for="item in links" :key="item.id">
@@ -187,7 +187,7 @@
     data() {
       return {
         links: [
-        { id: 1, name: "Sejarah", link: "/rsi/sejarah" },
+        { id: 1, name: "Yayasan & Direksi", link: "/rsi/yayasan-direksi" },
         { id: 2, name: "Visi & Misi", link: "/rsi/visi-misi" },
         {
           id: 3,
@@ -197,8 +197,7 @@
         { id: 4, name: "Fasilitas", link: "/rsi/fasilitas" },
         { id: 5, name: "Berita", link: "/rsi/berita" },
         { id: 6, name: "Testimoni", link: "/rsi/testimoni" },
-        { id: 7, name: "Fasilitator", link: "/rsi/fasilitator" },
-        { id: 8, name: "Yayasan & Direksi", link: "/rsi/yayasan-direksi" },
+        { id: 7, name: "Fasilitator", link: "/rsi/fasilitator" }
         ],
         path: this.$route.path,
         mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },
