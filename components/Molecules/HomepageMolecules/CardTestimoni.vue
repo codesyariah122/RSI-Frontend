@@ -2,6 +2,7 @@
   <div>
     <!-- Testimoni content -->
     <mdb-row class="row justify-content-center col__testimoni">
+      
       <mdb-col v-for="(item, index) in testimonis" md="6" xs="12" sm="12" class="col__testimoni-card" :key="item.id">
         <mdb-card class="card__testimoni-content">
           <mdb-container class="mt-3">

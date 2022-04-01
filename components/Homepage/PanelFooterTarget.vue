@@ -9,20 +9,21 @@
               Buat akun dan dapatkan akses kelas-kelas terbaik di berbagai bidang kesehatan atau hubungi admin kami untuk konsultasi pilihan kelas terbaik sesuai kompetensi yang Anda miliki.
             </p>
 
-              <div class="button">                
-                <b-button
-                :class="`my__btn-secondary rounded-pill ${$device.isMobile ? 'btn-block btn-sm mt-3' : ''}`"
-                @click="$router.push({ name: 'auth-registrasi' })"
-                >Hubungi Kami</b-button>
+            <div class="button">                
+              <b-button
+              :class="`my__btn-secondary rounded-pill ${$device.isMobile ? 'btn-block btn-sm mt-3' : ''}`"
+              @click="$router.push({ name: 'auth-registrasi' })"
+              >Hubungi Kami</b-button>
 
-                <b-button
-                :class="`my__btn-primary rounded-pill ${$device.isMobile ? 'btn-block btn-sm' : ''}`"
-                @click="$router.push({ name: 'auth-registrasi' })"
-                >Daftar Sekarang</b-button
-                >
-              </div>
-              
+              <b-button
+              :class="`my__btn-primary rounded-pill ${$device.isMobile ? 'btn-block btn-sm' : ''}`"
+              @click="$router.push({ name: 'auth-registrasi' })"
+              >Daftar Sekarang</b-button
+              >
+            </div>
+
           </mdb-col>
+
           <mdb-col col="12" md="6" xs="12" sm="12" class="panel__art">
             <!-- <img :src="require('~/assets/images/homepage/footer-info-img.svg')"> -->
             <mdb-row class="d-flex justify-content-center">
@@ -38,6 +39,28 @@
             </mdb-row>
           </mdb-col>
         </mdb-row>
+
+        <mdb-row class="row justify-content-start mt-1 panel__context">
+           <mdb-col col="12" md="12" xs="12" sm="10" class="visi__misi-context">
+            <h1>Visi</h1>
+            <p v-if="context.visi">{{ context.visi }}</p>
+            <br />
+            <h1>Misi</h1>
+            <ol v-if="context.misi">
+              <li v-for="n in context.misi.length" v-if="n % 2 == 1">
+                {{ context.misi[n] }}
+              </li>
+            </ol>
+            <br />
+            <h1>Motto</h1>
+            <p>Mencintai Allah Menyayangi Sesama</p>
+            <br />
+            <h1>Makna Kerja</h1>
+            <p>Berkhidmat Menyelamatkan Umat</p>
+            <br />
+          </mdb-col>
+        </mdb-row>
+
       </mdb-container>
     </div>
   </div>

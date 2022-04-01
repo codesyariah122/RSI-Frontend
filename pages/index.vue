@@ -24,17 +24,25 @@
       <mdb-row class="justify-content-center mt-3">
         <HomepageTestimoni :testimonis="testimonis"/>
       </mdb-row>
+    </mdb-container>
 
+    <!-- parallax homepage -->
+    <HomepageParallaxHome />
+
+    <mdb-container>
       <!-- berita -->
-      <mdb-row class="justify-content-center mt-2">
+      <mdb-row class="justify-content-center">
         <HomepageBerita :lists="lists.list_berita" :news="news" />
       </mdb-row>
+
     </mdb-container>
-    
-    
-    <!-- visi misi content -->
+
+
+
+    <!-- panel footer -->
     <HomepagePanelFooterTarget />
-    <!-- End Homepage Content -->
+    <!-- End panel footer -->
+
   </div>
 </template>
 
@@ -131,18 +139,43 @@ export default {
         this.items = [
         {
           img: true,
-          src: "https://mukisi.com/wp-content/uploads/2018/10/27-okt-MUKISI-RSISA-Bangun-Rumah-Tahfidz-di-Rumah-Sakit.jpg",
+          src: "https://apisultanagung.halomedika.com/image-banner/7.jpeg",
         },
         {
           img: true,
-          src: "https://unissula.ac.id/wp-content/uploads/2020/08/fti-robot-covid-19-1024x683.jpg",
+          src: "https://apisultanagung.halomedika.com/image-banner/8.jpeg",
         },
         {
           img: true,
-          src: "https://kampusnesia.com/data/uploads/2017/12/RSI-Sultan-Agung.jpg",
+          src: "https://apisultanagung.halomedika.com/image-banner/9.jpeg",
         },
-        ]
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/1.jpeg",
+        },
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/2.jpeg",
+        },
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/3.jpeg",
+        },
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/4.jpeg",
+        },
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/5.jpeg",
+        },
+        {
+          img: true,
+          src: "https://apisultanagung.halomedika.com/image-banner/6.jpeg",
+        },
+        ];
       },
+
 
       ConfigApiUrl() {
         const api_url = process.env.NUXT_ENV_API_URL;

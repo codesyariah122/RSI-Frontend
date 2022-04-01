@@ -20,7 +20,7 @@
             </a>
           </li>
           <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-            <a href="../e-commerce/e-commerce.html">
+            <a href="tel:62246593452">
               IGD +6224 6593452
             </a>
           </li>
@@ -37,18 +37,18 @@
       <div class="col-md-3 col-sm-12 col-6 p-0 mb-3 float-left social-media">
         <h5 class="mb-4 font-weight-bold text-uppercase">Social Media</h5>
         <ul class="list-group">
-          <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+          <li class="list-group-item bg-transparent border-0 p-0 mb-5">
             <a href="https://id-id.facebook.com/www.rsisultanagung.co.id/">
              <img :src="require('~/assets/icons/socials/facebook.svg')"> RSI Sultan Agung
             </a>
           </li>
-          <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-            <a href="https://stackshare.io/naologic">
+          <li class="list-group-item bg-transparent border-0 p-0 mb-5">
+            <a href="https://twitter.com/rsisultanagung">
               <img :src="require('~/assets/icons/socials/twitter.svg')"> @rsisultanagung
             </a>
           </li>
           <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-            <a href="https://stackshare.io/naologic">
+            <a href="https://www.instagram.com/rsi.sultanagung/?hl=id">
               <img :src="require('~/assets/icons/socials/instagram.svg')"> rsi.sultanagung
             </a>
           </li>
