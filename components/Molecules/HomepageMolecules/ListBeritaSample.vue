@@ -1,12 +1,13 @@
 <template>
 	<div>
-		<mdb-row class="row justify-content-center card__berita-list">
-
+		<mdb-row class="row justify-content-center">
 			<!-- bg content -->
 			<mdb-col col="12" lg="12" xs="12" sm="12" class="bg__content">
 				<img :src="require('~/assets/art/vector-5.png')" />
 			</mdb-col>
-
+		</mdb-row>
+		
+		<mdb-row class="row justify-content-center card__berita-list">
 			<mdb-col v-if="listIndex <= listToShow" v-for="listIndex in listToShow" md="4" xs="12" sm="12" class="mb-3" :key="news[listIndex - 1].id">
 				<mdb-card>
 					<mdb-card-image :src="news[listIndex - 1].foto_url" alt="Card image cap"></mdb-card-image>

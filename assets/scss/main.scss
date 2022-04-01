@@ -20,6 +20,33 @@
 
 	@include jumbotron_mobile($default);
 }
+.banner{
+	img{
+		object-fit:cover;
+		width: 100%;
+		height:30vh;
+	}
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		height: 40px !important;
+		width: 40px !important;
+		margin-top: -.5rem;
+		border-radius:50%;
+		background-color: $color-primary;
+		z-index: 1!important;
+	}
+	.carousel-indicators{
+		z-index: 9999;
+		li{
+			width: 10px;
+			height: 10px;
+			background-color: linear-gradient(to top, $color-primary, $bg-second-primary);
+		}
+		.active{
+			background-color: $primary-button !important;	
+		}
+	}
+}
 
 .my__btn-primary{
 	@include button_primary;
@@ -34,6 +61,35 @@
 		position:relative;
 
 		@include jumbotron_desktop($default);
+	}
+	.banner{
+		margin-bottom: 3rem;
+		img{
+			object-fit:cover;
+			width: 100%;
+			height:75vh;
+		}
+
+		.carousel-control-prev-icon,
+		.carousel-control-next-icon {
+			height: 50px !important;
+			width: 50px !important;
+			margin-top: -5rem;
+			border-radius:50%;
+			background-color: $color-primary;
+			z-index: 1!important;
+		}
+		.carousel-indicators{
+			z-index: 9999;
+			li{
+				width:20px;
+				height:20px;
+				background-color: linear-gradient(to top, $color-primary, $bg-second-primary);
+			}
+			.active{
+				background-color: $primary-button!important;	
+			}
+		}
 	}
 
 	.my__btn-primary{
@@ -332,7 +388,7 @@
 	margin-bottom: 7rem;
 	// @include header_inside_list_mobile($color-primary);
 	.header__inside-content{
-		margin-top:-3rem;
+		margin-top:3rem;
 		margin-left: -1.7rem;
 		h5{
 			font-size:16px;
@@ -363,6 +419,12 @@
 	}
 	.col__berita{
 		width: 100%;
+		.bg__content{
+			position:absolute;
+			z-index: -1;
+			margin-left: -5rem;
+			margin-top:23rem;
+		}
 	}
 	.card__berita-list{
 		margin-right: -2.5rem;
@@ -407,6 +469,12 @@
 		@include header_inside_list_desktop($color-primary);
 		.col__berita{
 			width: 100%;
+			.bg__content{
+				position:absolute;
+				z-index: -1;
+				margin-left: -15rem;
+				margin-top:-7rem;
+			}
 		}
 		.card__berita-list{
 			margin-right: -2.5rem;
@@ -503,7 +571,7 @@
 // mobile queries
 @media only screen and (max-width: 768px) {
 	.panel__footer{
-		height: 800px!important;
+		height: 970px!important;
 		overflow: hidden!important;
 		.panel__footer-content{
 			margin-top: 5.5rem!important;
@@ -524,12 +592,22 @@
 					font-size:16px!important;
 					line-height: 23px!important;
 				}
+				ol li{
+					color:$default!important;
+					margin-left: 1.5rem;
+					font-weight: 500;
+				}
+
 				.button{
 					margin-left: .3rem!important;				
 					button{
 						margin-bottom:1rem!important;
 					}
 				}
+				.visi__misi-context{
+					text-align: justify;
+				}
+
 			}
 			.panel__art{
 				margin-top: -3rem!important;
@@ -572,7 +650,7 @@
 		background-position: center!important;
 		margin:0!important;
 		z-index: 1!important;
-		height: 435px!important;
+		height: 850px!important;
 		overflow: hidden;
 		.panel__footer-content{
 			margin-top: 7.5rem!important;
@@ -591,12 +669,22 @@
 					font-size:16px!important;
 					line-height: 23px!important;
 				}
+				ol li{
+					color:$default!important;
+					margin-left: 1.5rem;
+					font-weight: 500;
+				}
+
 				.button{
 					margin-left: 1.5rem!important;					
 					button{
 						margin-left:1rem!important;
 					}
 				}
+				.visi__misi-context{
+					text-align: justify;
+				}
+
 			}
 			.panel__art{
 				margin-top: -7.5rem!important;
