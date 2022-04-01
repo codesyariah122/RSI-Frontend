@@ -9,7 +9,8 @@ export const state = () => ({
 		event_data: {},
 		logout: {},
 		logout_data: {},
-		carts: []
+		carts: [],
+		data_carts:[]
 	},
 })
 
@@ -29,8 +30,16 @@ export const mutations = {
 	},
 
 	CONFIG_ADD_CART(state, data){
-		console.log(data)
 		state.config.carts.push(data)
+		localStorage.setItem('carts', JSON.stringify(state.config.carts))
+	},
+
+	CONFIG_GET_CART(state, name){
+		state.config.data_carts = localStorage.getItem(name) ? JSON.parse(localStorage.getItem(name)) : ''
+	},
+
+	CONFIG_REMOVE_CART(state, index){
+		state.config.carts.splice(index,1)
 		localStorage.setItem('carts', JSON.stringify(state.config.carts))
 	},
 
@@ -66,6 +75,14 @@ export const actions = {
 
 	storeConfigCartEvent({commit}, data) {
 		commit('CONFIG_ADD_CART', data)
+	},
+
+	storeConfigGetCartEvent({commit}, name){
+		commit('CONFIG_GET_CART', name)
+	},
+
+	storeRemoveCartEvent({commit}, index){
+		commit('CONFIG_REMOVE_CART', index)
 	},
 
 	checkAuthLogin({commit}, name){
@@ -116,5 +133,9 @@ export const getters = {
 
 	ConfigProfileDataLogout(state){
 		return state.config.logout_data
+	},
+
+	ConfigGetDataCart(state){
+		return state.config.data_carts
 	}
 }
