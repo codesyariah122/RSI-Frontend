@@ -17,7 +17,7 @@
         <!-- show card berita -->
         <!-- List berita inside global-components -->
         <mdb-col lg="12" xs="12" sm="12">
-          <div class="card__content">
+          <div class="card__content mt-5">
             <mdb-row class="card__berita-list">
               <mdb-col
               id="show-event"
