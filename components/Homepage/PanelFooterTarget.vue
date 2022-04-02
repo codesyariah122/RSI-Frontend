@@ -1,5 +1,5 @@
 <template>
-  <div class="panel__footer" :style="`background-image: url(${bg_image});`">
+  <div class="panel__footer" :style="`background-image: url(${bg_image});${$device.isMobile ? 'height: 100%!important;': ''}`">
     <div class="panel__footer-content">
       <mdb-container>
         <mdb-row class="row justify-content-center panel__context">

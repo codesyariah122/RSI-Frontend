@@ -21,6 +21,8 @@
 	@include jumbotron_mobile($default);
 }
 .banner{
+	margin-top:-5rem;
+	margin-bottom: -8rem;
 	img{
 		object-fit:cover;
 		width: 100%;
@@ -561,13 +563,26 @@
 // Visi & Misi Content
 .panel__footer{
 	background-color: transparent!important;
-
 	position: relative!important;
 	background-size: cover!important;
 	background-repeat: no-repeat!important;
 	background-position: center!important;
 	margin:0!important;
 	z-index: -1!important;
+	.panel__footer-content{
+		.panel__context {
+			ol li{
+				color:$default!important;
+				font-weight: 500;
+			}
+
+			.visi__misi-context{
+				text-align: justify;
+				margin-top: 3rem;
+			}
+
+		}
+	}
 }
 // mobile queries
 @media only screen and (max-width: 768px) {

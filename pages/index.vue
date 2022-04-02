@@ -25,7 +25,7 @@
         <HomepageTestimoni :testimonis="testimonis"/>
       </mdb-row>
 
-      <div v-if="$device.isDesktop" class="banner">
+      <div class="banner">
         <mdb-carousel
           :interval="8000"
           slide
