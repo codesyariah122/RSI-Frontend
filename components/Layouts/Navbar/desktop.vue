@@ -187,9 +187,8 @@ style="font-size: 31px !important"
           link: "/rsi/struktur-organisasi",
         },
         { id: 4, name: "Fasilitas", link: "/rsi/fasilitas" },
-        { id: 5, name: "Berita", link: "/rsi/berita" },
-        { id: 6, name: "Testimoni", link: "/rsi/testimoni" },
-        { id: 7, name: "Fasilitator", link: "/rsi/fasilitator" }
+        { id: 5, name: "Testimoni", link: "/rsi/testimoni" },
+        { id: 6, name: "Fasilitator", link: "/rsi/fasilitator" }
         ],
         path: this.$route.path,
         mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },
