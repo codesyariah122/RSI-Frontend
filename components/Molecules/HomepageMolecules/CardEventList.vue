@@ -21,44 +21,43 @@
 
         <mdb-row v-else class="row justify-content-center card__content">
           <mdb-col
-          v-if="listIndex < listsToShow"
-          v-for="listIndex in listsToShow"
+          v-for="(item, index) in events"
           col="12"
           md="4"
           class="mb-3"
-          :key="events[listIndex - 1].kegiatan_id"
+          :key="item.kegiatan_id"
           >
           <mdb-card>
             <mdb-card-image
-            :src="events[listIndex - 1].photo"
+            :src="item.photo"
             alt="No image found"
             ></mdb-card-image>
 
             <mdb-card-body>
               <mdb-badge
               class="mb-2 badge__category shadow-none"
-              >{{ events[listIndex - 1].kategori_value }}</mdb-badge
+              >{{ item.kategori_value }}</mdb-badge
               >
 
               <mdb-card-title
               class="truncate"
               style="color: #004899; font-weight: bold; min-height: 80px"
-              >{{ events[listIndex - 1].kegiatan_title }}</mdb-card-title
+              >{{ item.kegiatan_title }}</mdb-card-title
               >
               <mdb-card-text
               class="truncate2 mt-2"
               style="width: 200px; min-height: 45px"
-              >{{ events[listIndex - 1].kegiatan_desc }}</mdb-card-text
+              >{{ item.kegiatan_desc }}</mdb-card-text
               >
 
               <h6 class="mt-2 idr__color">
-                {{ $format(events[listIndex - 1].harga) }}
+                {{ $format(item.harga) }}
               </h6>
 
               <span style="font-size: 12px; margin-top: 1.5rem"
               ><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
-              {{ $moment(events[listIndex - 1].tgl_awal).format("LL") }} -
-              {{ $moment(events[listIndex - 1].tgl_akhir).format("LL") }}</span
+              {{ $moment(item.tgl_awal).format("LL") }} -
+              {{ $moment(item.tgl_akhir).format("LL") }}</span
               >
 
               <!-- <mdb-btn @click="ToDetailEvent(lists[listIndex-1].kegiatan_id)" block class="btn btn-outline-primary mt-3 mb-2" color="primary">Detail Event</mdb-btn> -->
@@ -66,10 +65,10 @@
               <a
               @click="
               SetKeranjang(
-                events[listIndex - 1].kegiatan_id,
-                events[listIndex - 1].photo,
-                events[listIndex - 1].kegiatan_title,
-                events[listIndex - 1].harga
+                item.kegiatan_id,
+                item.photo,
+                item.kegiatan_title,
+                item.harga
                 )
                 "
                 :class="`btn my__btn-primary rounded-pill mt-3 mb-2 btn-block shadow-none ${
@@ -83,8 +82,8 @@
                 :to="{
                   name: `detail-event-id-slug`,
                   params: {
-                    id: events[listIndex - 1].kegiatan_id,
-                    slug: $slug(events[listIndex - 1].kegiatan_title),
+                    id: item.kegiatan_id,
+                    slug: $slug(item.kegiatan_title),
                   },
                 }"
                 :class="`btn my__btn-secondary rounded-pill mt-3 mb-2 btn-block shadow-none ${

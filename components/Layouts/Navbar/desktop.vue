@@ -71,80 +71,80 @@
             </mdb-col>
             
             <mdb-col lg="12">
-               <div class="dropdown-divider"></div>
-            </mdb-col>
+             <div class="dropdown-divider"></div>
+           </mdb-col>
 
-            <mdb-col lg="12" xs="12" sm="12">
-              <div v-if="token.accessToken && data_cart.length > 0" class="list__cart">
-                <mdb-row v-for="(item, index) in data_cart" class="mb-2" :key="item.id">
-                  <mdb-col col="12" sm="6" md="6">
-                    <h6> {{item.title}} </h6>
-                  </mdb-col>
-                  <mdb-col col="12" sm="6" md="4">
-                    {{$format(item.harga)}}
-                  </mdb-col>
-                  <mdb-col col="12" sm="6" md="2">
-                    <i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
-                  </mdb-col>
-                </mdb-row>
-              </div>
-              <div v-else>
-                <mdb-row>
-                  <mdb-col col="12" sm="12" md="12">
-                    <mdb-alert color="info">
-                      Belum ada pelatihan yang ditambahkan!
-                    </mdb-alert>
-                  </mdb-col>
-                </mdb-row>
-              </div>
-            </mdb-col>
+           <mdb-col lg="12" xs="12" sm="12">
+            <div v-if="token.accessToken && data_cart.length > 0" class="list__cart">
+              <mdb-row v-for="(item, index) in data_cart" class="mb-2" :key="item.id">
+                <mdb-col col="12" sm="6" md="6">
+                  <h6> {{item.title}} </h6>
+                </mdb-col>
+                <mdb-col col="12" sm="6" md="4">
+                  {{$format(item.harga)}}
+                </mdb-col>
+                <mdb-col col="12" sm="6" md="2">
+                  <i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
+                </mdb-col>
+              </mdb-row>
+            </div>
+            <div v-else>
+              <mdb-row>
+                <mdb-col col="12" sm="12" md="12">
+                  <mdb-alert color="info">
+                    Belum ada pelatihan yang ditambahkan!
+                  </mdb-alert>
+                </mdb-col>
+              </mdb-row>
+            </div>
+          </mdb-col>
 
-            <mdb-col lg="12">
-               <div class="dropdown-divider"></div>
-            </mdb-col>
+          <mdb-col lg="12">
+           <div class="dropdown-divider"></div>
+         </mdb-col>
 
-            <mdb-col lg="12" xs="12" sm="12" class="link__page">
-              <div class="float-right">            
-                <nuxt-link :to="`${token.accessToken ? `/profile/${$username(slug)}/keranjang` : '/auth/login'}`">
-                  Lihat Keranjang
-                </nuxt-link>
-              </div>
-            </mdb-col>
+         <mdb-col lg="12" xs="12" sm="12" class="link__page">
+          <div class="float-right">            
+            <nuxt-link :to="`${token.accessToken ? `/profile/${$username(slug)}/keranjang` : '/auth/login'}`">
+              Lihat Keranjang
+            </nuxt-link>
+          </div>
+        </mdb-col>
 
-          </mdb-row>
-        </mdb-container>
-      </mdb-dropdown-menu>
-    </mdb-dropdown>
-  
-    <mdb-dropdown
-    v-if="token.accessToken"
-    tag="li"
-    class="nav-item nav-profile"
-    style="font-size: 31px !important"
-    >
-    <mdb-dropdown-toggle tag="a" navLink slot="toggle">
-
-      <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="info" :src="profiles.photo"></b-avatar>
-      <b-avatar v-else variant="primary" :text="slug.charAt(0)"></b-avatar>
-      {{profiles.nama}}
-    </mdb-dropdown-toggle>
-    <mdb-dropdown-menu :class="`${$device.isDesktop ? 'mt-2' : 'mt-3'}`">
-      <mdb-dropdown-item>
-        <nuxt-link
-        :to="{
-          name: 'profile-name',
-          params: { name: $username(slug) },
-        }"
-        class="text-center"
-        >
-        <mdb-icon icon="user-md" /> {{ profiles.nama }}
-      </nuxt-link>
-    </mdb-dropdown-item>
-    <div class="dropdown-divider"></div>
-    <mdb-dropdown-item @click="Logout" class="text-center">
-      <mdb-icon icon="sign-out-alt" /> Logout
-    </mdb-dropdown-item>
+      </mdb-row>
+    </mdb-container>
   </mdb-dropdown-menu>
+</mdb-dropdown>
+
+<mdb-dropdown
+v-if="token.accessToken"
+tag="li"
+class="nav-item nav-profile"
+style="font-size: 31px !important"
+>
+<mdb-dropdown-toggle tag="a" navLink slot="toggle">
+
+  <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="info" :src="profiles.photo"></b-avatar>
+  <b-avatar v-else variant="primary" :text="slug.charAt(0)"></b-avatar>
+  {{profiles.nama}}
+</mdb-dropdown-toggle>
+<mdb-dropdown-menu :class="`${$device.isDesktop ? 'mt-2' : 'mt-3'}`">
+  <mdb-dropdown-item>
+    <nuxt-link
+    :to="{
+      name: 'profile-name',
+      params: { name: $username(slug) },
+    }"
+    class="text-center"
+    >
+    <mdb-icon icon="user-md" /> {{ profiles.nama }}
+  </nuxt-link>
+</mdb-dropdown-item>
+<div class="dropdown-divider"></div>
+<mdb-dropdown-item @click="Logout" class="text-center">
+  <mdb-icon icon="sign-out-alt" /> Logout
+</mdb-dropdown-item>
+</mdb-dropdown-menu>
 </mdb-dropdown>
 <div v-else>
   <!-- <nuxt-link
@@ -199,15 +199,10 @@
       };
     },
 
-    beforeMount(){
-      this.scroll()
-    },
-
     mounted(){
       this.CheckKeranjang(),
-      console.log(this.data_carts)
+      this.scroll()
     },
-
 
     methods: {
       Logout() {
@@ -221,8 +216,9 @@
       scroll () {
         window.onscroll = () => {
           let bottomOfWindow = window.pageYOffset
-          console.log(bottomOfWindow)
           let fixeNav= document.querySelector('.fixed-top')
+          // console.log(bottomOfWindow)
+          
           if (bottomOfWindow) {
            this.scrolledToBottom = true // replace it with your code
            fixeNav.classList.remove('shadow-none')

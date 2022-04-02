@@ -224,9 +224,10 @@
       scroll () {
         window.onscroll = () => {
           let bottomOfWindow = window.pageYOffset
-          console.log(bottomOfWindow)
+          // console.log(bottomOfWindow)
           let fixeNav= document.querySelector('.fixed-top')
-          if (bottomOfWindow > 100) {
+
+          if (bottomOfWindow) {
            this.scrolledToBottom = true // replace it with your code
            fixeNav.classList.remove('shadow-none')
            fixeNav.classList.add('z-depth-2')

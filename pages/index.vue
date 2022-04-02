@@ -24,6 +24,22 @@
       <mdb-row class="justify-content-center mt-3">
         <HomepageTestimoni :testimonis="testimonis"/>
       </mdb-row>
+
+      <div v-if="$device.isDesktop" class="banner">
+        <mdb-carousel
+          :interval="8000"
+          slide
+          :items="items"
+          controlls
+          indicators
+          fade
+          dark
+          class="jumbotron__home"
+          customClass="rounded"
+          >
+        </mdb-carousel>
+      </div>
+
     </mdb-container>
 
     <!-- parallax homepage -->
@@ -47,6 +63,7 @@
 </template>
 
 <script>
+  import {SampleEvents} from '@/helpers'
 //Image base on assets directory
 export default {
   name: "IndexPage",
@@ -58,7 +75,8 @@ export default {
       items: [],
       events: [],
       testimonis: [],
-      news: []
+      news: [],
+      listToShow: 3
     }
   },
 
@@ -93,7 +111,7 @@ export default {
         const url = `${this.api_url}/web/event/paging?keyword=${keyword ? keyword : ''}&page=${page ? page : 1}&jenis_pelatihan=${category ? category : ''}&bulan_pelatihan=${month ? month : ''}`
         this.$axios.get(url)
         .then(({data}) => {
-          this.events = data.list_kegiatan_terdekat
+          this.events = data.list_kegiatan_terdekat.slice(0,3)
         })
         .catch(err => console.log(err.response))
         .finally(() => {

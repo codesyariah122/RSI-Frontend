@@ -16,6 +16,7 @@
 
 <script>
   import {SampleNews} from '@/helpers'
+  
   export default {
     name: "rsi-berita",
     layout: "default",
@@ -23,6 +24,7 @@
     data() {
       return {
         loading: null,
+        loading_more: null,
         error: false,
         end: false,
         lists: [],
