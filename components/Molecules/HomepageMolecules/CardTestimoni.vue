@@ -13,7 +13,7 @@
             </mdb-row>
             <mdb-row>
               <mdb-card-body>
-                <mdb-card-title>{{item.name}}</mdb-card-title>
+                <mdb-card-title>{{item.konsumen}}</mdb-card-title>
                 <h6>{{item.profesi}}</h6>
                 <mdb-card-text>{{item.testimoni}}</mdb-card-text>
               </mdb-card-body>

@@ -11,7 +11,7 @@
 						</mdb-row>
 						<mdb-row>
 							<mdb-card-body>
-								<mdb-card-title>{{lists[listIndex-1].name}}</mdb-card-title>
+								<mdb-card-title>{{lists[listIndex-1].konsumen}}</mdb-card-title>
 								<h6>{{lists[listIndex-1].profesi}}</h6>
 								<mdb-card-text>{{lists[listIndex-1].testimoni}}</mdb-card-text>
 							</mdb-card-body>

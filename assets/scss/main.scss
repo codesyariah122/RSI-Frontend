@@ -167,7 +167,12 @@
 		}
 		.card{
 			margin-bottom: 2rem;
-
+			.card-title{
+				color:$second-black!important;
+			}
+			.card-text{
+				margin-top: -3rem!important;
+			}
 			.event__image-wrap{
 				position: relative;
 				.overlay__event-img {
@@ -522,7 +527,7 @@
 		.col__testimoni-card{
 			margin-bottom: 1rem;
 			.card__testimoni-content{
-				width: 325px;
+				width: 355px;
 			}
 		}
 		.bg__content{
