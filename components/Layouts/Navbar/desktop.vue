@@ -56,7 +56,9 @@
     to="/events/search"
     class="my__btn-circle btn shadow-none"
     size="md"
-    ><mdb-icon icon="search" size="md" /></nuxt-link>
+    ><mdb-icon icon="search" size="md" />
+    </nuxt-link>
+
     <mdb-dropdown tag="li" class="nav-item ml-3 mr-3">
       <mdb-dropdown-toggle slot="toggle" class="btn rounded-pill my__btn-circle shadow-none no-caret">
         <span v-if="token.accessToken && notifs" :class="`${notifs > 0 ? 'badge badge-success badge-sm' : 'badge badge-danger badge-sm'}`" style="float:right;margin-right: .3rem;border-radius: 45%;margin-bottom:-25px;"> {{notifs}} </span>
@@ -106,7 +108,7 @@
          <mdb-col lg="12" xs="12" sm="12" class="link__page">
           <div class="float-right">            
             <nuxt-link :to="`${token.accessToken ? `/profile/${$username(slug)}/keranjang` : '/auth/login'}`">
-              Lihat Keranjang
+              Lihat Keranjang {{$route.path}}
             </nuxt-link>
           </div>
         </mdb-col>
@@ -198,9 +200,12 @@ style="font-size: 31px !important"
       };
     },
 
-    mounted(){
-      this.CheckKeranjang(),
+    beforeMount(){
       this.scroll()
+    },
+
+    mounted(){
+      this.CheckKeranjang()
     },
 
     methods: {
@@ -216,7 +221,8 @@ style="font-size: 31px !important"
         window.onscroll = () => {
           let bottomOfWindow = window.pageYOffset
           let fixeNav= document.querySelector('.fixed-top')
-          // console.log(bottomOfWindow)
+          console.log(bottomOfWindow)
+          console.log(this.$route.name)
           
           if (bottomOfWindow) {
            this.scrolledToBottom = true // replace it with your code

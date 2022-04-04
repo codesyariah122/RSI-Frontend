@@ -61,12 +61,12 @@
           <div class="col-sm-3">
             <ul class="list-group">
               <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                <a href="../about-naologic.html"></i>
+                <a href="/"></i>
                   Home
                 </a>
               </li>
               <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                <a href="https://blog.naologic.com"></i> 
+                <a href="/events"></i> 
                   Katalog Kelas
                 </a>
               </li>
