@@ -1,5 +1,5 @@
 <template>
-  <div class="panel__footer" :style="`background-image: url(${bg_image});${$device.isMobile ? 'height: 100%!important;': ''}`">
+  <div class="panel__footer" :style="`background-image: url(${bg_image});`">
     <div class="panel__footer-content">
       <mdb-container>
         <mdb-row class="row justify-content-center panel__context">
@@ -40,7 +40,7 @@
           </mdb-col>
         </mdb-row>
 
-        <mdb-row class="row justify-content-start mt-1 panel__context">
+        <!-- <mdb-row class="row justify-content-start mt-1 panel__context">
            <mdb-col col="12" md="12" xs="12" sm="10" class="visi__misi-context">
             <h1>Visi</h1>
             <p v-if="context.visi">{{ context.visi }}</p>
@@ -59,7 +59,7 @@
             <p>Berkhidmat Menyelamatkan Umat</p>
             <br />
           </mdb-col>
-        </mdb-row>
+        </mdb-row> -->
 
       </mdb-container>
     </div>

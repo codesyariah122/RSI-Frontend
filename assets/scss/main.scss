@@ -567,6 +567,121 @@
 // end testimoni
 
 // Visi & Misi Content
+.visi__misi{
+	.visi-misi__header{
+		@include listMobile($default);
+	}
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: scroll;
+	text-align: center;
+	margin:0;
+	z-index: -1;
+	&:before{
+		position: absolute;
+		content: "";
+		height: 100%;
+		width: 100%;
+		// background-color: #3763EB;
+		// background-color: $color-primary;
+		left: 0;
+		top: 0;
+		opacity: 0.6;
+	}
+	.visi-misi__content{
+		color:$default;
+		// margin-left: -5rem;
+		width:80%;
+		z-index: 9999;
+		h1{
+			font-size:27px;
+			font-weight: 700;
+			line-height: 32.68px;
+			margin-left: -5.6rem;
+		}
+		p{
+			text-align: justify;
+			margin-left:3rem;
+			width: 100%;
+			font-size:14px;
+			margin-bottom: 3rem;
+		}
+		ol li{
+			list-style: none;
+			list-style-type: decimal;
+			text-align: justify;
+			line-height: 21px;
+			width: 240px;
+			font-size:14px;
+			margin-bottom: 1rem;
+			margin-left: 1.5rem;
+		}
+	}
+}
+
+// Desktop
+@media (min-width: 992px) {
+	.visi__misi{
+		.visi-misi__header{
+			@include listDesktop($default);
+		}
+		position: relative;
+		background: #333;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		z-index: -1;
+		min-height:550px; 
+		&:before{
+			position: absolute;
+			content: "";
+			height: 100%;
+			width: 100%;
+			// background-color: #3763EB;
+			// background-color: $color-primary;
+			left: 0;
+			top: 0;
+			opacity: 0.5;
+		}
+		.visi-misi__content{
+			color:$default;
+			margin-left: 5.5rem;
+			width:80%;
+			z-index: 9999;
+			h1{
+				margin-left: -2rem;
+				font-size:27px;
+				font-weight: 800;
+				line-height: 32.68px;
+			}
+			p{
+				text-align: justify;
+				line-height: 21px;
+				width: 640px;
+				font-size:14px;
+				margin-bottom: 1.5rem;
+				font-weight: 600;
+			}
+			ol li{
+				list-style: none;
+				list-style-type: decimal;
+				text-align: justify;
+				line-height: 21px;
+				width: 640px;
+				font-size:14px;
+				// margin-bottom: 1rem;
+				margin-left: 1.5rem;
+				font-weight: 700;
+			}
+		}
+	}
+}
+// End visi-misi content
+
+// Visi & Misi Content
 .panel__footer{
 	background-color: transparent!important;
 	position: relative!important;
@@ -593,7 +708,7 @@
 // mobile queries
 @media only screen and (max-width: 768px) {
 	.panel__footer{
-		height: 970px!important;
+		height: 450!important;
 		overflow: hidden!important;
 		.panel__footer-content{
 			margin-top: 5.5rem!important;
@@ -672,7 +787,7 @@
 		background-position: center!important;
 		margin:0!important;
 		z-index: 1!important;
-		height: 850px!important;
+		height: 455px!important;
 		overflow: hidden;
 		.panel__footer-content{
 			margin-top: 7.5rem!important;

@@ -1,14 +1,8 @@
 <template>
   <div class="visi__misi" :style="`background-image: url(${bg_image});`">
     <mdb-container>
-      <mdb-row class="justify-content-center visi-misi__header">
-        <mdb-col lg="12">
-          <h1 class="mt-5 mb-5">Tentang Kami</h1>
-        </mdb-col>
-      </mdb-row>
-
       <mdb-row class="row visi-misi__content">
-        <mdb-col class="mb-5" sm="8" md="8" lg="8">
+        <mdb-col class="mt-5 mb-5" sm="8" md="8" lg="8">
           <h1>Visi</h1>
           <p v-if="context.visi">{{ context.visi }}</p>
           <br />
@@ -33,7 +27,7 @@
 
 <script>
 import { FetchData } from "@/helpers";
-import BgImage from "~/assets/images/homepage/visi-misi-bg.jpg";
+import BgImage from "~/assets/images/homepage/visi-misi-2.jpg";
 
 export default {
   data() {
@@ -98,6 +92,7 @@ export default {
 }
 
 .visi__misi:before {
-  background-color: #004899;
+  /*background-color: #004899;*/
+  background-color: #10B981;
 }
 </style>

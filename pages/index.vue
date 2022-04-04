@@ -59,6 +59,8 @@
     <HomepagePanelFooterTarget />
     <!-- End panel footer -->
 
+    <HomepageVisiMisi/>
+
   </div>
 </template>
 
