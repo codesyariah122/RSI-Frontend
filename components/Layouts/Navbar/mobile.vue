@@ -191,12 +191,17 @@
          { id: 2, name: "Visi & Misi", link: "/rsi/visi-misi" },
          {
           id: 3,
+          name: "Agenda Pelatihan",
+          link: "/rsi/agenda-pelatihan",
+        },
+        {
+          id: 4,
           name: "Struktur Organisasi",
           link: "/rsi/struktur-organisasi",
         },
-        { id: 4, name: "Fasilitas", link: "/rsi/fasilitas" },
-        { id: 5, name: "Testimoni", link: "/rsi/testimoni" },
-        { id: 6, name: "Fasilitator", link: "/rsi/fasilitator" }
+        { id: 5, name: "Fasilitas", link: "/rsi/fasilitas" },
+        { id: 6, name: "Testimoni", link: "/rsi/testimoni" },
+        { id: 7, name: "Fasilitator", link: "/rsi/fasilitator" }
         ],
         path: this.$route.path,
         mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },

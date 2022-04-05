@@ -78,6 +78,7 @@
                 ><i class="fa fa-cart-plus fa-fw fa-lg" aria-hidden="true"></i>
                 Tambah ke keranjang</a
                 >
+                
                 <nuxt-link
                 :to="{
                   name: `detail-event-id-slug`,

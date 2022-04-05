@@ -6,36 +6,48 @@
 // Desktop
 @media (min-width: 992px) {
 	.event__detail{
+		overflow:hidden!important;
 		margin-top: 7rem;
 		margin-left: 5rem;
-		.event__info{		
-			h1{
-				font-weight: 600;
-				text-align: left;
+		.event__detail-content{
+			.event__info{		
+				h1{
+					font-weight: 600;
+					text-align: left;
+				}
+				.badge__category{
+					background-color: transparent!important;
+					color: $color-primary!important;
+					border:1px $color-primary solid;
+					font-size: 13px;
+				}
+				.idr__color {
+					color: $color-primary;
+					font-weight: 700;
+					font-size:21px;
+					line-height: 24.51px;
+				}
+				h5{
+					font-weight: 600;
+				}
 			}
-			.badge__category{
-				background-color: transparent!important;
-				color: $color-primary!important;
-				border:1px $color-primary solid;
-				font-size: 13px;
+			.event__flyer{
+				img{
+					object-fit:cover;
+					height: 75%;
+					width: 590px;
+					border-radius: 13px;
+				}
 			}
-			.idr__color {
-				color: $color-primary;
-				font-weight: 700;
-				font-size:21px;
-				line-height: 24.51px;
+
+			.event__jadwal{
+				margin-top: -11rem!important;
+				h4{
+					font-weight: 700;
+					color:$second-black;
+				}
 			}
-			h5{
-				font-weight: 600;
-			}
-		}
-		.event__flyer{
-			img{
-				object-fit:cover;
-				height: 75%;
-				width: 590px;
-				border-radius: 13px;
-			}
+
 		}
 	}
 }

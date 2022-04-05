@@ -174,6 +174,9 @@
 				this.data_cart.splice(index, 1)
 				this.total_lists.splice(index,1)
 				this.$store.dispatch("config/storeRemoveCartEvent", index)
+				localStorage.setItem('go-to-cart', JSON.stringify({
+					status: false
+				}))
 				setTimeout(() => {
 					location.reload()
 				}, 1000)

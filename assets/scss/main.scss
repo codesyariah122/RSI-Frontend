@@ -104,17 +104,17 @@
 
 // List pelatihan&webinar component&ppkc component
 .card__list{
-	.header__rsi-list-page{
-		h4{
+	.rsi__page{
+		h2{
 			color: $second-black;
 			font-size:21px;
 			font-weight: 700;
 			line-height: 23px;
 		}
-		.ppkc__col-1{
+		.rsi__col-1{
 			margin-top: 1rem;
 		}
-		.ppkc__col-2{
+		.rsi__col-2{
 			max-width: 90%;
 			h5{
 				margin-top: 2rem;
@@ -133,7 +133,7 @@
 			@include hover_image_display;
 		}
 
-		.ppkc__col-3{
+		.rsi__col-3{
 			max-width: 90%;
 			h5{
 				margin-top: 2rem;
@@ -222,8 +222,66 @@
 @media (min-width: 992px) {
 	.card__list{
 
-		.header__rsi-list-page{
-			margin-left: 1rem;
+		.rsi__page{
+			h2{
+				color: $second-black;
+				font-size:21px;
+				font-weight: 700;
+				line-height: 23px;
+			}
+			.rsi__col-1{
+				margin-top: 1rem;
+				margin-left: 1.5rem;
+			}
+			.rsi__col-2{
+				margin-left: 1.7rem;
+				max-width: 90%;
+				h5{
+					text-align: left;
+					font-weight: 600;
+					font-size: 21px;
+				}
+				p{
+					font-size:16px;
+					font-weight: 400;
+					line-height: 35px;
+					margin-top: 1rem;
+					text-align: justify;
+				}
+
+				@include hover_image_display;
+			}
+
+			.rsi__col-3{
+				margin-left: 1.7rem;
+				max-width: 90%;
+				h5{
+					text-align: left;
+					font-weight: 600;
+					font-size: 21px;
+				}
+				ol{
+					margin-left: -1rem;
+				}
+				ol li{
+					text-align: left;
+					font-size:16px;
+					font-weight: 400;
+					line-height: 35px;
+				}
+			}
+			.rsi__col-4{
+				margin-left: 1.7rem;
+				max-width: 90%;
+				h5{
+					text-align: left;
+					font-weight: 600;
+					font-size: 21px;
+				}
+				p{
+
+				}
+			}
 			h2{
 				color: $second-black;
 				font-size:27px;

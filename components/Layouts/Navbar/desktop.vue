@@ -56,66 +56,9 @@
     to="/events/search"
     class="my__btn-circle btn shadow-none"
     size="md"
-    ><mdb-icon icon="search" size="md" />
-    </nuxt-link>
-
-    <mdb-dropdown tag="li" class="nav-item ml-3 mr-3">
-      <mdb-dropdown-toggle slot="toggle" class="btn rounded-pill my__btn-circle shadow-none no-caret">
-        <span v-if="token.accessToken && notifs" :class="`${notifs > 0 ? 'badge badge-success badge-sm' : 'badge badge-danger badge-sm'}`" style="float:right;margin-right: .3rem;border-radius: 45%;margin-bottom:-25px;"> {{notifs}} </span>
-
-        <mdb-icon icon="shopping-cart" size="lg" style="margin-top: -.2rem;margin-left: -.2rem;"/>  <span class="sr-only">(current)</span>
-      </mdb-dropdown-toggle>
-      <mdb-dropdown-menu class="mt-3 keranjang__dropdown">
-        <mdb-container>
-          <mdb-row>
-            <mdb-col col="12" lg="12" xs="12" sm="12">
-              <h5>Keranjang Saya</h5>
-            </mdb-col>
-            
-            <mdb-col lg="12">
-             <div class="dropdown-divider"></div>
-           </mdb-col>
-
-           <mdb-col lg="12" xs="12" sm="12">
-            <div v-if="token.accessToken && data_cart.length > 0" class="list__cart">
-              <mdb-row v-for="(item, index) in data_cart" class="mb-2" :key="item.id">
-                <mdb-col col="12" sm="6" md="6">
-                  <h6> {{item.title}} </h6>
-                </mdb-col>
-                <mdb-col col="12" sm="6" md="4">
-                  {{$format(item.harga)}}
-                </mdb-col>
-                <mdb-col col="12" sm="6" md="2">
-                  <i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
-                </mdb-col>
-              </mdb-row>
-            </div>
-            <div v-else>
-              <mdb-row>
-                <mdb-col col="12" sm="12" md="12">
-                  <mdb-alert color="info">
-                    Belum ada pelatihan yang ditambahkan!
-                  </mdb-alert>
-                </mdb-col>
-              </mdb-row>
-            </div>
-          </mdb-col>
-
-          <mdb-col lg="12">
-           <div class="dropdown-divider"></div>
-         </mdb-col>
-
-         <mdb-col lg="12" xs="12" sm="12" class="link__page">
-          <div class="float-right">            
-            <nuxt-link :to="`${token.accessToken ? `/profile/${$username(slug)}/keranjang` : '/auth/login'}`">
-              Lihat Keranjang {{$route.path}}
-            </nuxt-link>
-          </div>
-        </mdb-col>
-
-      </mdb-row>
-    </mdb-container>
-  </mdb-dropdown-menu>
+    ><mdb-icon icon="search" size="md" /></nuxt-link>
+  </mdb-container>
+</mdb-dropdown-menu>
 </mdb-dropdown>
 
 <mdb-dropdown
@@ -180,49 +123,50 @@ style="font-size: 31px !important"
     props: ["token", "profiles", "slug", "event_id", "event_path"],
     data() {
       return {
-        links: [
-        { id: 1, name: "Yayasan & Direksi", link: "/rsi/yayasan-direksi" },
-        { id: 2, name: "Visi & Misi", link: "/rsi/visi-misi" },
-        {
-          id: 3,
-          name: "Struktur Organisasi",
-          link: "/rsi/struktur-organisasi",
-        },
-        { id: 4, name: "Fasilitas", link: "/rsi/fasilitas" },
-        { id: 5, name: "Testimoni", link: "/rsi/testimoni" },
-        { id: 6, name: "Fasilitator", link: "/rsi/fasilitator" }
-        ],
-        path: this.$route.path,
-        mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },
-        scrolledToBottom: false,
-        notifs: 0,
-        data_cart:{}
-      };
-    },
-
-    beforeMount(){
-      this.scroll()
-    },
-
-    mounted(){
-      this.CheckKeranjang()
-    },
-
-    methods: {
-      Logout() {
-        this.$emit("logout-profile");
+       links: [
+       { id: 1, name: "Yayasan & Direksi", link: "/rsi/yayasan-direksi" },
+       { id: 2, name: "Visi & Misi", link: "/rsi/visi-misi" },
+       {
+        id: 3,
+        name: "Agenda Pelatihan",
+        link: "/rsi/agenda-pelatihan",
       },
-
-      ToggleNotif(){
-        this.notifs = this.notifs > 0 ? this.notifs + 3 : 0
+      {
+        id: 4,
+        name: "Struktur Organisasi",
+        link: "/rsi/struktur-organisasi",
       },
+      { id: 5, name: "Fasilitas", link: "/rsi/fasilitas" },
+      { id: 6, name: "Testimoni", link: "/rsi/testimoni" },
+      { id: 7, name: "Fasilitator", link: "/rsi/fasilitator" }
+      ],
+      path: this.$route.path,
+      mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' },
+      scrolledToBottom: false,
+      notifs: 0,
+      data_cart:{}
+    };
+  },
 
-      scroll () {
-        window.onscroll = () => {
-          let bottomOfWindow = window.pageYOffset
-          let fixeNav= document.querySelector('.fixed-top')
-          console.log(bottomOfWindow)
-          console.log(this.$route.name)
+  mounted(){
+    this.CheckKeranjang(),
+    this.scroll()
+  },
+
+  methods: {
+    Logout() {
+      this.$emit("logout-profile");
+    },
+
+    ToggleNotif(){
+      this.notifs = this.notifs > 0 ? this.notifs + 3 : 0
+    },
+
+    scroll () {
+      window.onscroll = () => {
+        let bottomOfWindow = window.pageYOffset
+        let fixeNav= document.querySelector('.fixed-top')
+          // console.log(bottomOfWindow)
           
           if (bottomOfWindow) {
            this.scrolledToBottom = true // replace it with your code
