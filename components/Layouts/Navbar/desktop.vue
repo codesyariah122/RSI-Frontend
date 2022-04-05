@@ -57,6 +57,65 @@
     class="my__btn-circle btn shadow-none"
     size="md"
     ><mdb-icon icon="search" size="md" /></nuxt-link>
+
+    <mdb-dropdown tag="li" class="nav-item ml-3 mr-3">
+      <mdb-dropdown-toggle slot="toggle" class="btn rounded-pill my__btn-circle shadow-none no-caret">
+        <span v-if="token.accessToken && notifs" :class="`${notifs > 0 ? 'badge badge-success badge-sm' : 'badge badge-danger badge-sm'}`" style="float:right;margin-right: .3rem;border-radius: 45%;margin-bottom:-25px;"> {{notifs}} </span>
+
+        <mdb-icon icon="shopping-cart" size="lg" style="margin-top: -.2rem;margin-left: -.2rem;"/>  <span class="sr-only">(current)</span>
+      </mdb-dropdown-toggle>
+      <mdb-dropdown-menu class="keranjang__dropdown">
+        <mdb-container>
+          <mdb-row>
+            <mdb-col col="12" lg="12" xs="12" sm="12">
+              <h5>Keranjang Saya</h5>
+            </mdb-col>
+
+            <mdb-col lg="12">
+             <div class="dropdown-divider"></div>
+           </mdb-col>
+
+           <mdb-col lg="12" xs="12" sm="12">
+            <div v-if="token.accessToken && data_cart.length > 0" class="list__cart">
+              <div v-for="(item, index) in data_cart" :key="item.id" class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 bd-highlight title__event">
+                  {{item.title}}
+                </div>
+                <div class="p-2 bd-highlight">
+                  {{$format(item.harga)}}
+                </div>
+                <div class="p-2 bd-highlight">
+                  <i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <div v-else>
+              <mdb-row>
+                <mdb-col col="12" sm="12" md="12">
+                  <mdb-alert color="info">
+                    Belum ada pelatihan yang ditambahkan!
+                  </mdb-alert>
+                </mdb-col>
+              </mdb-row>
+            </div>
+          </mdb-col>
+
+          <mdb-col lg="12">
+           <div class="dropdown-divider"></div>
+         </mdb-col>
+
+         <mdb-col lg="12" xs="12" sm="12" class="link__page">
+          <div class="float-right">            
+            <nuxt-link :to="`${token.accessToken ? `/profile/${$username(slug)}/keranjang` : '/auth/login'}`">
+              Lihat Keranjang
+            </nuxt-link>
+          </div>
+        </mdb-col>
+
+      </mdb-row>
+    </mdb-container>
+  </mdb-dropdown-menu>
+</mdb-dropdown>
   </mdb-container>
 </mdb-dropdown-menu>
 </mdb-dropdown>
