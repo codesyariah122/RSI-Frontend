@@ -16,6 +16,9 @@
             </div>
             <div class="p-2 bd-highlight mr-2">
               <div class="form-group">
+                <!-- <pre>
+                  {{categories}}
+                </pre> -->
                 <select
                 @change="ChangeCategory($event)"
                 v-model="field.category_id"
@@ -24,7 +27,7 @@
                     <option selected :value="undefined">Jenis Pelatihan</option>
                     <option
                     v-for="(item, index) in categories"
-                    :value="index + 1"
+                    :value="parseInt(item.code)" :key="item.id"
                     >
                     {{ item.value }}
                   </option>

@@ -2,7 +2,7 @@
   <div>
     <div ref="berita_square" class="card__list" :style="berita__list_style">
       <mdb-container>
-        <mdb-row class="row justify-content-center header__rsi-list-page">
+        <mdb-row class="row justify-content-center rsi__page">
           <mdb-col lg="12" xs="12" sm="12" >
             <h2>Berita</h2>
           </mdb-col>

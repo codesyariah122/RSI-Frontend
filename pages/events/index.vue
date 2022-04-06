@@ -49,14 +49,14 @@
 					if(data.list_kegiatan_terdekat.length > 0){
 						this.empty = false
 						this.lists = data.list_kegiatan_terdekat
-
-						if(this.lists.length <= 3){
+						// console.log(this.lists.length)
+						if(this.lists.length <= 3 || !category || !month){
 							SampleEvents.map(d => this.lists.push(d))
 							this.lists.slice(3)
 						}
 					}else{
 						this.empty = true
-						this.message = `Tidak ada event terdekat !`
+						this.message = `Tidak ada event terdekat / tidak ada event yang dicari !!`
 						// setTimeout(() => {
 						// 	this.empty = false
 						// }, 2500)
@@ -100,7 +100,7 @@
 			},
 
 			SearchEvent(page, keyword, category, month, loadingBtn){
-				console.log(category)
+				console.log(typeof category)
 				this.FetchListEvent(keyword, page, category, month, loadingBtn)
 				// if(month === undefined || month === ""){
 				// 	this.error_search = true
