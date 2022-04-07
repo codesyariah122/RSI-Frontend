@@ -85,7 +85,7 @@
 							<h2> {{$format(total)}} </h2>
 						</b-card-text>
 
-						<b-btn class="btn btn-block btn-sm rounded-pill">Lanjutkan Pembayaran</b-btn>
+						<b-btn @click="Submit" class="btn btn-block btn-sm rounded-pill">Lanjutkan Pembayaran</b-btn>
 					</b-card>
 				</mdb-col>
 			</mdb-row>
@@ -118,6 +118,9 @@
 		},
 
 		methods: {
+			Submit(){
+				this.$swal("Ok")
+			},
 			CheckKeranjang() {
 				this.data_cart=(localStorage.getItem("carts")
 				? JSON.parse(localStorage.getItem("carts"))
