@@ -143,8 +143,8 @@
 				}
 			}
 			.pembayaran__card{
-				z-index: -1;
-				margin-top: 12.5rem;
+				z-index: 1;
+				margin-top: 12rem;
 				width: 100%;
 				.list__bank{
 					background-color: $jumbotron-bg;
@@ -163,6 +163,7 @@
 						margin-bottom: .5rem;
 					}
 					.input__bank{
+						z-index: 9999;
 						margin-left: 1rem;
 						img{
 							margin-top: -1rem;

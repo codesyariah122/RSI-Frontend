@@ -93,7 +93,7 @@
 		}
 	}
 	.keranjang__dropdown{
-		z-index: 1;
+		z-index: 9999;
 		margin-left: -25rem;
 		width:450px;
 		margin-top:2rem;
@@ -134,7 +134,7 @@
 		}
 	}
 	.nav-profile{
-		margin-left: -2.1rem;
+		margin-left: -1.5rem;
 	}
 	.no-caret::after{
 		display: none;

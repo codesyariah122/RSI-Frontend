@@ -61,14 +61,14 @@
 						<b-card-text>
 							<div class="input__bank">
 								<b-container>
-									<b-form-radio name="bank">
+									<b-form-radio name="bank" v-model="field.bank">
 										<img :src="require('~/assets/images/bank/logo-bank-mandiri.svg')" width="100" height="50"> <span>Transfer Bank Mandiri</span>
 									</b-form-radio>
 								</b-container>
 							</div>
 							<div class="input__bank">
 								<b-container>
-									<b-form-radio name="bank"> <img :src="require('~/assets/images/bank/logo-bank-bca.svg')" width="100" height="50"> <span>Transfer Bank BCA</span>
+									<b-form-radio name="bank" v-model="field.bank"> <img :src="require('~/assets/images/bank/logo-bank-bca.svg')" width="100" height="50"> <span>Transfer Bank BCA</span>
 									</b-form-radio>
 								</b-container>
 							</div>
@@ -103,7 +103,8 @@
 				data_cart: [],
 				total_lists: [],
 				total:'',
-				message: 'Tidak ada event yang di tambahkan!'
+				message: 'Tidak ada event yang di tambahkan!',
+				field: {}
 			}
 		},
 
