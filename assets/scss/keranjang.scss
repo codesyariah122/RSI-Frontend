@@ -111,20 +111,27 @@
 			}
 			.keranjang__card{
 				height:100%;
+				margin-top: -1rem;
 				.card{
 					background-color: $jumbotron-bg;
 					height: auto;
 					border-radius: 13px;
 					img{
-						height: 130px;
+						height: 100px;
+						width:135px;
+					}
+					.card-body{
+						margin-left: 1rem;
 					}
 					.card-title{
 						color: $second-black;
-						font-size:16px;
+						font-size:18px;
 						font-weight: 700;
 						width:100%;
 					}
-
+					.card-text{
+						font-size:16px;
+					}
 					.alert{
 						width:80%;
 						margin-left:5rem;

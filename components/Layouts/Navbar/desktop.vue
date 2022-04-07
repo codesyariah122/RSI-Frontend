@@ -64,7 +64,7 @@
 
         <mdb-icon icon="shopping-cart" size="lg" style="margin-top: -.2rem;margin-left: -.2rem;"/>  <span class="sr-only">(current)</span>
       </mdb-dropdown-toggle>
-      <mdb-dropdown-menu class="keranjang__dropdown">
+      <mdb-dropdown-menu class="keranjang__dropdown mt-2">
         <mdb-container>
           <mdb-row>
             <mdb-col col="12" lg="12" xs="12" sm="12">
@@ -78,15 +78,15 @@
            <mdb-col lg="12" xs="12" sm="12">
             <div v-if="token.accessToken && data_cart.length > 0" class="list__cart">
               <div v-for="(item, index) in data_cart" :key="item.id" class="d-flex flex-row bd-highlight mb-3">
-                <div class="p-2 bd-highlight title__event">
+                <li class="p-2">
                   {{item.title}}
-                </div>
-                <div class="p-2 bd-highlight">
+                </li>
+                <li class="p-2">
                   {{$format(item.harga)}}
-                </div>
-                <div class="p-2 bd-highlight">
-                  <i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
-                </div>
+                </li>
+                <li class="p-2">
+                  <i class="fa fa-times fa-fw" aria-hidden="true"></i>
+                </li>
               </div>
             </div>
             <div v-else>
@@ -127,10 +127,10 @@ class="nav-item nav-profile"
 style="font-size: 31px !important"
 >
 <mdb-dropdown-toggle tag="a" navLink slot="toggle">
-
+  {{profiles.nama}}
   <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="info" :src="profiles.photo"></b-avatar>
   <b-avatar v-else variant="primary" :text="slug.charAt(0)"></b-avatar>
-  {{profiles.nama}}
+  
 </mdb-dropdown-toggle>
 <mdb-dropdown-menu :class="`${$device.isDesktop ? 'mt-2' : 'mt-3'}`">
   <mdb-dropdown-item>

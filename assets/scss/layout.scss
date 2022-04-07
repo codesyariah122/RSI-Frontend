@@ -94,9 +94,9 @@
 	}
 	.keranjang__dropdown{
 		z-index: 1;
-		margin-left: -26rem;
+		margin-left: -25rem;
 		width:450px;
-		margin-top:-3rem;
+		margin-top:2rem;
 		.container{
 			width: 100%;
 			h5{
@@ -108,7 +108,7 @@
 				width: 400px;
 			}
 			.link__page{
-				margin-left: .7rem;
+				margin-left: .1rem;
 				a{					
 					color:$color-primary;
 					font-size: 18px;
@@ -116,13 +116,13 @@
 				}
 			}
 			.alert{
-				width:95%;
+				width:80%;
 			}
 
 			.list__cart{
 				.title__event{
-					font-size: 16px;
-					width:35%;
+					font-size: 14px;
+					width:45%;
 				}
 			}
 
@@ -132,6 +132,9 @@
 			font-size: 18px;
 			font-weight: 700;
 		}
+	}
+	.nav-profile{
+		margin-left: -2.1rem;
 	}
 	.no-caret::after{
 		display: none;
