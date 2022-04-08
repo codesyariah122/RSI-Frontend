@@ -150,7 +150,8 @@ export default {
     '~assets/scss/profile.scss',
     '~assets/scss/event-test.scss',
     '~assets/scss/docs-event.scss',
-    '~assets/scss/keranjang.scss'
+    '~assets/scss/keranjang.scss',
+    '~assets/scss/pembayaran.scss'
     ]
   },
 
