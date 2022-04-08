@@ -109,10 +109,13 @@
 					color: $second-black;
 					font-weight: 700;
 				}
+				p{
+					width: 50%;
+				}
 			}
 			.keranjang__card{
 				height:100%;
-				margin-top: -1rem;
+				margin-top: -.7rem;
 				.card{
 					background-color: $jumbotron-bg;
 					height: auto;
@@ -141,14 +144,29 @@
 					.delete__data{
 						margin-top: 1rem;
 					}
+					.rincian__event-table{
+						h5{
+							font-weight: 700!important;
+						}
+						.table .table-borderless{							
+							tbody{
+								margin-top: -1rem!important;
+							}
+						}
+					}
 				}
 			}
 			.pembayaran__card{
 				position: fixed;
 				z-index: -1;
-				margin-top: 12rem;
+				margin-top: 11rem;
 				width: 100%;
 				.list__bank{
+					h5{
+						font-size:23px;
+						color:$second-black;
+					}
+					
 					background-color: $jumbotron-bg;
 					height: auto;
 					border-radius: 13px;
@@ -168,37 +186,48 @@
 						z-index: 9999;
 						margin-left: 1rem;
 						img{
-							margin-top: -1rem;
+							margin-top: -.7rem;
+							margin-left: .2rem;
+							width:80px; height: 45px;
 						}
 						span{
-							margin-left: -1rem;
+							margin-left: .1rem;
+						}
+					}
+					button{
+						text-transform: capitalize;
+						font-weight: 600;
+						color: $second-black;
+					}
+				}
+
+				.rincian__event-table{
+					.rincian__bayar{
+						margin-top: 1rem;
+						background-color: $jumbotron-bg;
+						height: auto;
+						border-radius: 13px;
+						.card-title{
+							color: $second-black;
+							font-size: 21px;
+							font-weight: 700;
+						}
+						h5{
+							color:$second-black;
+							font-weight: 600;
+						}
+						h2{
+							color: $color-primary;
+							font-size: 23px;
+							font-weight: 700;
+						}
+						button{
+							background-color: $primary-button!important;
+							font-weight: 600;
 						}
 					}
 				}
-				.rincian__bayar{
-					margin-top: 1rem;
-					background-color: $jumbotron-bg;
-					height: auto;
-					border-radius: 13px;
-					.card-title{
-						color: $second-black;
-						font-size: 21px;
-						font-weight: 700;
-					}
-					h5{
-						color:$second-black;
-						font-weight: 600;
-					}
-					h2{
-						color: $color-primary;
-						font-size: 23px;
-						font-weight: 700;
-					}
-					button{
-						background-color: $primary-button!important;
-						font-weight: 600;
-					}
-				}
+				
 			}
 		}
 	}

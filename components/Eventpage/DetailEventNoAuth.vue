@@ -49,8 +49,7 @@
 					</mdb-row>
 					<mdb-row class="mt-3" col="12">
 						<mdb-col md="5" xs="12" sm="12">
-							<mdb-btn class="btn my__btn-secondary rounded-pill btn-block shadow-none" @click="GoToLogin">
-								<mdb-icon icon="sign-in-alt" size="lg"/> Beli kelas
+							<mdb-btn class="btn my__btn-secondary rounded-pill btn-block shadow-none" @click="GoToLogin"> Beli kelas
 							</mdb-btn>
 						</mdb-col>
 						<mdb-col md="7">

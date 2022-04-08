@@ -8,9 +8,6 @@
 			</mdb-row>
 
 			<mdb-row class="justify-content-start keranjang__card">
-				<!-- <pre>
-					{{data_cart.length == 0 ? true : false}}
-				</pre> -->
 				<mdb-col v-if="data_cart.length == 0" col="12" lg="8" xs="8" sm="12">
 					<b-card no-body class="overflow-hidden shadow-none">
 						<b-alert class="mt-2" show variant="info"> {{message}} </b-alert>

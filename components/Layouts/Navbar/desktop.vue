@@ -64,7 +64,7 @@
 
         <mdb-icon icon="shopping-cart" size="lg" style="margin-top: -.2rem;margin-left: -.2rem;"/>  <span class="sr-only">(current)</span>
       </mdb-dropdown-toggle>
-      <mdb-dropdown-menu class="keranjang__dropdown mt-2">
+      <mdb-dropdown-menu class="keranjang__dropdown">
         <mdb-container>
           <mdb-row>
             <mdb-col col="12" lg="12" xs="12" sm="12">

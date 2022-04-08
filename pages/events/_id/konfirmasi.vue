@@ -1,19 +1,8 @@
 <template>
-	<div class="auth__content">
+	<div :class="`${$device.isDesktop ? 'event__pembayaran mb-5' : 'event__keranjang mb-5'}`">
 		<mdb-container>
-
-			<mdb-row class="justify-content-center registrasi__event-header">
-				<mdb-col lg="12" sm="12" xs="12">
-					<EventpageKonfirmasiHeader/>
-				</mdb-col>
-			</mdb-row>
-
-
-			<mdb-row class="row justify-content-center registrasi__event-content">
-				<mdb-col md="6" sm="8" xs="8">
-					<EventpageKonfirmasi :id="id" :kegiatan="kegiatan" :bank="bank" :loading="loading" :token="token" :api_url="api_url"/>
-				</mdb-col>
-			</mdb-row>
+			<EventpageKonfirmasiHeader/>
+			<EventpageKonfirmasi :id="id" :kegiatan="kegiatan" :bank="bank" :loading="loading" :token="token" :api_url="api_url"/>
 		</mdb-container>
 	</div>
 </template>

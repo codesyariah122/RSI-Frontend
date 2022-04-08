@@ -157,11 +157,13 @@
 		overflow:hidden!important;
 		margin-top: 7rem;
 		margin-left: 5rem;
+		height: auto;
 		.event__detail-content{
-			.event__info{		
+			.event__info{
 				h1{
 					font-weight: 600;
 					text-align: left;
+					font-size:31px;
 				}
 				.badge__category{
 					background-color: transparent!important;
@@ -172,11 +174,15 @@
 				.idr__color {
 					color: $color-primary;
 					font-weight: 700;
-					font-size:21px;
+					font-size:18px;
 					line-height: 24.51px;
 				}
 				h5{
 					font-weight: 600;
+					font-size:16px;
+				}
+				p{
+					font-size: 14px;
 				}
 			}
 			.event__flyer{
@@ -189,7 +195,8 @@
 			}
 
 			.event__jadwal{
-				margin-top: -11rem!important;
+				height: 100%;
+				margin-top: 7rem!important;
 				h4{
 					font-weight: 700;
 					color:$second-black;

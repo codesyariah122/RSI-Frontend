@@ -64,7 +64,7 @@
 								<mdb-row class="row justify-content-start">
 									<mdb-col md="5">
 										<mdb-btn @click="CheckConfirmasi(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="lg">
-											<mdb-icon far icon="calendar-plus" size="lg"/> {{status_pendaftaran == "Daftar" ? "Beli Kelas" : status_pendaftaran}}
+											{{status_pendaftaran == "Daftar" ? "Beli Kelas" : status_pendaftaran}}
 										</mdb-btn>
 									</mdb-col>
 									<mdb-col md="7">
