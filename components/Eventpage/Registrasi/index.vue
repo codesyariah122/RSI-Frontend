@@ -85,7 +85,7 @@
 			</mdb-col>
 		</mdb-row>
 
-		<mdb-row style="margin-top: 16rem;" :class="`${$device.isDesktop ?  'justify-content-end check__point fixed-top' : 'row justify-content-center check__point'}`">
+		<mdb-row :class="`${$device.isDesktop ?  'row justify-content-end check__point' : 'row justify-content-center check__point'}`">
 			<mdb-col col="12" lg="4" sm="12">
 				<b-card title="Transfer Bank" class="shadow-none list__bank">
 					
@@ -177,6 +177,25 @@
 					this.loading = false
 				})
 			},
+			CheckPembayaran(id){
+				this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
+				this.$axios.get(`/web/event/${id}/konfirmasi`)
+				.then(({data}) => {
+					console.log(data)
+					if(data.kegiatan){
+						this.$router.push({
+							name: 'events-id-konfirmasi',
+							params: {
+								id: id,
+								bank: data.bank,
+								kegiatan: data.kegiatan
+							}
+						})
+					}
+				})
+				.catch(err => console.log(err))
+
+			},
 
 			RegisterEvent(){
 				this.error = false
@@ -191,21 +210,23 @@
 						bank_id: this.field.bank_id
 					})
 					.then(({data}) => {
-						// console.log(data)
+						console.log(data)
 						let new_message = ''
 						if(data.kegiatan_peserta.kegiatan_id){
-							if(data.message === "Anda telah terdaftar pada event ini"){
+							if(data.message === "Anda telah terdaftar pada event ini" || data.message === ""){
 								new_message = "Terima kasih telah mendaftar, segera lakukan pembayaran"	
 							}else{
 								new_message = data.message
 							}
 							this.Alert('success', new_message)
-							this.$router.push({
-								name: 'events-id-konfirmasi',
-								params: {
-									id: data.kegiatan_peserta.kegiatan_id
-								}
-							})
+							// this.$router.push({
+							// 	name: 'events-id-konfirmasi',
+							// 	params: {
+							// 		id: data.kegiatan_peserta.kegiatan_id,
+
+							// 	}
+							// })
+							this.CheckPembayaran(data.kegiatan_peserta.kegiatan_id)
 						}
 					})
 					.catch(err => {
@@ -214,7 +235,7 @@
 					.finally(() => {
 						setTimeout(() => {
 							this.loading_btn = false
-						}, 1500)
+						}, 1000)
 					})
 				}else{					
 					this.error = true

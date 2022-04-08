@@ -27,6 +27,9 @@
 		<div v-else>
 			<mdb-row>
 				<mdb-col lg="6" xs="6" sm="12" class="event__info">
+					<!-- <pre>
+						{{details}}
+					</pre> -->
 					<mdb-badge
 					class="mb-2 badge__category shadow-none"
 					>{{details.kategori_value}}</mdb-badge
@@ -53,14 +56,17 @@
 								{{details.nomor_skp ? details.nomor_skp : '-'}}
 							</p>
 						</mdb-col>
+
 					</mdb-row>
 					<mdb-row class="mt-3" col="12">
 						<mdb-col v-if="status_pendaftaran == 'Daftar'" md="12" xs="12" sm="12">
+
 							<div v-if="loading">
 								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
 								Loading...
 							</div>
 							<div v-else>
+								
 								<mdb-row class="row justify-content-start">
 									<mdb-col md="5">
 										<mdb-btn @click="CheckConfirmasi(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="lg">
@@ -101,6 +107,17 @@
 							</div>
 						</mdb-col>
 
+						<mdb-col v-else-if="status_pendaftaran == 'Menunggu Pembayaran'" md="12" xs="12" sm="12">
+							<div v-if="loading">
+								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
+								Loading...
+							</div>
+							<div v-else>
+								<mdb-btn @click="CheckPembayaran(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="md"> 
+									<mdb-icon icon="check" size="lg"/> {{status_pendaftaran == 'Menunggu Konfirmasi' ? 'Check Status' : status_pendaftaran}}
+								</mdb-btn>
+							</div>
+						</mdb-col>
 
 						<mdb-col v-else md="12" xs="12" sm="12">
 							<div v-if="loading">
@@ -138,13 +155,13 @@
 
 <script>
 	export default{
-		props: ['loading', 'profiles', 'details', 'data_event', 'status_pendaftaran', 'token'],
+		props: ['loading', 'profiles', 'details', 'data_event', 'status_pendaftaran', 'token', 'api_url'],
 
 		data(){
 			return {
 				timer: 0,
 				value: 0,
-				max: 100,
+				max: 100
 			}
 		},
 
@@ -203,6 +220,26 @@
 						id: id
 					}
 				})
+			},
+
+			CheckPembayaran(id){
+				this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
+				this.$axios.get(`/web/event/${id}/konfirmasi`)
+				.then(({data}) => {
+					console.log(data)
+					if(data.kegiatan){
+						this.$router.push({
+							name: 'events-id-konfirmasi',
+							params: {
+								id: id,
+								bank: data.bank,
+								kegiatan: data.kegiatan
+							}
+						})
+					}
+				})
+				.catch(err => console.log(err))
+
 			},
 
 			ProfileEvent(username, id_event, slug){

@@ -4,7 +4,7 @@
 			<!-- Event detail content -->
 			<mdb-row class="row event__detail-content">
 				<mdb-col v-if="token.accessToken" lg="12">
-					<EventpageLoginDetailEvent :loading="loading" :details="details" :data_event="data_event" :status_pendaftaran="status_pendaftaran" :token="token" @registrasi-event="RegistrasiEvent" :profiles="profiles"/>
+					<EventpageLoginDetailEvent :loading="loading" :details="details" :data_event="data_event" :status_pendaftaran="status_pendaftaran" :token="token" api_url="api_url" @registrasi-event="RegistrasiEvent" :profiles="profiles"/>
 				</mdb-col>
 				<mdb-col v-else lg="12">
 					<EventpageDetailEventNoAuth :events="events" :loading="loading"/>

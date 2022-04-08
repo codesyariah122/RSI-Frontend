@@ -143,25 +143,21 @@
 							
 							<form>
 
-								<div v-if="photo" class="form-group">
+								<div v-if="checks.data" class="form-group">
 									<mdb-row class="row justify-content-center">
 										<mdb-col md="12" class="mt-2 mb-2">
 											<b-badge pill variant="primary">Bukti Bayar Anda</b-badge>
 										</mdb-col>
-										<mdb-col md="12" class="mb-2">
-											<img :src="photo" width="150" class="img-fluid">
-										</mdb-col>
 										<mdb-col md="12" class="mb-4">
-											<div class="file-input-2">
-												<input type="file" id="file" class="rounded-pill file" @change="FileImage($event)">
-												<label for="file">
-													Ubah Bukti Pembayaran
-													<p class="file-name"></p>
-												</label>
-											</div>
+											<img :src="checks.data.bukti_bayar" width="150" class="img-fluid">
 										</mdb-col>
+										
 										<mdb-col md="12">
-											<mdb-btn @click="LanjutPendaftaran" class="btn my__btn-primary rounded-pill btn-block shadow-none">Lanjutkan Pendaftaran</mdb-btn>
+											<mdb-btn disabled class="btn my__btn-primary rounded-pill btn-block shadow-none"> {{data_pendaftaran.status_pendaftaran_value }} </mdb-btn>
+										</mdb-col>
+
+										<mdb-col md="12" class="mt-3">
+											<nuxt-link :to="`/detail/event/${id}/${$slug(your_events.kegiatan_title ? your_events.kegiatan_title : '')}`" class="btn btn-primary rounded-pill btn-block shadow-none"><mdb-icon icon="arrow-left" /> Selesai </nuxt-link>
 										</mdb-col>
 
 									</mdb-row>
@@ -172,13 +168,6 @@
 										<mdb-alert color="info">
 											{{new_message}}
 										</mdb-alert>
-									</div>
-									<div class="file-input">
-										<input type="file" id="file" class="rounded-pill file" @change="FileImage($event)">
-										<label for="file">
-											Unggah Bukti Pembayaran
-											<p class="file-name"></p>
-										</label>
 									</div>
 								</div>
 
@@ -197,7 +186,7 @@
 <script>
 
 	export default{
-		props: ['id', 'kegiatan', 'bank', 'token', 'api_url', 'loading'],
+		props: ['id', 'your_events', 'data_pendaftaran', 'kegiatan', 'bank', 'checks', 'token', 'api_url', 'loading'],
 
 		data(){
 			return{
