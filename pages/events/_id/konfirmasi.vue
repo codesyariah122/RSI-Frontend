@@ -2,7 +2,7 @@
 	<div :class="`${$device.isDesktop ? 'event__pembayaran mb-5' : 'event__keranjang mb-5'}`">
 		<mdb-container>
 			<EventpageKonfirmasiHeader/>
-			<EventpageKonfirmasi :id="id" :kegiatan="kegiatan" :bank="bank" :loading="loading" :token="token" :api_url="api_url"/>
+			<EventpageKonfirmasi :id="id" :kegiatan="kegiatan" :bank="bank" :loading="loading" :token="token" :api_url="api_url" :details="details"/>
 		</mdb-container>
 	</div>
 </template>
@@ -16,7 +16,8 @@
 				loading: null,
 				id: this.$route.params.id,
 				kegiatan: {},
-				bank: {}
+				bank: {},
+				details: {}
 			}
 		},
 
@@ -62,6 +63,19 @@
 				.finally(() => {
 					this.loading = false
 				})
+			},
+
+			DetailEventProfileLogin(){
+				if(this.token.accessToken){
+					const url = `${this.api_url}/web/event/${this.$route.params.id}`
+
+					this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
+					this.$axios.get(url)
+					.then(({data}) => {
+						this.details = data.kegiatan
+					})
+					.catch(err => console.log(err))
+				}
 			},
 
 			Alert(status, data){

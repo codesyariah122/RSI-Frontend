@@ -25,7 +25,7 @@
 										{{pembayaran.kegiatan.kegiatan_title}}
 									</td>
 									<td>
-										{{$moment(data_event.tanggal_awal).format("LLLL")}} - {{$moment(data_event.tanggal_akhir).format("LLLL")}}
+										{{$moment(details.tanggal_awal).format("LLLL")}} - {{$moment(details.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(pembayaran.kegiatan.harga)}}
@@ -202,7 +202,7 @@
 <script>
 
 	export default{
-		props: ['id', 'kegiatan', 'bank', 'token', 'api_url', 'loading'],
+		props: ['id', 'kegiatan', 'bank', 'token', 'api_url', 'loading', 'details'],
 
 		data(){
 			return{

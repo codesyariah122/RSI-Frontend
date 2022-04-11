@@ -3,7 +3,7 @@
 		<mdb-container>
 			<EventpageRegistrasiHeader/>
 
-			<EventpageRegistrasi :id="event_id" :token="token" :api_url="api_url"/>
+			<EventpageRegistrasi :id="event_id" :token="token" :api_url="api_url" :details="details"/>
 		</mdb-container>
 	</div>
 </template>
@@ -15,7 +15,8 @@
 		layout: 'profile',
 		data(){
 			return{
-				event_id: this.$route.params.id
+				event_id: this.$route.params.id,
+				details: {}
 			}
 		},
 
@@ -63,6 +64,19 @@
 					}
 				})
 				.catch(err => console.log(err))
+			},
+
+			DetailEventProfileLogin(){
+				if(this.token.accessToken){
+					const url = `${this.api_url}/web/event/${this.$route.params.id}`
+
+					this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
+					this.$axios.get(url)
+					.then(({data}) => {
+						this.details = data.kegiatan
+					})
+					.catch(err => console.log(err))
+				}
 			},
 
 			Alert(status, data){

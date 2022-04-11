@@ -28,7 +28,7 @@
 										{{event.kegiatan_title}}
 									</td>
 									<td>
-										{{$moment(data_event.tanggal_awal).format("LLLL")}} - {{$moment(data_event.tanggal_akhir).format("LLLL")}}
+										{{$moment(details.tanggal_awal).format("LLLL")}} - {{$moment(details.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(event.harga)}}
@@ -142,7 +142,7 @@
 
 <script>
 	export default{
-		props: ['id', 'token', 'api_url'],
+		props: ['id', 'token', 'api_url', 'details'],
 
 		data(){
 			return {
@@ -198,7 +198,6 @@
 							name: 'events-id-konfirmasi',
 							params: {
 								id: id,
-								data: this.data_event,
 								bank: data.bank,
 								kegiatan: data.kegiatan
 							}
