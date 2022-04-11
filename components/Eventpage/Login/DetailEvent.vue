@@ -53,8 +53,8 @@
 								{{details.nomor_skp ? details.nomor_skp : '-'}}
 							</p>
 						</mdb-col>
-
 					</mdb-row>
+
 					<mdb-row class="mt-3" col="12">
 						<mdb-col v-if="status_pendaftaran == 'Daftar'" md="12" xs="12" sm="12">
 
@@ -64,7 +64,7 @@
 							</div>
 							<div v-else>
 								
-								<mdb-row class="row justify-content-start">
+								<mdb-row class="row justify-content-start mt-5">
 									<mdb-col md="5">
 										<mdb-btn @click="BeliKelas(details.kegiatan_id, details)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="lg">
 											{{status_pendaftaran == "Daftar" ? "Beli Kelas" : status_pendaftaran}}
@@ -92,7 +92,7 @@
 							</div>
 						</mdb-col>
 
-						<mdb-col v-else-if="status_pendaftaran == 'Menunggu Konfirmasi'" md="12" xs="12" sm="12">
+						<mdb-col v-else-if="status_pendaftaran == 'Menunggu Konfirmasi'" md="12" xs="12" sm="12" class="mt-5">
 							<div v-if="loading">
 								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
 								Loading...
@@ -104,7 +104,7 @@
 							</div>
 						</mdb-col>
 
-						<mdb-col v-else-if="status_pendaftaran == 'Menunggu Pembayaran'" md="12" xs="12" sm="12">
+						<mdb-col v-else-if="status_pendaftaran == 'Menunggu Pembayaran'" md="12" xs="12" sm="12" class="mt-5">
 							<div v-if="loading">
 								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
 								Loading...
@@ -117,7 +117,7 @@
 							</div>
 						</mdb-col>
 
-						<mdb-col v-else md="12" xs="12" sm="12">
+						<mdb-col v-else md="12" xs="12" sm="12" class="mt-5">
 							<div v-if="loading">
 								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
 								Loading...
@@ -126,8 +126,8 @@
 								<!-- <mdb-btn v-if="data_event || token.accessToken" color="success" size="md" disabled>
 									<mdb-icon far icon="calendar-check" /> {{status_pendaftaran}}
 								</mdb-btn> -->
-								<mdb-btn @click="ProfileEvent($username(profiles.nama), data_event.event_id, $slug(details.kegiatan_title))" v-if="data_event || token.accessToken" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="md">
-									<mdb-icon icon="tachometer-alt" size="lg"/> Dashboard Pelatihan
+								<mdb-btn @click="ProfileEvent($username(profiles.nama), data_event.event_id, $slug(details.kegiatan_title))" v-if="data_event || token.accessToken" class="btn my__btn-primary rounded-pill btn-block shadow-none" size="md">
+									<h5>Lanjut Pelatihan</h5>
 								</mdb-btn>
 							</div>
 							<mdb-btn v-else size="md" color="grey" disabled class="mb-3 not__allowed">Daftar</mdb-btn>
@@ -140,26 +140,121 @@
 				</mdb-col>
 			</mdb-row>
 
-			<!-- Detail event -->
-			<mdb-row class="row justify-content-start event__jadwal">
-				<mdb-col lg="12" xs="12" sm="12">
-					<h4>Jadwal Kelas</h4>
-				</mdb-col>
-			</mdb-row>
-		</div>
+			<!-- Detail event schedule -->
+			<div v-if="status_pendaftaran === 'Terdaftar'" class="event__jadwal">				
+				<mdb-row class="row justify-content-start">
+					<mdb-col lg="12" xs="12" sm="12">
+						<h4>Jadwal Kelas</h4>
+					</mdb-col>
+				</mdb-row>
 
+				<mdb-row class="row justify-content-start lists__jadwal mt-2">
+					<mdb-col lg="6" xs="6" sm="12" class="lists__target">
+						<div class="accordion shadow-none" role="tablist">
+							<b-card v-for="(item, index) in schedules" :key="index+1" no-body class="shadow-none">
+								<b-card-header header-tag="header" class="p-0" role="tab">
+									<b-button @click="ToggleFile(index+1)" block :v-b-toggle="`accordion-${index+1}`"  class="shadow-none">
+										<div class="row justify-content-start">
+											<div class="col-md-10 text-left">
+												<h6>
+													{{item.title}}
+												</h6>
+												<small>
+													{{$moment(item.tanggal).format("LLLL")}}
+												</small>
+											</div>
+											<div class="col-md-2">
+												<mdb-icon :icon="`${show_collapse && urutan == index+1 ? 'angle-down' : 'angle-right'}`" size="lg"/>
+											</div>
+										</div>
+									</b-button>
+								</b-card-header>
+
+								<b-collapse v-if="urutan === index+1" v-model="visible" class="shadow-none schedule__collapse" :id="`accordion-1`" accordion="my-accordion" role="tabpanel">
+									<b-card-body>
+										<b-list-group class="list__categori">
+											<b-list-group-item class="list__categori-item" v-for="(categori, index) in item.categories" :key="categori.urutan">
+												<h6>
+													{{categori.urutan}}. {{categori.title}}
+												</h6>
+												<b-list-group class="list__detail mt-2">
+													<b-list-group-item v-for="(detail, index) in categori.details" :key="detail.urutan" class="list__detail-item mb-4">
+														<div class="row">
+															<div class="col-md-11">
+																<mdb-icon class="text-success"  :icon="FilterIcon(detail.kategori)" size="md"/> <span class="ml-2"> {{detail.title}} </span>
+															</div>
+															<div class="col-md-1">
+																<mdb-icon class="text-success" icon="check-circle" size="lg"/>
+															</div>
+														</div>
+													</b-list-group-item>
+												</b-list-group>
+											</b-list-group-item>
+										</b-list-group>
+									</b-card-body>
+								</b-collapse>
+							</b-card>
+						</div>
+					</mdb-col>
+
+					<mdb-col lg="6" xs="6" sm="12" class="profile__pengajar mt-2">
+						<div class="row">
+							<div class="col-lg-12 col-sm-12 col-xs-12">
+								<h5>Profile Fasilitator</h5>
+							</div>
+							<div class="col-lg-12 col-xs-12 col-sm-12 mt-3 card__profile">
+								<b-card no-body class="shadow-none overflow-hidden">
+									<b-row no-gutters class="justify-content-center mt-4">
+										<b-col md="2" class="profile__pic">
+											<b-avatar size="4rem" variant="info" :src="require('~/assets/images/Avatar/5.jpg')"></b-avatar>
+											<div class="row justify-content-start mt-3">
+												<div class="col-md-4">
+													<mdb-icon class="text-primary" fab icon="facebook-square" size="lg"/>
+												</div>
+												<div class="col-md-4">
+													<mdb-icon class="text-info" fab icon="linkedin-in" size="lg"/>
+												</div>
+											</div>
+										</b-col>
+										<b-col md="8" class="profile__info">
+											<b-card-body title="dr. Hasan Fadly">
+												<b-card-text>
+												<blockquote>
+													Dokter Umum
+												</blockquote>
+												<span>
+													Saat ini, dr. Hasan Fadly bertugas sebagai dokter umum di Rumah Sakit Islam Sultan Agung Semarang dan aktif sebagai penyuluh kesehatan masyarakat di kota Semarang.
+												</span>
+													
+												</b-card-text>
+											</b-card-body>
+										</b-col>
+									</b-row>
+								</b-card>
+							</div>
+						</div>
+
+					</mdb-col>
+				</mdb-row>
+			</div>
+			<!-- end event detail schedule -->
+
+		</div>
 	</div>
 </template>
 
 <script>
 	export default{
-		props: ['loading', 'profiles', 'details', 'data_event', 'status_pendaftaran', 'token', 'api_url'],
+		props: ['loading', 'profiles', 'details', 'data_event', 'status_pendaftaran', 'token', 'api_url', 'schedules'],
 
 		data(){
 			return {
 				timer: 0,
 				value: 0,
-				max: 100
+				max: 100,
+				show_collapse: false,
+				urutan: null,
+				visible: false
 			}
 		},
 
@@ -170,6 +265,40 @@
 
 
 		methods: {
+			ToggleFile(urutan) {
+				console.log(urutan)
+				if (urutan) {
+					this.urutan = urutan;
+					this.show_collapse = !this.show_collapse;
+					this.visible = !this.visible
+				}
+
+			},
+
+			FilterIcon(type) {
+				switch (type) {
+					case 1:
+					return "tv";
+					break;
+					case 2:
+					return "file-pdf";
+					break;
+					case 3:
+					return "file-alt";
+					break;
+					case 4:
+					return "file-archive";
+					break;
+					case 5:
+					return "file-pdf";
+					break;
+					case 6:
+					return "file-video";
+					break;
+					default:
+					return "No type here";
+				}
+			},
 
 			CheckKeranjang(){
 				if (this.events.length < this.listsToShow) {
@@ -207,13 +336,11 @@
 			},
 
 			MenungguKonfirmasi(id){
-				console.log(id)
 				const data_storage = {
 					data: localStorage.getItem('success') ? JSON.parse(localStorage.getItem('success')) : '',
 					message: "Proses pembayaran Anda sedang di check oleh admin kami. Anda dapat mengakses kelas yang Anda beli, Setelah pembayaran Anda di verifiksi oleh sistem kami."
 				}
 
-				console.log(data_storage)
 
 				this.$router.push({
 					name: 'events-id-success',
@@ -226,7 +353,6 @@
 			},
 
 			RegistrasiEvent(id){
-				// alert(id)
 				this.$emit('registrasi-event', id)
 			},
 
@@ -244,7 +370,6 @@
 				this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
 				this.$axios.get(`/web/event/${id}/konfirmasi`)
 				.then(({data}) => {
-					console.log(data)
 					if(data.kegiatan){
 						this.$router.push({
 							name: 'events-id-konfirmasi',

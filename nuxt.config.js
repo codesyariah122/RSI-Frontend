@@ -75,10 +75,10 @@ export default {
       }
     ],
     script: [
-      // {
-      //   src: "https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",
-      //   body: true,
-      // },
+      {
+        src: "https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",
+        body: true,
+      },
       // {
       //   src: "/assets/js/getButton.js",
       //   body: true,
@@ -101,11 +101,7 @@ export default {
       {
         src: "/assets/js/tiny-slider.js",
         type: "text/javascript",
-      },
-      // {
-        //  src: '/assets/docs/fontawesome/js/all.min.js',
-        //  type: 'text/javascript'
-        // },
+      }
     ],
   },
 

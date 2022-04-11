@@ -4,7 +4,7 @@
 			<!-- Event detail content -->
 			<mdb-row class="row event__detail-content">
 				<mdb-col v-if="token.accessToken" lg="12">
-					<EventpageLoginDetailEvent :loading="loading" :details="details" :data_event="data_event" :status_pendaftaran="status_pendaftaran" :token="token" api_url="api_url" @registrasi-event="RegistrasiEvent" :profiles="profiles"/>
+					<EventpageLoginDetailEvent :loading="loading" :details="details" :data_event="data_event" :status_pendaftaran="status_pendaftaran" :token="token" api_url="api_url" @registrasi-event="RegistrasiEvent" :profiles="profiles" :schedules="schedules"/>
 				</mdb-col>
 				<mdb-col v-else lg="12">
 					<EventpageDetailEventNoAuth :events="events" :loading="loading"/>
@@ -43,6 +43,7 @@
 			return {
 				profiles: {},
 				details: [],
+				schedules:[],
 				lists: [],
 				listToShow: 3,
 				loading:null,
@@ -101,6 +102,7 @@
 					this.$axios.get(url)
 					.then(({data}) => {
 						this.details = data.kegiatan
+						this.schedules = data.pelatihans
 					})
 					.catch(err => console.log(err))
 				}
