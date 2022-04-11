@@ -12,6 +12,9 @@
 										<b>Kelas</b>
 									</th>
 									<th scope="row">
+										<b>Tanggal Pelaksanaan</b>
+									</th>
+									<th scope="row">
 										<b>Subtotal</b>
 									</th>
 								</tr>
@@ -20,6 +23,9 @@
 								<tr>
 									<td>
 										{{pembayaran.kegiatan.kegiatan_title}}
+									</td>
+									<td>
+										{{$moment(data_event.tanggal_awal).format("LLLL")}} - {{$moment(data_event.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(pembayaran.kegiatan.harga)}}
@@ -142,7 +148,6 @@
 						<mdb-col lg="12" xs="12" sm="12" class="col__card-upload-file mt-2 mb-2">
 							
 							<form>
-
 								<div v-if="photo" class="form-group">
 									<mdb-row class="row justify-content-center">
 										<mdb-col md="12" class="mt-2 mb-2">
@@ -213,7 +218,8 @@
 				pembayaran: {
 					bank: {},
 					kegiatan: {}
-				}
+				},
+				data_event: this.$route.params.data
 			}
 		},
 
@@ -274,9 +280,8 @@
 						name: 'events-id-success',
 						params: {
 							id: this.id,
-							message: data_storage.message,
-							bank: this.pembayaran.bank,
-							kegiatan: this.pembayaran.kegiatan
+							check: false,
+							data_storage: data_storage
 						}
 					})
 

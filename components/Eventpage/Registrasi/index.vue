@@ -5,11 +5,17 @@
 				<b-card no-body class="overflow-hidden shadow-none">
 					<b-row v-if="$device.isDesktop" no-gutters class="mt-2 row justify-content-start ml-2 rincian__event-table">
 						<h5>Ringkasan Belanja</h5>
+						<!-- <pre>
+							{{data_event}}
+						</pre> -->
 						<table class="table table-borderless">
 							<thead>
 								<tr>
 									<th scope="row">
 										<b>Kelas</b>
+									</th>
+									<th scope="row">
+										<b>Tanggal Pelaksanaan</b>
 									</th>
 									<th scope="row">
 										<b>Subtotal</b>
@@ -20,6 +26,9 @@
 								<tr>
 									<td>
 										{{event.kegiatan_title}}
+									</td>
+									<td>
+										{{$moment(data_event.tanggal_awal).format("LLLL")}} - {{$moment(data_event.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(event.harga)}}
@@ -143,7 +152,8 @@
 				banks:[],
 				field: {},
 				error: null,
-				validation: {}
+				validation: {},
+				data_event: this.$route.params.data
 			}
 		},
 
@@ -169,6 +179,7 @@
 				this.loading = true
 				this.$axios.get(`/web/event/${this.id}/daftar`)
 				.then(({data}) => {
+					console.log(data)
 					this.event = data.kegiatan
 					this.banks = data.list_bank
 				})
@@ -187,6 +198,7 @@
 							name: 'events-id-konfirmasi',
 							params: {
 								id: id,
+								data: this.data_event,
 								bank: data.bank,
 								kegiatan: data.kegiatan
 							}

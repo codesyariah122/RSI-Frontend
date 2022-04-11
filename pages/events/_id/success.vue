@@ -3,7 +3,7 @@
 		<mdb-container>
 			<EventpageSuccessHeader :data_pendaftaran="data_pendaftaran" :message="pembayaran.message" :bank="pembayaran.bank" :kegiatan="pembayaran.kegiatan" :checks="checks" />
 
-			<EventpageSuccess :id="id" :your_events="your_events" :token="token" :api_url="api_url" bank="pembayaran.bank" :data_pendaftaran="data_pendaftaran" :kegiatan="pembayaran.kegiatan" :checks="checks"/>
+			<EventpageSuccess :id="id" :your_events="your_events" :token="token" :api_url="api_url" bank="pembayaran.bank" :data_pendaftaran="data_pendaftaran" :kegiatan="pembayaran.kegiatan" :checks="checks" :details="details"/>
 
 		</mdb-container>
 	</div>
@@ -29,7 +29,8 @@
 					bank: {},
 					kegiatan: {},
 					message:''
-				}
+				},
+				details:{}
 			}
 		},
 
@@ -52,8 +53,14 @@
 					}, 900)
 				}
 			},
+			
 			CheckToken(){
 				this.$store.dispatch('config/checkAuthLogin', 'token')
+			},
+
+			ConfigApiUrl(){
+				const url = process.env.NUXT_ENV_API_URL
+				this.$store.dispatch('config/storeConfigApiUrl', url)
 			},
 
 			StatusPembayaran(){
@@ -89,6 +96,19 @@
 						this.loading = false
 					}, 2500)
 				})
+			},
+
+			DetailEventProfileLogin(){
+				if(this.token.accessToken){
+					const url = `${this.api_url}/web/event/${this.$route.params.id}`
+
+					this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`
+					this.$axios.get(url)
+					.then(({data}) => {
+						this.details = data.kegiatan
+					})
+					.catch(err => console.log(err))
+				}
 			},
 
 			startTimer() {

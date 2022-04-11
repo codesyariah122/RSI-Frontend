@@ -12,6 +12,9 @@
 										<b>Kelas</b>
 									</th>
 									<th scope="row">
+										<b>Tanggal Pelaksanaan</b>
+									</th>
+									<th scope="row">
 										<b>Subtotal</b>
 									</th>
 								</tr>
@@ -20,6 +23,9 @@
 								<tr>
 									<td>
 										{{pembayaran.kegiatan.kegiatan_title}}
+									</td>
+									<td>
+										{{$moment(details.tanggal_awal).format("LLLL")}} - {{$moment(details.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(pembayaran.kegiatan.harga)}}
@@ -76,7 +82,6 @@
 				</b-card>
 			</mdb-col>
 		</mdb-row>
-
 		<mdb-row  :class="`${$device.isDesktop ?  'row justify-content-end check__point' : 'row justify-content-center check__point'}`">
 			<mdb-col col="12" lg="4" sm="12">
 				<b-card class="shadow-none list__bank">
@@ -91,7 +96,7 @@
 							</mdb-row>
 							<b-container>
 								<div v-if="parseInt(pembayaran.bank.id) == 1">
-									
+
 									<b-card no-body class="shadow-none overflow-hidden card__bank-list">
 										<b-row no-gutters>
 											<b-col md="4" class="mt-5">
@@ -140,45 +145,42 @@
 							</b-container>
 						</div>
 						<mdb-col lg="12" xs="12" sm="12" class="col__card-upload-file mt-2 mb-2">
-							
-							<form>
 
-								<div v-if="checks.data" class="form-group">
-									<mdb-row class="row justify-content-center">
-										<mdb-col md="12" class="mt-2 mb-2">
-											<b-badge pill variant="primary">Bukti Bayar Anda</b-badge>
-										</mdb-col>
-										<mdb-col md="12" class="mb-4">
-											<img :src="checks.data.bukti_bayar" width="150" class="img-fluid">
-										</mdb-col>
-										
-										<mdb-col md="12">
-											<mdb-btn disabled class="btn my__btn-primary rounded-pill btn-block shadow-none"> {{data_pendaftaran.status_pendaftaran_value }} </mdb-btn>
-										</mdb-col>
 
-										<mdb-col md="12" class="mt-3">
-											<nuxt-link :to="`/detail/event/${id}/${$slug(your_events.kegiatan_title ? your_events.kegiatan_title : '')}`" class="btn btn-primary rounded-pill btn-block shadow-none"><mdb-icon icon="arrow-left" /> Selesai </nuxt-link>
-										</mdb-col>
+							<div v-if="checks.data" class="form-group">
+								<mdb-row class="row justify-content-center">
+									<mdb-col md="12" class="mt-2 mb-2">
+										<b-badge pill variant="primary">Bukti Bayar Anda</b-badge>
+									</mdb-col>
+									<mdb-col md="12" class="mb-4">
+										<img :src="checks.data.bukti_bayar" width="150" class="img-fluid">
+									</mdb-col>
 
-									</mdb-row>
+									<mdb-col md="12">
+										<mdb-btn disabled class="btn my__btn-primary rounded-pill btn-block shadow-none"> {{data_pendaftaran.status_pendaftaran_value }} </mdb-btn>
+									</mdb-col>
+
+									<mdb-col md="12" class="mt-3">
+										<nuxt-link :to="`/detail/event/${id}/${$slug(your_events.kegiatan_title ? your_events.kegiatan_title : '')}`" class="btn btn-primary rounded-pill btn-block shadow-none"><mdb-icon icon="arrow-left" /> Selesai </nuxt-link>
+									</mdb-col>
+
+								</mdb-row>
+							</div>
+
+							<div v-else class="form-group mt-3">
+								<div v-if="status_pembayaran" class="form-group">
+									<mdb-alert color="info">
+										{{new_message}}
+									</mdb-alert>
 								</div>
+							</div>
 
-								<div v-else class="form-group mt-3">
-									<div v-if="status_pembayaran" class="form-group">
-										<mdb-alert color="info">
-											{{new_message}}
-										</mdb-alert>
-									</div>
-								</div>
-
-							</form>
 						</mdb-col>
 					</b-card-text>
-					
+
 				</b-card>
 			</mdb-col>
 		</mdb-row>
-
 	</div>
 </template>
 
@@ -186,7 +188,7 @@
 <script>
 
 	export default{
-		props: ['id', 'your_events', 'data_pendaftaran', 'kegiatan', 'bank', 'checks', 'token', 'api_url', 'loading'],
+		props: ['id', 'your_events', 'data_pendaftaran', 'kegiatan', 'bank', 'checks', 'token', 'api_url', 'loading', 'details'],
 
 		data(){
 			return{
@@ -213,67 +215,15 @@
 		},
 
 		methods: {
-			FileImage(e){
-				this.field.photo = e.target.files[0]
-				this.field.preview = URL.createObjectURL(e.target.files[0])
-				let formData = new FormData()
-				formData.append("photo", this.field.photo)
-				this.form_data = formData
-				this.photo = URL.createObjectURL(e.target.files[0])
-				console.log(this.photo)
-			},
 
 			StatusPembayaran(){
-				this.pembayaran.bank = this.$route.params.bank
-				this.pembayaran.kegiatan = this.$route.params.kegiatan
-				console.log(this.pembayaran.bank)
-			},
-
-			LanjutPendaftaran(){
-				const config = {
-					headers: {'content-type' : 'multipart/form-data'}
-				}
-				this.$axios.post(`${this.api_url}/web/event/${this.id}/buktibayar`, this.form_data, config)
-				.then(({data}) => {
-					console.log(data)
-					this.new_preview = data.kegiatan_peserta.bukti_bayar
-
-					this.total_bayar = data.kegiatan_peserta.total_bayar
-
-					this.$swal({
-						position: 'top-end',
-						icon: 'success',
-						title: "Kami akan segera memverifikasi pembayaran anda",
-						showConfirmButton: false,
-						timer: 1500
-					})
-
-					this.status_bayar = true
-
-					const data_storage = {
-						data: data.kegiatan_peserta,
-						message: "Proses pembayaran Anda sedang di check oleh admin kami. Anda dapat mengakses kelas yang Anda beli, Setelah pembayaran Anda di verifiksi oleh sistem kami.",
-						bank: this.pembayaran.bank,
-						kegiatan: this.pembayaran.kegiatan
-					}
-
-					localStorage.setItem("success", JSON.stringify(data_storage))
-
-					this.$router.push({
-						name: 'events-id-success',
-						params: {
-							id: this.id,
-							message: data_storage.message,
-							bank: this.pembayaran.bank,
-							kegiatan: this.pembayaran.kegiatan
-						}
-					})
-
-				})
-				.catch(err => console.log(err))
-				.finally(() => {
-					console.log("Ok")
-				})
+				console.log(this.$route.params.data_storage)
+				const check = this.$route.params.check
+				const data = check ? this.$route.params.data_storage.data : this.$route.params.data_storage 
+				console.log(data)
+				this.pembayaran.bank = data.bank
+				this.pembayaran.kegiatan = data.kegiatan
+				this.new_message = data.data.message
 			},
 
 			CheckPembayaran(id){

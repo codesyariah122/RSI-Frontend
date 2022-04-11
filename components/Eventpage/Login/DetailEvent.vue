@@ -27,9 +27,6 @@
 		<div v-else>
 			<mdb-row>
 				<mdb-col lg="6" xs="6" sm="12" class="event__info">
-					<!-- <pre>
-						{{details}}
-					</pre> -->
 					<mdb-badge
 					class="mb-2 badge__category shadow-none"
 					>{{details.kategori_value}}</mdb-badge
@@ -69,7 +66,7 @@
 								
 								<mdb-row class="row justify-content-start">
 									<mdb-col md="5">
-										<mdb-btn @click="CheckConfirmasi(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="lg">
+										<mdb-btn @click="BeliKelas(details.kegiatan_id, details)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="lg">
 											{{status_pendaftaran == "Daftar" ? "Beli Kelas" : status_pendaftaran}}
 										</mdb-btn>
 									</mdb-col>
@@ -101,7 +98,7 @@
 								Loading...
 							</div>
 							<div v-else>
-								<mdb-btn @click="RegistrasiEvent(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="md"> 
+								<mdb-btn @click="MenungguKonfirmasi(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="md"> 
 									<mdb-icon icon="check" size="lg"/> {{status_pendaftaran == 'Menunggu Konfirmasi' ? 'Check Status' : status_pendaftaran}}
 								</mdb-btn>
 							</div>
@@ -113,6 +110,7 @@
 								Loading...
 							</div>
 							<div v-else>
+								
 								<mdb-btn @click="CheckPembayaran(details.kegiatan_id)" class="btn my__btn-secondary rounded-pill btn-block shadow-none" size="md"> 
 									<mdb-icon icon="check" size="lg"/> {{status_pendaftaran == 'Menunggu Konfirmasi' ? 'Check Status' : status_pendaftaran}}
 								</mdb-btn>
@@ -208,16 +206,36 @@
 				}
 			},
 
+			MenungguKonfirmasi(id){
+				console.log(id)
+				const data_storage = {
+					data: localStorage.getItem('success') ? JSON.parse(localStorage.getItem('success')) : '',
+					message: "Proses pembayaran Anda sedang di check oleh admin kami. Anda dapat mengakses kelas yang Anda beli, Setelah pembayaran Anda di verifiksi oleh sistem kami."
+				}
+
+				console.log(data_storage)
+
+				this.$router.push({
+					name: 'events-id-success',
+					params: {
+						id: id,
+						check: true,
+						data_storage: data_storage
+					}
+				})
+			},
+
 			RegistrasiEvent(id){
 				// alert(id)
 				this.$emit('registrasi-event', id)
 			},
 
-			CheckConfirmasi(id){
+			BeliKelas(id, data){
 				this.$router.push({
 					name: 'events-id-registrasi',
 					params: {
-						id: id
+						id: id,
+						data: data
 					}
 				})
 			},
