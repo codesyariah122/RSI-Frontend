@@ -15,6 +15,13 @@
 					</b-row>
 				</b-card>
 			</mdb-col>
+			<mdb-col lg="12">
+				<b-progress :max="max" height="2rem" :striped="true" show-progress :animated="true">
+					<b-progress-bar :value="value" variant="success">
+						<h5 v-if="value > 0">Loading</h5>
+					</b-progress-bar>
+				</b-progress>
+			</mdb-col>
 		</mdb-row>
 
 		<div v-else>
@@ -86,7 +93,16 @@
 	export default{
 		props: ['events', 'loading'],
 
+		data(){
+			return {
+				timer: 0,
+				value: 0,
+				max: 100,
+			}
+		},
+
 		mounted(){
+			this.startTimer(),
 			this.VenoBox()
 		},
 
@@ -154,6 +170,13 @@
 				this.$router.push({
 					name: "auth-login",
 				});
+			},
+			startTimer() {
+				let vm = this;
+				let timer = setInterval(function() {
+					vm.value += 6;
+					if (vm.value >= vm.max) clearInterval(timer);
+				}, 100);
 			},
 		},
 
