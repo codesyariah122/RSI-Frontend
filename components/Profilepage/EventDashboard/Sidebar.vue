@@ -1,5 +1,5 @@
 <template>
-  <div id="docs-sidebar" class="docs-sidebar sidebar-visible">
+  <div id="docs-sidebar" class="docs-sidebar">
     <div v-if="loading" class="mt-5">
       <b-skeleton animation="throb" width="85%"></b-skeleton>
       <b-skeleton animation="throb" width="55%"></b-skeleton>
@@ -8,7 +8,7 @@
     <nav v-else id="docs-nav" class="docs-nav navbar shadow-none">
       <ul class="section-items list-unstyled nav flex-column pb-3">
         <li class="nav-item__sidebar section-title">
-         <h4>
+          <h4>
            {{details.kegiatan_title}}
          </h4>
        </li>
@@ -31,103 +31,104 @@
         <mdb-spinner big multicolor />
       </div>
 
-      <div
-      v-else
-      v-for="(item, index) in pelatihans"
-      :key="item.id"
-      class="collapse__docs"
-      >
-      <b-button
-      v-b-toggle="`collapse-${item.id}`"
-      class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-      @click="ToggleFile(index + 1)"
-      >
-      <mdb-row col="12" class="d-flex justify-content-between">
-        <mdb-col col="9" md="9" sm="9" xs="9">
-          <h5>{{ item.title }}</h5>
-          <small> {{$moment(item.tanggal).format("LLLL")}} </small>
-        </mdb-col>
+      <div v-else class="collapse__docs">
+          <div
+          v-for="(item, index) in pelatihans"
+          :key="item.id"
+          >
+          <b-button
+          v-b-toggle="`collapse-${item.id}`"
+          class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+          @click="ToggleFile(index + 1)"
+          >
+          <mdb-row col="12" class="d-flex justify-content-between">
+            <mdb-col col="9" md="9" sm="9" xs="9">
+              <h5>{{ item.title }}</h5>
+              <small> {{$moment(item.tanggal).format("LLLL")}} </small>
+            </mdb-col>
 
-        <mdb-col col="2" md="2" sm="2" xs="2">
-          <mdb-icon
-          :icon="`${
-            show_collapse && index + 1 === urutan
-            ? 'angle-down'
-            : 'angle-right'
-          }`"
-          size="lg"
-          />
-        </mdb-col>
-      </mdb-row>
-    </b-button>
+            <mdb-col col="2" md="2" sm="2" xs="2">
+              <mdb-icon
+              :icon="`${
+                show_collapse && index + 1 === urutan
+                ? 'angle-down'
+                : 'angle-right'
+              }`"
+              size="lg"
+              />
+            </mdb-col>
+          </mdb-row>
+        </b-button>
 
-    <b-collapse
-    :id="`collapse-${item.id}`"
-    class="collapse__category-event mb-3 shadow-none"
+        <b-collapse
+        :id="`collapse-${item.id}`"
+        class="collapse__category-event shadow-none"
+        >
+        <b-card class="shadow-none">
+          <div v-for="(c, index) in item.categories" :key="c.id">
+            <h6> {{c.urutan}}. {{c.title}} </h6>
+            <div v-for="(d, index) in c.details" :key="d.id">
+              <b-list-group class="list__modul">
+                <b-list-group-item
+                class="list-unstyled"
+                @click="
+                ShowField(
+                  d,
+                  d.kategori == 3 || d.kategori == 4 || d.kategori == 6
+                  ? d.id
+                  : d.kategori,
+                  d.kategori
+                  )
+                  "
+                  >
+                  <mdb-row>
+                    <mdb-col md="10">
+                      <mdb-icon :icon="FilterIcon(d.kategori)" /> <a
+                      class="link__text"
+                      :href="`#item-${d.kategori}`"
+                      @click="
+                      ShowField(
+                        d,
+                        d.kategori == 3 ||
+                        d.kategori == 4 ||
+                        d.kategori == 6
+                        ? d.id
+                        : d.kategori,
+                        d.kategori
+                        )
+                        "
+                        >
+                        {{ d.title }}
+                      </a>
+                    </mdb-col>
+                    <mdb-col md="1">
+                      <mdb-icon far icon="circle" color="success" size="lg"/>
+                    </mdb-col>
+                  </mdb-row>
+                </b-list-group-item>
+              </b-list-group>
+            </div>
+          </div>
+        </b-card>
+      </b-collapse>
+    </div>
+    <b-dropdown-divider
+      style="list-style: none; margin-top: 0.7rem;margin-bottom: 1.5rem;"
+      ></b-dropdown-divider>
+    <b-button
+    v-b-toggle="`collapse-evaluasi`"
+    class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+    @click="ToggleFile(pelatihans.length + 1)"
     >
-    <b-card class="shadow-none">
-      <div v-for="(c, index) in item.categories" :key="c.id">
-        <h6> {{c.urutan}}. {{c.title}} </h6>
-        <div v-for="(d, index) in c.details" :key="d.id">
-          <b-list-group class="list__modul">
-            <b-list-group-item
-            class="list-unstyled"
-            @click="
-            ShowField(
-              d,
-              d.kategori == 3 || d.kategori == 4 || d.kategori == 6
-              ? d.id
-              : d.kategori,
-              d.kategori
-              )
-              "
-              >
-              <mdb-row>
-                <mdb-col md="10">
-                  <mdb-icon :icon="FilterIcon(d.kategori)" /> <a
-                  class="link__text"
-                  :href="`#item-${d.kategori}`"
-                  @click="
-                  ShowField(
-                    d,
-                    d.kategori == 3 ||
-                    d.kategori == 4 ||
-                    d.kategori == 6
-                    ? d.id
-                    : d.kategori,
-                    d.kategori
-                    )
-                    "
-                    >
-                    {{ d.title }}
-                  </a>
-                </mdb-col>
-                <mdb-col md="1">
-                  <mdb-icon class="text-success" icon="check-circle" size="lg"/>
-                </mdb-col>
-              </mdb-row>
-              
-            </b-list-group-item>
-          </b-list-group>
-        </div>
-      </div>
-    </b-card>
-  </b-collapse>
-</div>
+    <mdb-row col="12" class="d-flex justify-content-between">
+      <mdb-col col="9" md="9" sm="9" xs="9"> 
+       <h5> Evaluasi </h5>
+     </mdb-col>
 
-<div v-if="!loading" class="collapse__docs">
-  <b-button
-  v-b-toggle="`collapse-evaluasi`"
-  class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-  @click="ToggleFile(3)"
-  >
-  <mdb-row col="12" class="d-flex justify-content-between">
-    <mdb-col col="9" md="9" sm="9" xs="9"> Evaluasi </mdb-col>
-
-    <mdb-col col="2" md="2" sm="2" xs="2">
+     <mdb-col col="2" md="2" sm="2" xs="2">
       <mdb-icon
       :icon="`${
-        show_collapse && 3 === urutan
+        show_collapse && pelatihans.length+1 === urutan
         ? 'angle-down'
         : 'angle-right'
       }`"
@@ -139,7 +140,7 @@
 
 <b-collapse
 :id="`collapse-evaluasi`"
-class="collapse__category-event mb-3 shadow-none"
+class="collapse__category-event shadow-none"
 >
 <b-card class="shadow-none">
   <div v-for="(evaluasi, index) in evaluasis" :key="evaluasi.id">
@@ -148,20 +149,83 @@ class="collapse__category-event mb-3 shadow-none"
       class="list-unstyled"
       @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
       >
-      &nbsp;
-      <a
-      class="link__text"
-      :href="`#item-${evaluasi.id}`"
-      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-      >
-      {{ evaluasi.nama }}
-    </a>
+      <mdb-row>
+        <mdb-col md="10">
+          <mdb-icon far icon="calendar-check" size="lg"/> <a
+          class="link__text"
+          :href="`#item-${evaluasi.id}`"
+          @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+          >
+          {{ evaluasi.nama }}
+        </a>
+      </mdb-col>
+      <mdb-col md="1">
+        <mdb-icon far icon="circle" color="success" size="lg"/>
+      </mdb-col>
+    </mdb-row>
   </b-list-group-item>
 </b-list-group>
 </div>
 </b-card>
 </b-collapse>
+
+<b-button
+v-b-toggle="`collapse-absensi`"
+class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+@click="ToggleFile(pelatihans.length+2)"
+>
+<mdb-row col="12" class="d-flex justify-content-between">
+  <mdb-col col="9" md="9" sm="9" xs="9"> 
+    <h5>Absensi</h5> 
+  </mdb-col>
+
+  <mdb-col col="2" md="2" sm="2" xs="2">
+    <mdb-icon
+    :icon="`${
+      show_collapse && pelatihans.length+2 === urutan
+      ? 'angle-down'
+      : 'angle-right'
+    }`"
+    size="lg"
+    />
+  </mdb-col>
+</mdb-row>
+</b-button>
+
+<b-collapse
+:id="`collapse-absensi`"
+class="collapse__category-event -3 shadow-none"
+>
+<b-card class="shadow-none">
+  <div v-for="(evaluasi, index) in absensis" :key="evaluasi.id">
+    <b-list-group class="list__modul">
+      <b-list-group-item
+      class="list-unstyled"
+      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+      >
+      <mdb-row>
+        <mdb-col md="10">
+          <mdb-icon far icon="calendar-alt" size="lg"/> <a
+          class="link__text"
+          :href="`#item-${evaluasi.id}`"
+          @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+          >
+          {{ evaluasi.nama }}
+        </a>
+      </mdb-col>
+      <mdb-col md="1">
+        <mdb-icon far icon="circle" color="success" size="lg"/>
+      </mdb-col>
+    </mdb-row>
+  </b-list-group-item>
+</b-list-group>
 </div>
+</b-card>
+</b-collapse>
+
+  </div>
+
+
 </ul>
 </nav>
 <!--//docs-nav-->
@@ -202,70 +266,21 @@ class="collapse__category-event mb-3 shadow-none"
           nama: "Evaluasi Rencana Tindak Lanjut",
         },
         ],
+        absensis: [
+        {
+          id: 11,
+          nama: "Absensi Pelatihan",
+        },
+        ],
+
       };
     },
 
     mounted() {
-      this.SidebarLink();
+      this.SetupSidebar(), this.SidebarLink();
     },
 
     methods: {
-
-      SetupSidebar() {
-        const sidebar = document.getElementById("docs-sidebar");
-        sidebar.classList.add("sidebar-visible");
-        let w = window.innerWidth;
-        window.onload = function () {
-          if (w >= 1200) {
-            console.log("larger");
-            sidebar.classList.remove("sidebar-hidden");
-            sidebar.classList.add("sidebar-visible");
-          } else {
-            console.log("smaller");
-            sidebar.classList.remove("sidebar-visible");
-            sidebar.classList.add("sidebar-hidden");
-          }
-        };
-
-        window.onresize = function () {
-          if (w >= 1200) {
-            console.log("larger");
-            sidebar.classList.remove("sidebar-hidden");
-            sidebar.classList.add("sidebar-visible");
-          } else {
-            console.log("smaller");
-            sidebar.classList.remove("sidebar-visible");
-            sidebar.classList.add("sidebar-hidden");
-          }
-        };
-      },
-
-      SidebarLink() {
-        const sidebarLinks = document.querySelectorAll("#docs-nav .scrollto");
-        console.log(sidebarLinks);
-        sidebarLinks.forEach((sidebarLink) => {
-          sidebarLink.addEventListener("click", (e) => {
-            console.log(e);
-            console.log("check");
-            e.preventDefault();
-
-            var target = sidebarLink.getAttribute("href").replace("#", "");
-            var sidebar = document.getElementById("docs-sidebar");
-
-            document
-            .getElementById(target)
-            .scrollIntoView({ behavior: "smooth" });
-            if (
-              sidebar.classList.contains("sidebar-visible") &&
-              window.innerWidth < 1200
-              ) {
-              sidebar.classList.remove("sidebar-visible");
-            sidebar.classList.add("sidebar-hidden");
-          }
-        });
-        });
-      },
-
       FilterIcon(type) {
         switch (type) {
           case 1:
@@ -297,6 +312,7 @@ class="collapse__category-event mb-3 shadow-none"
       },
 
       ToggleFile(urutan) {
+        console.log(urutan)
         if (urutan) {
           this.urutan = urutan;
           this.show_collapse = !this.show_collapse;
@@ -313,9 +329,9 @@ class="collapse__category-event mb-3 shadow-none"
         text: "Anda akan keluar dari halaman profile!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confiruttonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Ya, Lanjut keluar!",
+        confiruttonText: "Ya, Lanjut keluar!",
       }).then((result) => {
         if (result.isConfirmed) {
           this.$store.dispatch("config/storeConfigAuth", "");
@@ -341,7 +357,62 @@ class="collapse__category-event mb-3 shadow-none"
           }, 900);
         }
       });
-    }
+    },
+
+    SetupSidebar() {
+      const sidebar = document.getElementById("docs-sidebar");
+      sidebar.classList.add("sidebar-visible");
+      let w = window.innerWidth;
+      window.onload = function () {
+        if (w >= 1200) {
+          console.log("larger");
+          sidebar.classList.remove("sidebar-hidden");
+          sidebar.classList.add("sidebar-visible");
+        } else {
+          console.log("smaller");
+          sidebar.classList.remove("sidebar-visible");
+          sidebar.classList.add("sidebar-hidden");
+        }
+      };
+
+      window.onresize = function () {
+        if (w >= 1200) {
+          console.log("larger");
+          sidebar.classList.remove("sidebar-hidden");
+          sidebar.classList.add("sidebar-visible");
+        } else {
+          console.log("smaller");
+          sidebar.classList.remove("sidebar-visible");
+          sidebar.classList.add("sidebar-hidden");
+        }
+      };
+    },
+
+    SidebarLink() {
+      const sidebarLinks = document.querySelectorAll("#docs-nav .scrollto");
+      console.log(sidebarLinks);
+      sidebarLinks.forEach((sidebarLink) => {
+        sidebarLink.addEventListener("click", (e) => {
+          console.log(e);
+          console.log("check");
+          e.preventDefault();
+
+          var target = sidebarLink.getAttribute("href").replace("#", "");
+          var sidebar = document.getElementById("docs-sidebar");
+
+          document
+          .getElementById(target)
+          .scrollIntoView({ behavior: "smooth" });
+          if (
+            sidebar.classList.contains("sidebar-visible") &&
+            window.innerWidth < 1200
+            ) {
+            sidebar.classList.remove("sidebar-visible");
+          sidebar.classList.add("sidebar-hidden");
+        }
+      });
+      });
+    },
   },
 };
 </script>

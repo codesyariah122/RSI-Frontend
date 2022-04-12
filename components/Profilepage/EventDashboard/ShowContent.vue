@@ -249,6 +249,26 @@
       />
     </section>
   </div>
+  <div v-else-if="type == 11" class="embed__file">
+    <header class="docs-header">
+      <section class="docs-intro">
+        <h5 class="type__name">Absensi</h5>
+        <h2>Absensi Pelatihan</h2>
+      </section>
+      <!--//docs-intro-->
+    </header>
+    <section class="docs-section" id="item-1-1">
+      <EventTestAbsensi
+        :token="token"
+        :api_url="api_url"
+        :kegiatan_id="kegiatan_id"
+        :pelatihan_id="pelatihan_id"
+        :tests="tests"
+        :evaluasi="evaluasi"
+        :max="max" :value="value"
+      />
+    </section>
+  </div>
 </template>
 
 <script>
@@ -272,6 +292,7 @@ export default {
     "kegiatan_id",
     "pelatihan_id",
     "evaluasi",
+    "tests"
   ],
 };
 </script>

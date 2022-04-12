@@ -129,8 +129,8 @@
 @media (min-width: 992px) {
 	.docs-wrapper{
 		.docs-sidebar{	
-			margin-top: .7rem;
-			width:365px!important;
+			margin-top: 1rem;
+			width:380px!important;
 			scrollbar-color: $scroll-bar-color $scroll-bar-bg;
 			scrollbar-width: auto;
 			&:-webkit-scrollbar {
@@ -145,6 +145,10 @@
 				border: 11px solid $scroll-bar-bg;
 			}
 			.docs-nav{
+				overflow-x: hidden; 
+				position: static;
+				height: 120vh;
+				margin-bottom: 5rem;
 				.profile__fasilitator{
 					margin-left: -3rem;
 					.profile{
@@ -223,8 +227,8 @@
 
 
 		.docs-content{
-			margin-top: 10rem!important;
-			margin-left: 21rem;
+			margin-top: 8rem!important;
+			margin-left: 22rem;
 			height: auto!important;
 			.container{
 				.docs-article{

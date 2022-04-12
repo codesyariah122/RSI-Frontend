@@ -6,8 +6,12 @@
       </mdb-col>
 
       <mdb-col v-if="apiKey" md="12" class="weather">
-         <strong>{{ city.city
-          }}</strong> <mdb-badge :color="color_badge" gradient="blue" size="lg" class="rounded-pill shadow-none">
+         <strong>Lokasi Anda :</strong> <br>
+         <strong>
+          {{ city.city
+          }}
+          </strong> &nbsp;&nbsp;
+          <mdb-badge :color="color_badge" gradient="blue" size="lg" class="rounded-pill shadow-none">
          <img
             :src="`http://openweathermap.org/img/wn/${weathers.icon}@2x.png`"
           /> {{ weathers.description }} {{ temp }}&#8451;
@@ -152,7 +156,7 @@ export default {
     // filter: drop-shadow(9px 9px 11px black);
   }
   .weather {
-    margin-top: 1rem !important;
+    // margin-top: 1rem !important;
     margin-left: 2rem;
     .badge {
      width: 30%;
