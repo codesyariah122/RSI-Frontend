@@ -38,7 +38,7 @@
 					<mdb-row class="inside__first mt-3">
 						<mdb-col md="4">
 							<h5>Jenis kegiatan</h5>
-							<mdb-badge class="badge btn-outline-primary mb-2" style="color:#004899!important;">
+							<mdb-badge class="badge__category shadow-none mb-2">
 								{{details.kategori_value}}
 							</mdb-badge>
 						</mdb-col>
@@ -63,15 +63,13 @@
 					</mdb-row>
 
 					<mdb-row class="inside__second mt-3">
-
-
 						<mdb-col>
 							<div v-if="loading">
 								<span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
 								Loading...
 							</div>
 							<div v-else>
-								<mdb-btn disabled color="success" size="md" block class="text-white"> 
+								<mdb-btn disabled size="md" block class="text-white"> 
 									<mdb-icon icon="check" size="lg"/> {{status_pendaftaran}}
 								</mdb-btn>
 							</div>
@@ -131,7 +129,7 @@
 		}
 		.col-2{
 			h4{
-				color: $color-primary!important;
+				color: $second-black!important;
 				font-size: 18px;
 				font-weight: 600;
 			}
@@ -152,72 +150,83 @@
 			}
 		}
 	}
-@media (min-width: 992px) {
-	.event__detail-content{
-		.col-1{
-			.event__image-wrap{
-				img{
-					width:375px;
-					height: 370px;
-				}
-				position: relative;
-				.overlay__event-img {
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					left: 0;
-					right: 0;
-					width: 355px;
-					height:375px;
-					opacity: 0;
-					transition: .3s ease;
-					background-color: rgba(205, 209, 228, 0.9);
-				}
+	@media (min-width: 992px) {
+		.event__detail-content{
+			.col-1{
+				.event__image-wrap{
+					img{
+						width:375px;
+						height: 370px;
+					}
+					position: relative;
+					.overlay__event-img {
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						width: 355px;
+						height:375px;
+						opacity: 0;
+						transition: .3s ease;
+						background-color: rgba(205, 209, 228, 0.9);
+					}
 
-				&:hover .overlay__event-img {
-					opacity: 1;
-				}
+					&:hover .overlay__event-img {
+						opacity: 1;
+					}
 
-				.icon {
-					color: white;
-					font-weight: 700;
-					font-size: 100px;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					-ms-transform: translate(-50%, -50%);
-					text-align: center;
-				}
+					.icon {
+						color: white;
+						font-weight: 700;
+						font-size: 100px;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						-ms-transform: translate(-50%, -50%);
+						text-align: center;
+					}
 
-				.fa-zoom:hover {
-					color: #eee;
+					.fa-zoom:hover {
+						color: #eee;
+					}
 				}
 			}
-		}
-		.col-2{
-			h4{
-				color: $color-primary!important;
-				font-size: 18px;
-				font-weight: 600;
-			}
-			h6{
-				color: $idr-color!important;
-				font-size: 16px;
-				font-weight: 600;
-			}
-			.inside__first{
-				h5{
-					font-size: 14px;
+			.col-2{
+				h4{
+					color: $second-black!important;
+					font-size: 18px;
 					font-weight: 600;
 				}
-				p{
-					font-size:12px;
+				h6{
+					color: $idr-color!important;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				.inside__first{
+					.badge__category{
+						background-color: transparent!important;
+						color: $color-primary!important;
+						border:1px $color-primary solid;
+						font-size: 13px;
+					}
+					h5{
+						font-size: 14px;
+						font-weight: 600;
+					}
+					p{
+						font-size:12px;
+					}
+				}
+				.inside__second{
+					button{
+						background-color: $primary-button!important;
+					}
 				}
 			}
 		}
 	}
-}
 </style>
 
 <script>

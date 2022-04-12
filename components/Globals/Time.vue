@@ -1,18 +1,21 @@
 <template>
   <div>
     <mdb-row class="d-flex justify-content-start" col="12">
-      <mdb-col class="glow" md="3">
+      <mdb-col class="glow" md="12">
         <h4>{{ time }}</h4>
       </mdb-col>
 
-      <mdb-col v-if="apiKey" md="6" class="weather">
-        <mdb-badge gradient="blue" :color="color_badge" class="rounded-pill">
-          {{ city.city
-          }}<img
+      <mdb-col v-if="apiKey" md="12" class="weather">
+         <strong>{{ city.city
+          }}</strong> <mdb-badge :color="color_badge" gradient="blue" size="lg" class="rounded-pill shadow-none">
+         <img
             :src="`http://openweathermap.org/img/wn/${weathers.icon}@2x.png`"
-          />
-          {{ weathers.description }} {{ temp }}&#8451;
+          /> {{ weathers.description }} {{ temp }}&#8451;
         </mdb-badge>
+      </mdb-col>
+
+      <mdb-col md="12">
+        <GlobalsMap :coord="coord" :center_coord="center" :city="city"/>
       </mdb-col>
     </mdb-row>
   </div>
@@ -37,6 +40,11 @@ export default {
       weathers: [],
       fdays: [],
       color_badge: "",
+      coord: [],
+      center:{
+        lat: '',
+        lng: ''
+      }
     };
   },
 
@@ -55,7 +63,11 @@ export default {
     }, 1000);
   },
 
-  mounted() {},
+  mounted() {
+    this.YourIp(),
+    this.YourCity(),
+    this.WeatherByCity()
+  },
 
   methods: {
     YourIp() {
@@ -80,6 +92,19 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+    WeatherByCity() {
+      CheckWeather(this.city.city, this.apiKey)
+      .then((res) => {
+        console.log(res);
+        this.weathers = res.weather[0];
+        this.temp = this.getCelcius(res.main.temp);
+        this.DetectColor(this.weathers.description);
+        this.coord.push(res.coord)
+        this.center.lat = res.coord.lat
+        this.center.lng = res.coord.lon
+      })
+      .catch((err) => console.log(err));
+    },
 
     // convert celcius
     getCelcius(num) {
@@ -87,16 +112,6 @@ export default {
       return Math.ceil((num - 32) / 1.8);
     },
 
-    WeatherByCity() {
-      CheckWeather(this.city.city, this.apiKey)
-        .then((res) => {
-          console.log(res);
-          this.weathers = res.weather[0];
-          this.temp = this.getCelcius(res.main.temp);
-          this.DetectColor(this.weathers.description);
-        })
-        .catch((err) => console.log(err));
-    },
 
     DetectColor(color) {
       switch (color) {
@@ -137,13 +152,13 @@ export default {
     // filter: drop-shadow(9px 9px 11px black);
   }
   .weather {
-    margin-top: -1rem !important;
-    margin-left: -2rem;
+    margin-top: 1rem !important;
+    margin-left: 2rem;
     .badge {
-      // color:$default-black!important;
-      // font-weight: 600;
+     width: 30%;
+
       img {
-        filter: drop-shadow(1px 11px 9px powderblue);
+        filter: drop-shadow(1px 11px 9px  #B6D0E2);
         width: 45px;
       }
     }

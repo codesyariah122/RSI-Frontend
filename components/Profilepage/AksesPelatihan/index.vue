@@ -33,39 +33,49 @@
 								</b-card>
 							</b-col>
 						</b-row>
+
 						<b-row v-else>
-							<b-col v-if="listIndex <= pelatihans.length" v-for="listIndex in listToShow" md="4" xs="12" sm="12" class="mb-3" :key="pelatihans[listIndex-1].id">
-								<b-card :img-src="pelatihans[listIndex-1].photo" img-alt="Card image" img-top class="shadow-none"  :sub-title="`${$moment(pelatihans[listIndex-1].tanggal_awal).format('LL')} - ${$moment(pelatihans[listIndex-1].tanggal_akhir).format('LL')}`">
-									<h6>{{pelatihans[listIndex-1].kegiatan_title}}</h6>
-									<mdb-col md="4">
-										<span>Status : </span> 
-									</mdb-col>
-									<mdb-col md="1">
-										<mdb-badge size="sm" class="badge btn-success mb-2 badge__category text-white" >{{pelatihans[listIndex-1].status_pendaftaran_value}}</mdb-badge>
-									</mdb-col>
-									<mdb-row col="12"  class="justify-content-start content__card-event">
-										<!-- <mdb-col md="12" xs="12" sm="12" class="desc">
-											<blockquote class="blockquote-footer text-truncate">
-												{{pelatihans[listIndex-1].kegiatan_desc}}
-											</blockquote>
-										</mdb-col> -->
-										<mdb-col md="12" xs="12" sm="12">
-											<div class="truncate" :data-title="`Penyelenggara: ${pelatihans[listIndex-1].penyelenggara}`">Penyelenggara: {{pelatihans[listIndex-1].penyelenggara}}</div>
-										</mdb-col>
-									</mdb-row>
+							<b-col v-if="listIndex <= pelatihans.length" v-for="listIndex in listToShow" md="4" xs="12" sm="12" class="mb-3 card__pelatihan" :key="pelatihans[listIndex-1].id">
+								
+								<mdb-card>
+									<mdb-card-image
+									:src="pelatihans[listIndex-1].photo"
+									alt="No image found"
+									></mdb-card-image>
 
-									<mdb-row col="12" class="justify-content-center content__idr-event">
-										<mdb-col md="12">
-											<h4 class="orange-text">{{$format(pelatihans[listIndex-1].harga)}}</h4>
-										</mdb-col>
-									</mdb-row>
+									<mdb-card-body>
+										<mdb-badge
+										class="mb-2 badge__category shadow-none"
+										>{{pelatihans[listIndex-1].status_pendaftaran_value}}</mdb-badge
+										>
 
-									<mdb-row col="12" class="justify-content-center content__link-event">
-										<mdb-col lg="12">	
-											<nuxt-link :to="`/profile/${username}/events/${pelatihans[listIndex-1].kegiatan_id}/${$slug(pelatihans[listIndex-1].kegiatan_title)}`" size="sm" class="btn btn-outline-primary font-weight-bold btn__link-event">Akses Pelatihan</nuxt-link>
-										</mdb-col>
-									</mdb-row>
-								</b-card>
+										<mdb-card-title
+										class="truncate"
+										style="color: #004899; font-weight: bold; min-height: 80px"
+										>{{ pelatihans[listIndex-1].kegiatan_title }}</mdb-card-title
+										>
+										<mdb-card-text
+										class="truncate2 mt-2"
+										style="width: 200px; min-height: 45px"
+										>{{ pelatihans[listIndex-1].kegiatan_desc }}</mdb-card-text
+										>
+
+										<h6 class="mt-2 idr__color">
+											{{ $format(pelatihans[listIndex-1].harga) }}
+										</h6>
+
+										<span style="font-size: 12px; margin-top: 1.5rem"
+										><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
+										{{ $moment(pelatihans[listIndex-1].tgl_awal).format("LL") }} -
+										{{ $moment(pelatihans[listIndex-1].tgl_akhir).format("LL") }}</span
+										>
+
+										<hr />
+
+											<nuxt-link :to="`/profile/${username}/events/${pelatihans[listIndex-1].kegiatan_id}/${$slug(pelatihans[listIndex-1].kegiatan_title)}`" size="sm" class="btn my__btn-primary rounded-pill btn-block">Akses Pelatihan</nuxt-link>
+										</mdb-card-body>
+									</mdb-card>
+
 							</b-col>
 						</b-row>
 

@@ -60,7 +60,7 @@
 							margin-bottom: 1.5rem;
 							&:hover{
 								background-color: $bg-hover-first;
-								color:$color-primary;
+								color:$second-black;
 								cursor: pointer;
 							}
 							.link__text{
@@ -73,7 +73,7 @@
 							a{
 								text-decoration: none;
 								&:hover{
-									color:$color-primary;
+									color:$second-black;
 								}
 							}
 						}
@@ -94,12 +94,12 @@
 							h2{
 								font-size: 18px;
 								font-weight: 700;
-								color:$color-primary;
+								color:$second-black;
 							}
 							.type__name{
-								border: 2px solid $color-primary!important;
+								border: 2px solid $second-black!important;
 								width: 30%;
-								color: $color-primary;
+								color: $second-black;
 								font-weight: 500;
 								text-align: center;
 								margin-bottom: 1rem;
@@ -129,8 +129,8 @@
 @media (min-width: 992px) {
 	.docs-wrapper{
 		.docs-sidebar{	
-			margin-top: -.7rem;
-			width:320px!important;
+			margin-top: .7rem;
+			width:365px!important;
 			scrollbar-color: $scroll-bar-color $scroll-bar-bg;
 			scrollbar-width: auto;
 			&:-webkit-scrollbar {
@@ -145,15 +145,22 @@
 				border: 11px solid $scroll-bar-bg;
 			}
 			.docs-nav{
+				.profile__fasilitator{
+					margin-left: -3rem;
+					.profile{
+						margin-top: 1rem;
+						margin-left: -2rem;
+					}
+				}
 				.collapse__docs{
 					overflow: hidden!important;
 					border:0;
 					width: 100%;
 					.btn__pelatihan{
 						background-color:transparent!important;
-						color:#28b76b;
+						color:$second-black!important;
 						width: 320px!important;
-						text-transform: uppercase;
+						text-transform: capitalize;
 						font-size:12px;
 						text-align: left;
 						margin-left: -15px;
@@ -164,23 +171,31 @@
 
 					.collapse__category-event{
 						overflow-x: hidden;
-						margin-left:5px;
+						margin-left:1px;
+						h6{
+							color:$second-black!important;
+							font-weight: 700;
+							margin-left: -1rem;
+							margin-bottom: 1rem;
+							text-transform: capitalize;
+						}
 						.card{
 							border: 0 none;
 						}
 						.list__modul{
 							margin-top: -.8rem;
-							&:hover{
-								color:$color-primary!important;
-							}
+							// &:hover{
+							// 	color:$second-black!important;
+							// }
 							.list-group-item{
-								background-color: transparent;
+								// background-color: transparent;
+								background-color:$button-gray!important;
 								width: 320px;
 								margin-left: -1.8rem;
 								margin-bottom: 1.5rem;
 								&:hover{
 									background-color: $bg-hover-first;
-									color:$color-primary!important;
+									color:$second-black!important;
 									cursor: pointer;
 								}
 								.link__text{
@@ -189,14 +204,14 @@
 									margin-left: .5rem;
 									color: $default-black;
 									&:hover{
-										color:$color-primary!important;
+										color:$second-black!important;
 									}
 								}
 								border:0;
 								a{
 									text-decoration: none;
 									&:hover{
-										color:$color-primary!important;
+										color:$second-black!important;
 									}
 								}
 							}
@@ -208,7 +223,8 @@
 
 
 		.docs-content{
-			margin-top: 6rem!important;
+			margin-top: 10rem!important;
+			margin-left: 21rem;
 			height: auto!important;
 			.container{
 				.docs-article{
@@ -220,15 +236,15 @@
 								h2{
 									font-size: 21px;
 									font-weight:700;	
-									color: $color-primary;
+									color: $second-black;
 								}
 								.type__name{
-									border: 2px solid $color-primary!important;
+									border: 3px solid $color-primary!important;
 									width:15%;
 									color: $color-primary;
-									font-weight: 500;
+									font-weight: 600;
 									text-align: center;
-									margin-bottom: 1.5rem;
+									margin-bottom: 1rem;
 									font-size: 16px;
 									margin-left: -.2rem;
 								}
@@ -239,9 +255,10 @@
 							.pre__test{
 								margin-top: -2rem;
 								.box__intro-test{
+									color: $second-black;
+									font-weight: 600;
 									border: 4px solid $scroll-bar-bg;
-									width: 50%;
-									margin-left: -25rem;
+									margin-left: 2rem;
 									margin-bottom: 3rem;
 								}
 							}

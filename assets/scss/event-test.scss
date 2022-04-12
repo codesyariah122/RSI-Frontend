@@ -17,7 +17,8 @@
 				line-height: 19px;
 			}
 			p{
-				color: $default-gray;
+				color: $second-black;
+				font-weight: 600!important;
 				line-height: 23.5px;
 				text-align: justify;
 			}
@@ -25,7 +26,8 @@
 			.test-answers  {
 				.answer__item{					
 					border: 1px solid $bg-primary;
-					color: #3FB1C6;
+					color: $second-black;
+					font-weight: 500;
 					font-size: smaller;
 					border-radius: 6px;
 					display: block;
@@ -53,7 +55,7 @@
 @media (min-width: 992px) {
 	.pre__test{
 		.container{
-			margin-top:3rem;
+			margin-top:5rem;
 		}
 
 		.success__test{
@@ -69,7 +71,8 @@
 				line-height: 19px;
 			}
 			p{
-				color: $default-gray;
+				color: $second-black;
+				font-weight: 600!important;
 				line-height: 23.5px;
 				text-align: justify;
 			}
@@ -77,7 +80,8 @@
 			.test-answers  {
 				.answer__item{					
 					border: 1px solid $bg-primary;
-					color: #3FB1C6;
+					color: $second-black;
+					font-weight: 500;
 					font-size: smaller;
 					border-radius: 6px;
 					display: block;
@@ -98,7 +102,9 @@
 			.test-answers :checked + .answer__item .answer__icon {
 				display: inline-block
 			}
-
+		}
+		.my__btn-primary{
+			@include button_primary;
 		}
 	}
 }

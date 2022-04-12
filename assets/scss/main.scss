@@ -1135,3 +1135,31 @@
 .line{
 	list-style: none;
 }
+
+// Akses Pelatihan
+@media (min-width: 992px) {
+	.akses__pelatihan{
+		margin-top:8rem;
+		.jumbotron{
+			.card__pelatihan{
+				.card{
+					.card-title{
+						color:$second-black!important;
+					}
+					.card-text{
+						margin-top: -1rem!important;
+					}
+					.badge__category{
+						background-color: transparent!important;
+						color: $color-primary!important;
+						border:1px $color-primary solid;
+						font-size: 13px;
+					}
+					.my__btn-primary{
+						@include button_primary;
+					}
+				}
+			}
+		}
+	}
+}

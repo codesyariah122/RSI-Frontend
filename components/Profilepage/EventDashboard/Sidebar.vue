@@ -1,5 +1,5 @@
 <template>
-  <div id="docs-sidebar" class="docs-sidebar">
+  <div id="docs-sidebar" class="docs-sidebar sidebar-visible">
     <div v-if="loading" class="mt-5">
       <b-skeleton animation="throb" width="85%"></b-skeleton>
       <b-skeleton animation="throb" width="55%"></b-skeleton>
@@ -8,170 +8,183 @@
     <nav v-else id="docs-nav" class="docs-nav navbar shadow-none">
       <ul class="section-items list-unstyled nav flex-column pb-3">
         <li class="nav-item__sidebar section-title">
-          <a class="nav-link__sidebar scrollto active" href="#section-1"
-            ><span class="theme-icon-holder me-2"
-              ><i class="fas fa-map-signs"></i></span
-            >Introduction</a
-          >
-        </li>
-        <li class="nav-item__sidebar">
-          <a class="nav-link__sidebar" href="#item-1-1"
-            >Halo, {{ profiles.nama }}</a
-          >
-        </li>
-        <b-dropdown-divider
-          style="list-style: none; margin-top: 0.5rem"
-        ></b-dropdown-divider>
-
-        <div v-if="loading">
-          <mdb-spinner big multicolor />
+         <h4>
+           {{details.kegiatan_title}}
+         </h4>
+       </li>
+       <li class="nav-item__sidebar">
+        <div class="row justify-content-start profile__fasilitator">
+          <div class="col-md-5 avatar">
+            <b-avatar :src="require('~/assets/images/Avatar/5.jpg')" size="5rem"></b-avatar>
+          </div>
+          <div class="col-md-7 profile">
+            <h5>dr. Hasan Fadly</h5>
+            <blockquote>Dokter Umum</blockquote>
+          </div>
         </div>
+      </li>
+      <b-dropdown-divider
+      style="list-style: none; margin-top: 0.5rem"
+      ></b-dropdown-divider>
 
-        <div
-          v-else
-          v-for="(item, index) in pelatihans"
-          :key="item.id"
-          class="collapse__docs"
-        >
-          <b-button
-            v-b-toggle="`collapse-${item.id}`"
-            class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-            @click="ToggleFile(index + 1)"
-          >
-            <mdb-row col="12" class="d-flex justify-content-between">
-              <mdb-col col="9" md="9" sm="9" xs="9">
-                {{ item.title }}
-              </mdb-col>
+      <div v-if="loading">
+        <mdb-spinner big multicolor />
+      </div>
 
-              <mdb-col col="2" md="2" sm="2" xs="2">
-                <mdb-icon
-                  :icon="`${
-                    show_collapse && index + 1 === urutan
-                      ? 'minus-circle'
-                      : 'plus-circle'
-                  }`"
-                  size="lg"
-                />
-              </mdb-col>
-            </mdb-row>
-          </b-button>
+      <div
+      v-else
+      v-for="(item, index) in pelatihans"
+      :key="item.id"
+      class="collapse__docs"
+      >
+      <b-button
+      v-b-toggle="`collapse-${item.id}`"
+      class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+      @click="ToggleFile(index + 1)"
+      >
+      <mdb-row col="12" class="d-flex justify-content-between">
+        <mdb-col col="9" md="9" sm="9" xs="9">
+          <h5>{{ item.title }}</h5>
+          <small> {{$moment(item.tanggal).format("LLLL")}} </small>
+        </mdb-col>
 
-          <b-collapse
-            :id="`collapse-${item.id}`"
-            class="collapse__category-event mb-3 shadow-none"
-          >
-            <b-card class="shadow-none">
-              <div v-for="(c, index) in item.categories" :key="c.id">
-                <div v-for="(d, index) in c.details" :key="d.id">
-                  <b-list-group class="list__modul">
-                    <b-list-group-item
-                      class="list-unstyled"
-                      @click="
-                        ShowField(
-                          d,
-                          d.kategori == 3 || d.kategori == 4 || d.kategori == 6
-                            ? d.id
-                            : d.kategori,
-                          d.kategori
-                        )
-                      "
+        <mdb-col col="2" md="2" sm="2" xs="2">
+          <mdb-icon
+          :icon="`${
+            show_collapse && index + 1 === urutan
+            ? 'angle-down'
+            : 'angle-right'
+          }`"
+          size="lg"
+          />
+        </mdb-col>
+      </mdb-row>
+    </b-button>
+
+    <b-collapse
+    :id="`collapse-${item.id}`"
+    class="collapse__category-event mb-3 shadow-none"
+    >
+    <b-card class="shadow-none">
+      <div v-for="(c, index) in item.categories" :key="c.id">
+        <h6> {{c.urutan}}. {{c.title}} </h6>
+        <div v-for="(d, index) in c.details" :key="d.id">
+          <b-list-group class="list__modul">
+            <b-list-group-item
+            class="list-unstyled"
+            @click="
+            ShowField(
+              d,
+              d.kategori == 3 || d.kategori == 4 || d.kategori == 6
+              ? d.id
+              : d.kategori,
+              d.kategori
+              )
+              "
+              >
+              <mdb-row>
+                <mdb-col md="10">
+                  <mdb-icon :icon="FilterIcon(d.kategori)" /> <a
+                  class="link__text"
+                  :href="`#item-${d.kategori}`"
+                  @click="
+                  ShowField(
+                    d,
+                    d.kategori == 3 ||
+                    d.kategori == 4 ||
+                    d.kategori == 6
+                    ? d.id
+                    : d.kategori,
+                    d.kategori
+                    )
+                    "
                     >
-                      <mdb-icon :icon="FilterIcon(d.kategori)" />&nbsp;
-                      <a
-                        class="link__text"
-                        :href="`#item-${d.kategori}`"
-                        @click="
-                          ShowField(
-                            d,
-                            d.kategori == 3 ||
-                              d.kategori == 4 ||
-                              d.kategori == 6
-                              ? d.id
-                              : d.kategori,
-                            d.kategori
-                          )
-                        "
-                      >
-                        {{ d.title }}
-                      </a>
-                    </b-list-group-item>
-                  </b-list-group>
-                </div>
-              </div>
-            </b-card>
-          </b-collapse>
+                    {{ d.title }}
+                  </a>
+                </mdb-col>
+                <mdb-col md="1">
+                  <mdb-icon class="text-success" icon="check-circle" size="lg"/>
+                </mdb-col>
+              </mdb-row>
+              
+            </b-list-group-item>
+          </b-list-group>
         </div>
+      </div>
+    </b-card>
+  </b-collapse>
+</div>
 
-        <div v-if="!loading" class="collapse__docs">
-          <b-button
-            v-b-toggle="`collapse-evaluasi`"
-            class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-            @click="ToggleFile(3)"
-          >
-            <mdb-row col="12" class="d-flex justify-content-between">
-              <mdb-col col="9" md="9" sm="9" xs="9"> Evaluasi </mdb-col>
+<div v-if="!loading" class="collapse__docs">
+  <b-button
+  v-b-toggle="`collapse-evaluasi`"
+  class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+  @click="ToggleFile(3)"
+  >
+  <mdb-row col="12" class="d-flex justify-content-between">
+    <mdb-col col="9" md="9" sm="9" xs="9"> Evaluasi </mdb-col>
 
-              <mdb-col col="2" md="2" sm="2" xs="2">
-                <mdb-icon
-                  :icon="`${
-                    show_collapse && 3 === urutan
-                      ? 'minus-circle'
-                      : 'plus-circle'
-                  }`"
-                  size="lg"
-                />
-              </mdb-col>
-            </mdb-row>
-          </b-button>
+    <mdb-col col="2" md="2" sm="2" xs="2">
+      <mdb-icon
+      :icon="`${
+        show_collapse && 3 === urutan
+        ? 'angle-down'
+        : 'angle-right'
+      }`"
+      size="lg"
+      />
+    </mdb-col>
+  </mdb-row>
+</b-button>
 
-          <b-collapse
-            :id="`collapse-evaluasi`"
-            class="collapse__category-event mb-3 shadow-none"
-          >
-            <b-card class="shadow-none">
-              <div v-for="(evaluasi, index) in evaluasis" :key="evaluasi.id">
-                <b-list-group class="list__modul">
-                  <b-list-group-item
-                    class="list-unstyled"
-                    @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-                  >
-                    &nbsp;
-                    <a
-                      class="link__text"
-                      :href="`#item-${evaluasi.id}`"
-                      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-                    >
-                      {{ evaluasi.nama }}
-                    </a>
-                  </b-list-group-item>
-                </b-list-group>
-              </div>
-            </b-card>
-          </b-collapse>
-        </div>
-      </ul>
-    </nav>
-    <!--//docs-nav-->
-  </div>
-  <!--//docs-sidebar-->
+<b-collapse
+:id="`collapse-evaluasi`"
+class="collapse__category-event mb-3 shadow-none"
+>
+<b-card class="shadow-none">
+  <div v-for="(evaluasi, index) in evaluasis" :key="evaluasi.id">
+    <b-list-group class="list__modul">
+      <b-list-group-item
+      class="list-unstyled"
+      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+      >
+      &nbsp;
+      <a
+      class="link__text"
+      :href="`#item-${evaluasi.id}`"
+      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+      >
+      {{ evaluasi.nama }}
+    </a>
+  </b-list-group-item>
+</b-list-group>
+</div>
+</b-card>
+</b-collapse>
+</div>
+</ul>
+</nav>
+<!--//docs-nav-->
+</div>
+<!--//docs-sidebar-->
 </template>
 
 <script>
-export default {
-  props: [
+  export default {
+    props: [
     "pelatihans",
     "profiles",
     "username",
     "loading",
     "scrolledToBottom",
     "details",
-  ],
+    ],
 
-  data() {
-    return {
-      show_collapse: false,
-      urutan: "",
-      evaluasis: [
+    data() {
+      return {
+        show_collapse: false,
+        urutan: "",
+        evaluasis: [
         {
           id: 7,
           nama: "Evaluasi Fasilitator",
@@ -188,50 +201,106 @@ export default {
           id: 10,
           nama: "Evaluasi Rencana Tindak Lanjut",
         },
-      ],
-    };
-  },
+        ],
+      };
+    },
 
-  mounted() {
-    this.SetupSidebar(), this.SidebarLink();
-  },
+    mounted() {
+      this.SidebarLink();
+    },
 
-  methods: {
-    FilterIcon(type) {
-      switch (type) {
-        case 1:
+    methods: {
+
+      SetupSidebar() {
+        const sidebar = document.getElementById("docs-sidebar");
+        sidebar.classList.add("sidebar-visible");
+        let w = window.innerWidth;
+        window.onload = function () {
+          if (w >= 1200) {
+            console.log("larger");
+            sidebar.classList.remove("sidebar-hidden");
+            sidebar.classList.add("sidebar-visible");
+          } else {
+            console.log("smaller");
+            sidebar.classList.remove("sidebar-visible");
+            sidebar.classList.add("sidebar-hidden");
+          }
+        };
+
+        window.onresize = function () {
+          if (w >= 1200) {
+            console.log("larger");
+            sidebar.classList.remove("sidebar-hidden");
+            sidebar.classList.add("sidebar-visible");
+          } else {
+            console.log("smaller");
+            sidebar.classList.remove("sidebar-visible");
+            sidebar.classList.add("sidebar-hidden");
+          }
+        };
+      },
+
+      SidebarLink() {
+        const sidebarLinks = document.querySelectorAll("#docs-nav .scrollto");
+        console.log(sidebarLinks);
+        sidebarLinks.forEach((sidebarLink) => {
+          sidebarLink.addEventListener("click", (e) => {
+            console.log(e);
+            console.log("check");
+            e.preventDefault();
+
+            var target = sidebarLink.getAttribute("href").replace("#", "");
+            var sidebar = document.getElementById("docs-sidebar");
+
+            document
+            .getElementById(target)
+            .scrollIntoView({ behavior: "smooth" });
+            if (
+              sidebar.classList.contains("sidebar-visible") &&
+              window.innerWidth < 1200
+              ) {
+              sidebar.classList.remove("sidebar-visible");
+            sidebar.classList.add("sidebar-hidden");
+          }
+        });
+        });
+      },
+
+      FilterIcon(type) {
+        switch (type) {
+          case 1:
           return "video";
           break;
-        case 2:
+          case 2:
           return "file-pdf";
           break;
-        case 3:
+          case 3:
           return "file-alt";
           break;
-        case 4:
+          case 4:
           return "file-archive";
           break;
-        case 5:
+          case 5:
           return "file-pdf";
           break;
-        case 6:
+          case 6:
           return "file-video";
           break;
-        default:
+          default:
           return "No type here";
-      }
-    },
+        }
+      },
 
-    ShowField(raw, id_kategori = "", type) {
-      window.scrollTo(0, 0);
-      this.$emit("show-field", raw, id_kategori, type);
-    },
+      ShowField(raw, id_kategori = "", type) {
+        window.scrollTo(0, 0);
+        this.$emit("show-field", raw, id_kategori, type);
+      },
 
-    ToggleFile(urutan) {
-      if (urutan) {
-        this.urutan = urutan;
-        this.show_collapse = !this.show_collapse;
-      }
+      ToggleFile(urutan) {
+        if (urutan) {
+          this.urutan = urutan;
+          this.show_collapse = !this.show_collapse;
+        }
       // this.show_collapse = !this.show_collapse
       window.scrollTo(0, 0);
       this.$emit("toggle-file");
@@ -257,12 +326,12 @@ export default {
               logout: true,
               username: this.$username(this.profiles.nama),
             })
-          );
+            );
           this.$swal(
             "Logout!",
             `Anda berhasil keluar dari profile ${this.profiles.nama}.`,
             "success"
-          );
+            );
           this.$router.push({
             // name: 'auth-login'
             path: this.$route.path,
@@ -272,62 +341,7 @@ export default {
           }, 900);
         }
       });
-    },
-
-    SetupSidebar() {
-      const sidebar = document.getElementById("docs-sidebar");
-      sidebar.classList.add("sidebar-visible");
-      let w = window.innerWidth;
-      window.onload = function () {
-        if (w >= 1200) {
-          console.log("larger");
-          sidebar.classList.remove("sidebar-hidden");
-          sidebar.classList.add("sidebar-visible");
-        } else {
-          console.log("smaller");
-          sidebar.classList.remove("sidebar-visible");
-          sidebar.classList.add("sidebar-hidden");
-        }
-      };
-
-      window.onresize = function () {
-        if (w >= 1200) {
-          console.log("larger");
-          sidebar.classList.remove("sidebar-hidden");
-          sidebar.classList.add("sidebar-visible");
-        } else {
-          console.log("smaller");
-          sidebar.classList.remove("sidebar-visible");
-          sidebar.classList.add("sidebar-hidden");
-        }
-      };
-    },
-
-    SidebarLink() {
-      const sidebarLinks = document.querySelectorAll("#docs-nav .scrollto");
-      console.log(sidebarLinks);
-      sidebarLinks.forEach((sidebarLink) => {
-        sidebarLink.addEventListener("click", (e) => {
-          console.log(e);
-          console.log("check");
-          e.preventDefault();
-
-          var target = sidebarLink.getAttribute("href").replace("#", "");
-          var sidebar = document.getElementById("docs-sidebar");
-
-          document
-            .getElementById(target)
-            .scrollIntoView({ behavior: "smooth" });
-          if (
-            sidebar.classList.contains("sidebar-visible") &&
-            window.innerWidth < 1200
-          ) {
-            sidebar.classList.remove("sidebar-visible");
-            sidebar.classList.add("sidebar-hidden");
-          }
-        });
-      });
-    },
+    }
   },
 };
 </script>

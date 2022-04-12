@@ -33,8 +33,8 @@
 				</mdb-row>
 				
 				<mdb-row col="12" class="row justify-content-center mb-2 mt-2">
-					<mdb-col lg="12" xs="12" sm="12" class="box__intro-test">	
-						<ul style="list-style: none; margin-top:-.5rem;">
+					<mdb-col lg="5" xs="5" sm="12" class="box__intro-test">	
+						<ul style="list-style: none; ">
 							<li>
 								<blockquote class="blockquote-footer mb-2 mt-2">
 									Waktu pelaksanaan test :
@@ -112,7 +112,7 @@
 				<div class="mb-2 ">
 					<a
 					href=""
-					class="btn btn-primary btn-md rounded btn-block"
+					class="btn my__btn-primary rounded-pill btn-md btn-block"
 					@click.prevent="SubmitTest"
 					>
 					<div v-if="loading_answer">
