@@ -186,7 +186,7 @@
 
 					.collapse__category-event{
 						overflow-x: hidden;
-						margin-left:1px;
+						margin-left:5px;
 						h6{
 							color:$second-black!important;
 							font-weight: 700;
@@ -206,7 +206,7 @@
 								// background-color: transparent;
 								background-color:$button-gray!important;
 								width: 320px;
-								margin-left: -1.8rem;
+								margin-left: -.8rem;
 								margin-bottom: 1.5rem;
 								&:hover{
 									background-color: $bg-hover-first;
