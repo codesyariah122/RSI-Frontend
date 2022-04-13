@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <l-map v-else ref="myMap" :zoom="zoom" :center="center">
+  <l-map v-else ref="myMap" :zoom="zoom" :center="center" :style="`${$device.isMobile ? 'z-index: 1; height:30vh;' : ''}`">
     <div v-for="(item, index) in coordinates">
       <l-marker
       v-for="coordinate in item.maps"
@@ -41,8 +41,8 @@
             </small>
             <br />
                 <!-- <pre>
-										{{coordinate.id}}
-									</pre> -->
+                    {{coordinate.id}}
+                  </pre> -->
                   <img :src="icons[3]" width="155" />
                   <br /><br />
                   <a
@@ -71,7 +71,7 @@
           url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
           attribution:
           '&copy; <a target="_blank" href="http://osm.org/copyright">RSI Sultan Agung Map</a> contributors',
-          zoom: this.$device.isMobile ? 17 : 17,
+          zoom: this.$device.isMobile ? 13 : 17,
           center: {
             lat: "",
             lng: "",

@@ -64,7 +64,7 @@
 				margin-top: 1rem;
 				margin-left: .2rem;				
 				h2{
-					color: $color-primary;
+					color: $second-black;
 					font-size:23px;
 					font-weight:700;
 					margin-left: .3rem;
@@ -133,7 +133,7 @@
 				&:after{
 					content:'';
 					display: block;
-					border-bottom: 3px solid #0B63DC;
+					border-bottom: 3px solid $color-primary;
 					width:100%;
 					margin:auto;
 					padding-bottom: 5px;
@@ -269,7 +269,7 @@
 					margin-left: -8rem;
 					margin-top: 2.5rem;				
 					h2{
-						color: $color-primary;
+						color: $second-black;
 						font-size:24px;
 						font-weight:700;
 					}

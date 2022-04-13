@@ -18,7 +18,7 @@
 <style lang="scss">
 	.toggler{
 		z-index: 9999;
-		margin-top:2rem;
+		margin-top:3rem;
 		&:hover{
 			color:$bg-fourt!important;
 		}

@@ -15,7 +15,7 @@
       <div class="docs-content">
         <div class="container">
           <!-- Sidebar Toggler -->
-          <!-- <MoleculesProfilePageTogglerSidebar /> -->
+          <MoleculesProfilePageTogglerSidebar v-if="$device.isMobile" />
 
           <!-- <ColorModePicker/> -->
 

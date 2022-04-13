@@ -2,7 +2,7 @@
 	margin-top: -5rem!important;
 	.docs-sidebar{
 		margin-top: -.8rem;
-		width:250px;
+		width:285px;
 		height:100%;
 		scrollbar-color: $scroll-bar-color $scroll-bar-bg;
 		scrollbar-width: auto;
@@ -18,7 +18,10 @@
 			border: 11px solid $scroll-bar-bg;
 		}
 		.docs-nav{
-			overflow-x: hidden;
+			overflow-x: hidden; 
+			position: static;
+			height: 120vh;
+			margin-bottom: 5rem;
 			.theme-icon-holder{
 				background-color: $bg-primary!important;
 			}
@@ -30,7 +33,7 @@
 				width: 250px;
 				.btn__pelatihan{
 					background-color:transparent!important;
-					color:$bg-second-primary!important;
+					color:$second-black!important;
 					width: 250px;
 					text-transform: uppercase;
 					font-size:12px;
@@ -48,15 +51,23 @@
 				.collapse__category-event{
 					overflow-x: hidden;
 					margin-left:5px;
+					h6{
+						color:$second-black!important;
+						font-weight: 800;
+						margin-left: -1rem;
+						margin-bottom: 1rem;
+						text-transform: capitalize;
+					}
 					.card{
 						border: 0 none;
 					}
 					.list__modul{
 						margin-top: -.8rem;
+						margin-left: -1rem;
 						.list-group-item{
-							background-color: transparent;
-							width: 250px;
-							margin-left: -1.8rem;
+							background-color:$button-gray!important;
+							width: 255px;
+							margin-left: -1.5rem;
 							margin-bottom: 1.5rem;
 							&:hover{
 								background-color: $bg-hover-first;

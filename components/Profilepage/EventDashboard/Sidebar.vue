@@ -48,7 +48,7 @@
             </mdb-col>
 
             <mdb-col col="2" md="2" sm="2" xs="2">
-              <mdb-icon
+              <mdb-icon 
               :icon="`${
                 show_collapse && index + 1 === urutan
                 ? 'angle-down'
@@ -82,8 +82,8 @@
                   "
                   >
                   <mdb-row>
-                    <mdb-col md="10">
-                      <mdb-icon :icon="FilterIcon(d.kategori)" /> <a
+                    <mdb-col md="10" xs="10" sm="10" col="10">
+                      <mdb-icon color="success" :icon="FilterIcon(d.kategori)" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
                       class="link__text"
                       :href="`#item-${d.kategori}`"
                       @click="
@@ -100,9 +100,10 @@
                         >
                         {{ d.title }}
                       </a>
+
                     </mdb-col>
-                    <mdb-col md="1">
-                      <mdb-icon far icon="circle" color="success" size="lg"/>
+                    <mdb-col md="1" xs="1" sm="1" col="1">
+                      <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
                     </mdb-col>
                   </mdb-row>
                 </b-list-group-item>
@@ -150,8 +151,8 @@ class="collapse__category-event shadow-none"
       @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
       >
       <mdb-row>
-        <mdb-col md="10">
-          <mdb-icon far icon="calendar-check" size="lg"/> <a
+        <mdb-col md="10" xs="10" sm="10" col="10">
+          <mdb-icon color="success" far icon="calendar-check" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
           class="link__text"
           :href="`#item-${evaluasi.id}`"
           @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
@@ -159,8 +160,8 @@ class="collapse__category-event shadow-none"
           {{ evaluasi.nama }}
         </a>
       </mdb-col>
-      <mdb-col md="1">
-        <mdb-icon far icon="circle" color="success" size="lg"/>
+      <mdb-col md="1" xs="1" sm="1" col="1">
+        <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
       </mdb-col>
     </mdb-row>
   </b-list-group-item>
@@ -204,8 +205,8 @@ class="collapse__category-event -3 shadow-none"
       @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
       >
       <mdb-row>
-        <mdb-col md="10">
-          <mdb-icon far icon="calendar-alt" size="lg"/> <a
+        <mdb-col md="10" xs="10" sm="10" col="10">
+          <mdb-icon color="success" far icon="calendar-alt" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
           class="link__text"
           :href="`#item-${evaluasi.id}`"
           @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
@@ -213,8 +214,8 @@ class="collapse__category-event -3 shadow-none"
           {{ evaluasi.nama }}
         </a>
       </mdb-col>
-      <mdb-col md="1">
-        <mdb-icon far icon="circle" color="success" size="lg"/>
+      <mdb-col md="1" xs="1" sm="1" col="1">
+        <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
       </mdb-col>
     </mdb-row>
   </b-list-group-item>

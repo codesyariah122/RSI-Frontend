@@ -141,7 +141,7 @@ export default {
 
 <style lang="scss">
 .weather {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   .badge {
     // color:$default-black!important;
     // font-weight: 600;
