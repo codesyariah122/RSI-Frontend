@@ -33,8 +33,7 @@
             <div class="hover__image-wrap">
               <div
                 v-if="
-                  profiles.photo !==
-                  'https://api.ppkc-online.com/image-profiles/null'
+                  profiles.photo !== ''
                 "
               >
                 <b-avatar
@@ -94,14 +93,14 @@
           <mdb-col md="4" class="profile__options-page">
             <mdb-row class="d-flex justify-content-center">
               <mdb-col col="12" sm="6">
-                <mdb-btn outline="primary" size="sm">
+                <mdb-btn class="shadow-none" outline="primary" size="sm">
                   <a :href="`/profile/edit/${profiles.id}`">
                     <mdb-icon icon="user-cog" size="sm" /> Edit Profile
                   </a>
                 </mdb-btn>
               </mdb-col>
               <mdb-col col="12" sm="6">
-                <mdb-btn color="deep-orange" size="sm" @click="LogoutProfile">
+                <mdb-btn class="shadow-none" color="deep-orange" size="sm" @click="LogoutProfile">
                   <mdb-icon icon="sign-out-alt" size="sm" /> Logout
                 </mdb-btn>
               </mdb-col>
