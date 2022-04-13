@@ -6,8 +6,8 @@
       <b-skeleton animation="wave" width="70%"></b-skeleton>
     </div>
     <!-- <pre>
-			{{works}}
-		</pre> -->
+      {{works}}
+    </pre> -->
 
     <ul v-else class="mt-3">
       <li
@@ -21,8 +21,8 @@
     </li>
     <li class="mb-3">
       <div class="col-md-12 col-xs-12 col-sm-12">
-        <strong class="text-primary text-uppercase font-weight-bold"
-        >Nira</strong
+        <strong class="text-capitalize font-weight-bold"
+        >no anggota organisasi</strong
         >
         <br />
         <p>
@@ -33,7 +33,7 @@
     <li>
       <div class="d-flex justify-content-between align-items-center">
         <div class="col-md-6 col-xs-3 col-sm-3">              
-          <strong class="text-primary font-weight-bold">Pekerjaan</strong>
+          <strong class="font-weight-bold">Pekerjaan</strong>
         </div>
         <div class="col-md-6 col-xs-2 col-sm-2 mb-2">
           <a :href="`/profile/pekerjaan/${profiles.id}`" class="btn btn-sm btn-outline-primary font-weight-bold">Edit</a>
@@ -54,7 +54,7 @@
     <li>
       <div class="d-flex justify-content-between align-items-center">
         <div class="col-md-6 col-xs-3 col-sm-3">
-          <strong class="text-primary font-weight-bold">Pendidikan</strong>
+          <strong class="font-weight-bold">Pendidikan</strong>
         </div>
         <div class="col-md-6 col-xs-2 col-sm-2 mt-2 mb-2">
           <a :href="`/profile/pendidikan/${profiles.id}`" class="btn btn-sm btn-outline-primary font-weight-bold">Edit</a>
@@ -75,7 +75,7 @@
   </li>
   <li>
     <div class="col-6 col-md-6 col-xl-6">
-      <strong class="text-primary font-weight-bold">Domisili</strong> <br />
+      <strong class="font-weight-bold">Domisili</strong> <br />
       <p>{{ profiles.kabupaten_name }}, {{ profiles.propinsi_name }}</p>
     </div>
   </li>

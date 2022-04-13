@@ -32,6 +32,7 @@
       </div>
 
       <div v-else class="collapse__docs">
+        
           <div
           v-for="(item, index) in pelatihans"
           :key="item.id"
@@ -39,7 +40,7 @@
           <b-button
           v-b-toggle="`collapse-${item.id}`"
           class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-          @click="ToggleFile(index + 1)"
+          @click="ToggleFile(index + 1, item.title)"
           >
           <mdb-row col="12" class="d-flex justify-content-between">
             <mdb-col col="9" md="9" sm="9" xs="9">
@@ -110,6 +111,60 @@
               </b-list-group>
             </div>
           </div>
+          <b-button
+            v-b-toggle="`collapse-absensi`"
+            class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+            @click="ToggleFile(pelatihans.length+2, kegiatan_title)"
+            >
+
+                <mdb-row col="12" class="d-flex justify-content-between sidebar__absen">
+                  <mdb-col col="9" md="9" sm="9" xs="9"> 
+                    <h5>Absensi {{kegiatan_title}}</h5>
+                  </mdb-col>
+
+                  <mdb-col col="2" md="2" sm="2" xs="2">
+                    <mdb-icon
+                    :icon="`${
+                      show_collapse && pelatihans.length+2 === urutan
+                      ? 'angle-down'
+                      : 'angle-right'
+                    }`"
+                    size="lg"
+                    />
+                  </mdb-col>
+                </mdb-row>
+            </b-button>
+
+            <b-collapse
+            :id="`collapse-absensi`"
+            class="collapse__category-event collapse__absensi -3 shadow-none"
+            >
+                <b-card class="shadow-none">
+                  <div v-for="(evaluasi, index) in absensis" :key="evaluasi.id">
+                    <b-list-group class="list__modul">
+                      <b-list-group-item
+                      class="list-unstyled"
+                      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id, kegiatan_title)"
+                      >
+                      <mdb-row>
+                        <mdb-col md="10" xs="10" sm="10" col="10">
+                          <mdb-icon color="success" far icon="calendar-alt" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
+                          class="link__text"
+                          :href="`#item-${evaluasi.id}`"
+                          @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+                          >
+                          {{ evaluasi.nama }}
+                        </a>
+                      </mdb-col>
+                      <mdb-col md="1" xs="1" sm="1" col="1">
+                        <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
+                      </mdb-col>
+                    </mdb-row>
+                  </b-list-group-item>
+                </b-list-group>
+              </div>
+            </b-card>
+          </b-collapse>
         </b-card>
       </b-collapse>
     </div>
@@ -170,59 +225,59 @@ class="collapse__category-event shadow-none"
 </b-card>
 </b-collapse>
 
-<b-button
-v-b-toggle="`collapse-absensi`"
-class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
-@click="ToggleFile(pelatihans.length+2)"
->
-<mdb-row col="12" class="d-flex justify-content-between">
-  <mdb-col col="9" md="9" sm="9" xs="9"> 
-    <h5>Absensi</h5> 
-  </mdb-col>
-
-  <mdb-col col="2" md="2" sm="2" xs="2">
-    <mdb-icon
-    :icon="`${
-      show_collapse && pelatihans.length+2 === urutan
-      ? 'angle-down'
-      : 'angle-right'
-    }`"
-    size="lg"
-    />
-  </mdb-col>
-</mdb-row>
-</b-button>
-
-<b-collapse
-:id="`collapse-absensi`"
-class="collapse__category-event -3 shadow-none"
->
-<b-card class="shadow-none">
-  <div v-for="(evaluasi, index) in absensis" :key="evaluasi.id">
-    <b-list-group class="list__modul">
-      <b-list-group-item
-      class="list-unstyled"
-      @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-      >
-      <mdb-row>
-        <mdb-col md="10" xs="10" sm="10" col="10">
-          <mdb-icon color="success" far icon="calendar-alt" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
-          class="link__text"
-          :href="`#item-${evaluasi.id}`"
-          @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-          >
-          {{ evaluasi.nama }}
-        </a>
+    <!-- <b-button
+    v-b-toggle="`collapse-absensi`"
+    class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+    @click="ToggleFile(pelatihans.length+2)"
+    >
+    <mdb-row col="12" class="d-flex justify-content-between">
+      <mdb-col col="9" md="9" sm="9" xs="9"> 
+        <h5>Absensi</h5> 
       </mdb-col>
-      <mdb-col md="1" xs="1" sm="1" col="1">
-        <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
+
+      <mdb-col col="2" md="2" sm="2" xs="2">
+        <mdb-icon
+        :icon="`${
+          show_collapse && pelatihans.length+2 === urutan
+          ? 'angle-down'
+          : 'angle-right'
+        }`"
+        size="lg"
+        />
       </mdb-col>
     </mdb-row>
-  </b-list-group-item>
-</b-list-group>
-</div>
-</b-card>
-</b-collapse>
+    </b-button>
+
+    <b-collapse
+    :id="`collapse-absensi`"
+    class="collapse__category-event -3 shadow-none"
+    >
+    <b-card class="shadow-none">
+      <div v-for="(evaluasi, index) in absensis" :key="evaluasi.id">
+        <b-list-group class="list__modul">
+          <b-list-group-item
+          class="list-unstyled"
+          @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+          >
+          <mdb-row>
+            <mdb-col md="10" xs="10" sm="10" col="10">
+              <mdb-icon color="success" far icon="calendar-alt" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/> <a
+              class="link__text"
+              :href="`#item-${evaluasi.id}`"
+              @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
+              >
+              {{ evaluasi.nama }}
+            </a>
+          </mdb-col>
+          <mdb-col md="1" xs="1" sm="1" col="1">
+            <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
+          </mdb-col>
+        </mdb-row>
+      </b-list-group-item>
+    </b-list-group>
+    </div>
+    </b-card>
+    </b-collapse> -->
 
   </div>
 
@@ -249,6 +304,7 @@ class="collapse__category-event -3 shadow-none"
       return {
         show_collapse: false,
         urutan: "",
+        kegiatan_title: '',
         evaluasis: [
         {
           id: 7,
@@ -307,14 +363,15 @@ class="collapse__category-event -3 shadow-none"
         }
       },
 
-      ShowField(raw, id_kategori = "", type) {
+      ShowField(raw, id_kategori = "", type, kegiatan_title) {
         window.scrollTo(0, 0);
-        this.$emit("show-field", raw, id_kategori, type);
+        this.$emit("show-field", raw, id_kategori, type, kegiatan_title);
       },
 
-      ToggleFile(urutan) {
-        console.log(urutan)
+      ToggleFile(urutan, kegiatan_title) {
+        // console.log(urutan)
         if (urutan) {
+          this.kegiatan_title = kegiatan_title
           this.urutan = urutan;
           this.show_collapse = !this.show_collapse;
         }

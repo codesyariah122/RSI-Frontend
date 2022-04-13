@@ -262,6 +262,7 @@
         :token="token"
         :api_url="api_url"
         :kegiatan_id="kegiatan_id"
+        :kegiatan_title="kegiatan_title"
         :pelatihan_id="pelatihan_id"
         :tests="tests"
         :evaluasi="evaluasi"
@@ -290,6 +291,7 @@ export default {
     "username",
     "link_yt",
     "kegiatan_id",
+    "kegiatan_title",
     "pelatihan_id",
     "evaluasi",
     "tests"

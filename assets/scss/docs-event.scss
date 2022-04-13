@@ -160,6 +160,14 @@
 				position: static;
 				height: 120vh;
 				margin-bottom: 5rem;
+				.nav-item__sidebar{
+					.sidebar__absen{
+						h5{
+							font-weight: 700;
+						}
+					}
+					
+				}
 				.profile__fasilitator{
 					margin-left: -3rem;
 					.profile{
@@ -187,6 +195,9 @@
 					.collapse__category-event{
 						overflow-x: hidden;
 						margin-left:5px;
+						.collapse__absensi{
+							margin-left: -1.5rem;
+						}
 						h6{
 							color:$second-black!important;
 							font-weight: 700;
@@ -197,6 +208,7 @@
 						.card{
 							border: 0 none;
 						}
+
 						.list__modul{
 							margin-top: -.8rem;
 							// &:hover{
