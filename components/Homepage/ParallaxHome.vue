@@ -15,7 +15,7 @@
             </b-col>
             <b-col md="4">
               <a
-                href="https://play.google.com/store/apps/details?id=com.online.elearningppkc"
+                href="#!"
                 target="_blank"
                 style="cursor: pointer"
               >
