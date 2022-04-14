@@ -47,7 +47,11 @@
 					// 	margin-top:-15rem!important;
 					// }
 				}
-
+				.nav-item__sidebar{
+					h6{
+						text-transform: capitalize;
+					}
+				}
 				.collapse__category-event{
 					overflow-x: hidden;
 					margin-left:5px;

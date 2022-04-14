@@ -127,7 +127,7 @@
 
 <style lang="scss">
 	.akses__pelatihan{
-		margin-top: 5rem;
+		margin-top: 7rem;
 		margin-bottom: 7rem;
 		font-family: 'Poppins', sans-serif;
 		.jumbotron{

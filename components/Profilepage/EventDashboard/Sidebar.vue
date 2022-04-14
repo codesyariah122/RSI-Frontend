@@ -8,9 +8,9 @@
     <nav v-else id="docs-nav" class="docs-nav navbar shadow-none">
       <ul class="section-items list-unstyled nav flex-column pb-3">
         <li class="nav-item__sidebar section-title">
-          <h4>
+          <h5>
            {{details.kegiatan_title}}
-         </h4>
+         </h5>
        </li>
        <li class="nav-item__sidebar">
         <div class="row justify-content-start profile__fasilitator">
@@ -44,7 +44,7 @@
           >
           <mdb-row col="12" class="d-flex justify-content-between">
             <mdb-col col="9" md="9" sm="9" xs="9">
-              <h5>{{ item.title }}</h5>
+              <h6>{{ item.title }}</h6>
               <small> {{$moment(item.tanggal).format("LLLL")}} </small>
             </mdb-col>
 
