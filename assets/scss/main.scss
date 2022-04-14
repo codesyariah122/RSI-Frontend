@@ -7,7 +7,7 @@
 // Jumbotron component / Header
 .jumbotron__home{
 	margin-top: 2.5rem!important;
-	margin-bottom: 11rem!important;
+	margin-bottom: 18rem!important;
 	object-fit: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -22,7 +22,7 @@
 }
 .banner{
 	margin-top:-7rem;
-	margin-bottom: -8rem;
+	margin-bottom: 8rem;
 	img{
 		object-fit:cover;
 		width: 100%;
@@ -637,7 +637,7 @@
 	background-attachment: scroll;
 	text-align: center;
 	margin:0;
-	z-index: -1;
+	// z-index: -1;
 	&:before{
 		position: absolute;
 		content: "";
@@ -806,7 +806,8 @@
 
 			}
 			.panel__art{
-				margin-top: -3rem!important;
+				margin-top: -5rem!important;
+				margin-bottom: 2rem;
 				margin-left: 5rem!important;
 				.art-1{
 					margin-top: 10rem!important;
