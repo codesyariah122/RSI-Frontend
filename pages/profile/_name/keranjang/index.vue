@@ -40,7 +40,7 @@
 								{{item.title}} - {{$format(item.harga)}}
 							</div>
 							<div class="p-2 bd-highlight">
-								<i class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
+								<i @click="DeleteEventCart(index)" style="cursor: pointer;" class="fa fa-times fa-fw fa-lg" aria-hidden="true"></i>
 							</div>
 						</div>
 
