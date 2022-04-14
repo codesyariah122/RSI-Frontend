@@ -128,7 +128,8 @@
 
 <style lang="scss">
 	.akses__pelatihan{
-		margin-top: -5rem;
+		margin-top: -1rem;
+		margin-bottom: 7rem;
 		font-family: 'Poppins', sans-serif;
 		.jumbotron{
 			background-color: $jumbotron-bg;
@@ -144,6 +145,13 @@
 				height: auto;
 				width: 287px;
 				margin-left: -1rem;
+				.card-body{
+					.badge__category{
+						background-color: transparent!important;
+						color: $color-primary!important;
+						border:1px $color-primary solid;
+					}
+				}
 				.card-subtitle{
 					font-size: 12px;
 				}
