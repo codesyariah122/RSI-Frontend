@@ -51,7 +51,6 @@
 
 										<mdb-card-title
 										class="truncate"
-										style="color: #004899; font-weight: bold; min-height: 80px"
 										>{{ pelatihans[listIndex-1].kegiatan_title }}</mdb-card-title
 										>
 										<mdb-card-text
@@ -128,7 +127,7 @@
 
 <style lang="scss">
 	.akses__pelatihan{
-		margin-top: 2rem;
+		margin-top: 5rem;
 		margin-bottom: 7rem;
 		font-family: 'Poppins', sans-serif;
 		.jumbotron{
@@ -146,6 +145,10 @@
 				width: 287px;
 				margin-left: -1rem;
 				.card-body{
+					.card-title{
+						font-weight: 700;
+						color:$second-black;
+					}
 					.badge__category{
 						background-color: transparent!important;
 						color: $color-primary!important;
