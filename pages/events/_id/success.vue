@@ -1,5 +1,5 @@
 <template>
-	<div :class="`${$device.isDesktop ? 'event__pembayaran mb-5' : 'event__keranjang mb-5'}`">
+	<div :class="`${$device.isDesktop ? 'event__pembayaran mb-5' : 'event__pembayaran mb-5'}`">
 		<mdb-container>
 			<EventpageSuccessHeader :data_pendaftaran="data_pendaftaran" :message="pembayaran.message" :bank="pembayaran.bank" :kegiatan="pembayaran.kegiatan" :checks="checks" />
 

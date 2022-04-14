@@ -1,9 +1,29 @@
 // Component EVENT Page
-.event__detail{
-	
-}
+
 // Component EVENT Page
 .webinar__list{
+	.card__content-lists{
+		.webinar__content{
+			.card {
+				height: auto;
+				.event__image-wrap{
+					position: relative;
+					width: 350px;
+					height: 250px;
+					object-fit: cover;
+				}
+				.card-body{					
+					.badge__category{
+						background-color: transparent!important;
+						color: $color-primary!important;
+						border:1px $color-primary solid;
+
+					}
+				}
+				@include card_rounded_desktop;
+			}
+		}
+	}
 	.card__content-events{
 		.webinar__content{
 			.card{
@@ -93,7 +113,129 @@
 		}
 	}
 }
+.event__detail{
+	overflow:hidden!important;
+	margin-top: 5.3rem;
+	margin-left: -.1rem;
+	z-index: 9999;
+	height: auto;
+	width: 100%;
+	.event__detail-content{
+		margin-bottom: 5rem;
+		.event__info{
+			margin-top: 2rem;
+			h1{
+				font-weight: 600;
+				text-align: left;
+				font-size:31px;
+			}
+			.badge__category{
+				background-color: transparent!important;
+				color: $color-primary!important;
+				border:1px $color-primary solid;
+				font-size: 13px;
+			}
+			.idr__color {
+				color: $color-primary;
+				font-weight: 700;
+				font-size:18px;
+				line-height: 24.51px;
+			}
+			h5{
+				font-weight: 600;
+				font-size:16px;
+			}
+			p{
+				font-size: 14px;
+			}
+		}
+		.event__flyer{
+			margin-left: -3.7rem;
+			img{
+				object-fit:cover;
+				// height: 75%;
+				width: 375px;
+				border-radius: 13px;
+			}
+		}
 
+		.event__jadwal{
+			height: 100%;
+			margin-top: 3rem!important;
+			margin-bottom: 8rem;
+			h4{
+				font-weight: 700;
+				color:$second-black;
+				font-size:21px;
+			}
+			.lists__jadwal{
+				margin-left: -3rem;
+				.lists__target{
+					.accordion{
+						.card{
+							button{
+								background-color: $default!important;
+								color:$second-black;
+								h6{
+									text-transform: capitalize;
+									font-size:18px;
+									font-weight: 700;
+								}
+								small{
+									text-transform: capitalize;
+									color:$second-black;
+								}
+							}
+							.schedule__collapse{
+								.list__categori{
+									.list__categori-item{
+										border:0;
+										background-color: transparent;
+										h6{
+											font-weight: 600;
+											text-transform: uppercase;
+											font-size:16px;
+										}
+									}
+									.list__detail {
+										.list__detail-item{
+											border: 0;
+											background-color:$button-gray!important;
+											span{
+												color:$second-black;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.profile__pengajar{
+					margin-left: 1.7rem;
+					h5{
+						font-weight: 600;
+						color:$second-black;
+					}
+					.card__profile{
+						.card{
+							width:340px;
+							background-color: $button-gray!important;
+							border-radius: 13px;
+							.profile__pic{
+								margin-left: 7rem;
+							}
+							.profile__info{
+								margin-top:-1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
 // Desktop
 @media (min-width: 992px) {
 	.webinar__list{
@@ -187,6 +329,7 @@
 				}
 			}
 			.event__flyer{
+				margin-left:1.5rem;
 				img{
 					object-fit:cover;
 					height: 75%;

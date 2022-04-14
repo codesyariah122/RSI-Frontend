@@ -1,79 +1,289 @@
-@media (min-width: 992px) {
-	.event__pembayaran{
-		margin-top: 8rem;
-		overflow: hidden;
-		margin-left:1.5rem;
-		.container{
-			.pembayaran__header{
-				margin-bottom: 2rem;
-				h2{
-					color: $second-black;
-					font-weight: 700;
+.event__pembayaran{
+	margin-top: 5rem;
+	overflow: hidden;
+	margin-left:1rem;
+	.container{
+		width: 100vw;
+		.pembayaran__header{
+			margin-bottom: 2rem;
+			h2{
+				font-size: 27px;
+				width: 90vw;
+				color: $second-black;
+				font-weight: 700;
+			}
+			p{
+				width: 80%;
+			}
+		}
+		.pembayaran__card{
+			height:100%;
+			margin-top: -.7rem;
+			.card{
+				margin-left: -1rem;
+				width:100%;
+				height: auto;
+				background-color: $jumbotron-bg;
+				border-radius: 13px;
+				img{
+					height: 100px;
+					width:135px;
 				}
-				p{
-					width: 50%;
+				.card-body{
+					margin-left: 1rem;
+				}
+				.card-title{
+					color: $second-black;
+					font-size:18px;
+					font-weight: 700;
+					width:100%;
+				}
+				.card-text{
+					font-size:16px;
+				}
+				.rincian__event-table{
+					
+					h5{
+						margin-left: 3rem;
+						font-weight: 700!important;
+					}
+					.table .table-borderless{							
+						tbody{
+							margin-top: -1rem!important;
+						}
+					}
 				}
 			}
-			.pembayaran__card{
-				height:100%;
-				margin-top: -.7rem;
-				.card{
-					background-color: $jumbotron-bg;
-					height: auto;
-					border-radius: 13px;
-					img{
-						height: 100px;
-						width:135px;
-					}
-					.card-body{
-						margin-left: 1rem;
-					}
-					.card-title{
-						color: $second-black;
-						font-size:18px;
-						font-weight: 700;
-						width:100%;
-					}
-					.card-text{
-						font-size:16px;
-					}
-					.rincian__event-table{
-						h5{
-							font-weight: 700!important;
-						}
-						.table .table-borderless{							
-							tbody{
-								margin-top: -1rem!important;
-							}
-						}
-					}
+			.rincian__bayar{
+				margin-top: -.5rem;
+				background-color: $jumbotron-bg;
+				height: auto;
+				border-radius: 13px;
+				.card-title{
+					color: $second-black;
+					font-size: 18px;
+					font-weight: 700;
 				}
-				.rincian__bayar{
-					margin-top: -.5rem;
+				h5{
+					color:$second-black;
+					font-weight: 600;
+				}
+				h2{
+					color: $color-primary;
+					font-size: 21px;
+					font-weight: 700;
+				}
+				button{
+					background-color: $primary-button!important;
+					font-weight: 600;
+				}
+			}
+		}
+		.check__point{
+				// position: fixed;
+				// z-index: -1;
+				margin-left: -3rem;
+				margin-top: -10rem;
+				margin-bottom: 20rem;
+				width: 110vw;
+				.list__bank{
+					h5{
+						font-size:23px;
+						color:$second-black;
+					}
+					
 					background-color: $jumbotron-bg;
 					height: auto;
 					border-radius: 13px;
 					.card-title{
 						color: $second-black;
-						font-size: 18px;
-						font-weight: 700;
-					}
-					h5{
-						color:$second-black;
-						font-weight: 600;
-					}
-					h2{
-						color: $color-primary;
 						font-size: 21px;
 						font-weight: 700;
 					}
+					.input__bank{
+						.container{
+							width: 100%;
+							background-color: $default;
+							border-radius: 13px;
+							margin-left: -.2rem;
+							margin-bottom: .5rem;
+						}
+						// z-index: 9999;
+						margin-left: 1rem;
+						img{
+							margin-top: -.7rem;
+							margin-left: .2rem;
+							width:80px; height: 45px;
+						}
+						span{
+							margin-left: .1rem;
+						}
+						.card__bank-list{
+							.card-body{
+								.card-title{
+									font-size: 21px;
+								}
+							}
+							h5{
+								color: $color-primary;
+							}
+							.card-img{
+								width:130px!important;
+								height: 100px!important;
+								margin-left: -.3rem;
+							}
+						}
+					}
 					button{
-						background-color: $primary-button!important;
+						text-transform: capitalize;
 						font-weight: 600;
+						color: $second-black;
+					}
+					.col__card-upload-file{
+						input[type=file] {
+							display: none;
+						}
+						.file {
+							opacity: 0;
+							width: 0.1px;
+							height: 0.1px;
+							position: absolute;
+							border-radius: 25px;
+						}
+
+						.file-input label {
+							display: block;
+							position: relative;
+							width: 100%;
+							height: 50px;
+							border-radius: 8px;
+							background: linear-gradient(40deg,$default,$default);
+							// box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							color: $second-black;
+							font-weight: bold;
+							cursor: pointer;
+							transition: transform .2s ease-out;
+						}
+
+						.file-input-2 label {
+							display: block;
+							position: relative;
+							width: 100%;
+							height: 50px;
+							border-radius: 8px;
+							background: linear-gradient(40deg,$bg-secondary,$second-gray);
+							// box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							color: $default;
+							font-weight: bold;
+							cursor: pointer;
+							transition: transform .2s ease-out;
+						}
+
+						.file-name {
+							position: absolute;
+							bottom: -35px;
+							left: 10px;
+							font-size: 0.85rem;
+							color: #555;
+						}
+
+						input:hover + label,
+						input:focus + label {
+							transform: scale(1.02);
+						}
+
+						input:focus + label {
+							outline: 1px solid #000;
+							outline: -webkit-focus-ring-color auto 2px;
+						}
 					}
 				}
 			}
-			.check__point{
+		}
+	}
+
+	@media (min-width: 992px) {
+		.event__pembayaran{
+			margin-top: 8rem;
+			overflow: hidden;
+			margin-left:1.5rem;
+			.container{
+				.pembayaran__header{
+					margin-bottom: 2rem;
+					h2{
+						color: $second-black;
+						font-weight: 700;
+					}
+					p{
+						width: 50%;
+					}
+				}
+				.pembayaran__card{
+					height:100%;
+					margin-top: -.7rem;
+					.card{
+						background-color: $jumbotron-bg;
+						height: auto;
+						border-radius: 13px;
+						img{
+							height: 100px;
+							width:135px;
+						}
+						.card-body{
+							margin-left: 1rem;
+						}
+						.card-title{
+							color: $second-black;
+							font-size:18px;
+							font-weight: 700;
+							width:100%;
+						}
+						.card-text{
+							font-size:16px;
+						}
+						.rincian__event-table{
+							h5{
+								font-weight: 700!important;
+							}
+							.table .table-borderless{							
+								tbody{
+									margin-top: -1rem!important;
+								}
+							}
+						}
+					}
+					.rincian__bayar{
+						margin-top: -.5rem;
+						background-color: $jumbotron-bg;
+						height: auto;
+						border-radius: 13px;
+						.card-title{
+							color: $second-black;
+							font-size: 18px;
+							font-weight: 700;
+						}
+						h5{
+							color:$second-black;
+							font-weight: 600;
+						}
+						h2{
+							color: $color-primary;
+							font-size: 21px;
+							font-weight: 700;
+						}
+						button{
+							background-color: $primary-button!important;
+							font-weight: 600;
+						}
+					}
+				}
+				.check__point{
 				// position: fixed;
 				// z-index: -1;
 				margin-left: -7rem;

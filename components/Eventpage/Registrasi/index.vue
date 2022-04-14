@@ -15,7 +15,7 @@
 										<b>Kelas</b>
 									</th>
 									<th scope="row">
-										<b>Tanggal Pelaksanaan</b>
+										<b>Tanggal</b>
 									</th>
 									<th scope="row">
 										<b>Subtotal</b>
@@ -64,13 +64,16 @@
 						</b-col>
 					</b-row>
 
-					<div v-else class="d-flex flex-row bd-highlight mb-3">
+					<b-row v-else no-gutters class="mt-2 row justify-content-start rincian__event-table">
 						<h5>Ringkasan Belanja</h5>
 						<table class="table table-borderless">
 							<thead>
 								<tr>
 									<th scope="row">
 										<b>Kelas</b>
+									</th>
+									<th scope="row">
+										<b>Tanggal</b>
 									</th>
 									<th scope="row">
 										<b>Subtotal</b>
@@ -83,18 +86,31 @@
 										{{event.kegiatan_title}}
 									</td>
 									<td>
+										{{$moment(details.tanggal_awal).format("LLLL")}} - {{$moment(details.tanggal_akhir).format("LLLL")}}
+									</td>
+									<td>
 										{{$format(event.harga)}}
 									</td>
 								</tr>
 							</tbody>
 						</table>
-					</div>
+						<b-col md="12" xs="12" sm="12">
+							<div class="dropdown-divider"></div>
+						</b-col>
+						<b-col md="5" xs="12" sm="12">
+							<b-card title="Total Harga" class="shadow-none rincian__bayar">
+								<b-card-text>
+									<h2> {{$format(event.harga)}} </h2>
+								</b-card-text>
+							</b-card>
+						</b-col>
+					</b-row>
 
 				</b-card>
 			</mdb-col>
 		</mdb-row>
 
-		<mdb-row :class="`${$device.isDesktop ?  'row justify-content-end check__point' : 'row justify-content-center check__point'}`">
+		<mdb-row :class="`${$device.isDesktop ?  'row justify-content-end check__point' : 'row justify-content-end check__point mt-3'}`">
 			<mdb-col col="12" lg="4" sm="12">
 				<b-card title="Transfer Bank" class="shadow-none list__bank">
 					
@@ -115,7 +131,7 @@
 											<img :src="`${bank.id === 1 ? require('~/assets/images/bank/bsi.png') : require('~/assets/images/bank/permata-syariah.png')}`" width="100" height="50"> {{bank.nama}}
 										</label>
 									</div> -->
-									<b-form-radio v-for="bank in banks" :key="bank.id" name="bank" :id="`bank-${bank.id}`" :value="bank.id" v-model="field.bank_id">
+									<b-form-radio class="mb-2" v-for="bank in banks" :key="bank.id" name="bank" :id="`bank-${bank.id}`" :value="bank.id" v-model="field.bank_id" >
 										<img :src="`${bank.id === 1 ? require('~/assets/images/bank/bsi.png') : require('~/assets/images/bank/permata-syariah.png')}`" width="150" height="50"> <span>{{bank.nama}}</span>
 									</b-form-radio>
 									<div class="dropdown-divider mt-2"></div>

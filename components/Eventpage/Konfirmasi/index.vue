@@ -12,7 +12,7 @@
 										<b>Kelas</b>
 									</th>
 									<th scope="row">
-										<b>Tanggal Pelaksanaan</b>
+										<b>Tanggal</b>
 									</th>
 									<th scope="row">
 										<b>Subtotal</b>
@@ -44,13 +44,16 @@
 							</b-card>
 						</b-col>
 					</b-row>
-					<b-row v-else class="d-flex flex-row bd-highlight mb-3">
+					<b-row v-else  no-gutters class="mt-2 row justify-content-start ml-2 rincian__event-table">
 						<h5>Ringkasan Belanja</h5>
 						<table class="table table-borderless">
 							<thead>
 								<tr>
 									<th scope="row">
 										<b>Kelas</b>
+									</th>
+									<th scope="row">
+										<b>Tanggal</b>
 									</th>
 									<th scope="row">
 										<b>Subtotal</b>
@@ -61,6 +64,9 @@
 								<tr>
 									<td>
 										{{pembayaran.kegiatan.kegiatan_title}}
+									</td>
+									<td>
+										{{$moment(details.tanggal_awal).format("LLLL")}} - {{$moment(details.tanggal_akhir).format("LLLL")}}
 									</td>
 									<td>
 										{{$format(pembayaran.kegiatan.harga)}}
