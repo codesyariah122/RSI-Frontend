@@ -119,7 +119,7 @@
 
                 <mdb-row col="12" class="d-flex justify-content-between sidebar__absen">
                   <mdb-col col="9" md="9" sm="9" xs="9"> 
-                    <h5>Absensi {{kegiatan_title}}</h5>
+                    Absensi {{kegiatan_title}}
                   </mdb-col>
 
                   <mdb-col col="2" md="2" sm="2" xs="2">
@@ -152,11 +152,10 @@
                           class="link__text"
                           :href="`#item-${evaluasi.id}`"
                           @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-                          >
-                          {{ evaluasi.nama }}
+                          >{{ evaluasi.nama }}
                         </a>
                       </mdb-col>
-                      <mdb-col md="1" xs="1" sm="1" col="1">
+                      <mdb-col md="1" xs="1" sm="1" col="2">
                         <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
                       </mdb-col>
                     </mdb-row>

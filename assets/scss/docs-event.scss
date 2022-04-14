@@ -48,13 +48,16 @@
 					// }
 				}
 				.nav-item__sidebar{
-					h6{
+					h6,h5{
 						text-transform: capitalize;
 					}
 				}
 				.collapse__category-event{
 					overflow-x: hidden;
 					margin-left:5px;
+					.collapse__absensi{
+						margin-left: -1rem;
+					}
 					h6{
 						color:$second-black!important;
 						font-weight: 800;
@@ -112,10 +115,10 @@
 								color:$second-black;
 							}
 							.type__name{
-								border: 2px solid $second-black!important;
+								border: 3px solid $color-primary!important;
 								width: 30%;
-								color: $second-black;
-								font-weight: 500;
+								color: $color-primary;
+								font-weight: 600;
 								text-align: center;
 								margin-bottom: 1rem;
 								font-size: 12px;
