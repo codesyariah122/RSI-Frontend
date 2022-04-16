@@ -168,12 +168,15 @@
 				height: 120vh;
 				margin-bottom: 5rem;
 				.nav-item__sidebar{
+					h5{
+						width:80%;
+					}
 					.sidebar__absen{
+						margin-left: -10rem!important;
 						h5{
 							font-weight: 700;
 						}
 					}
-					
 				}
 				.profile__fasilitator{
 					margin-left: -3rem;
@@ -189,7 +192,7 @@
 					.btn__pelatihan{
 						background-color:transparent!important;
 						color:$second-black!important;
-						width: 320px!important;
+						width: 370px!important;
 						text-transform: capitalize;
 						font-size:12px;
 						text-align: left;

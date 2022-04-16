@@ -113,16 +113,16 @@
           </div>
           <b-button
             v-b-toggle="`collapse-absensi`"
-            class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title"
+            class="active btn__pelatihan shadow-none nav-item__sidebar nav-link__sidebar section-title sidebar__absen"
             @click="ToggleFile(pelatihans.length+2, kegiatan_title)"
             >
 
-                <mdb-row col="12" class="d-flex justify-content-between sidebar__absen">
+                <mdb-row col="12" class="row justify-content-start">
                   <mdb-col col="9" md="9" sm="9" xs="9"> 
                     Absensi {{kegiatan_title}}
                   </mdb-col>
 
-                  <mdb-col col="2" md="2" sm="2" xs="2">
+                  <mdb-col col="1" md="1" sm="1" xs="1">
                     <mdb-icon
                     :icon="`${
                       show_collapse && pelatihans.length+2 === urutan
@@ -155,7 +155,7 @@
                           >{{ evaluasi.nama }}
                         </a>
                       </mdb-col>
-                      <mdb-col md="1" xs="1" sm="1" col="2">
+                      <mdb-col md="2" xs="2" sm="2" col="2">
                         <mdb-icon far icon="circle" color="success" :size="`${$device.isDesktop ? 'lg' : 'sm'}`"/>
                       </mdb-col>
                     </mdb-row>
