@@ -120,12 +120,12 @@
         profiles.photo !==
         'https://api.rsi-online.com/image-profiles/null'
         "
-        variant="info"
+        variant="none"
         :src="profiles.photo"
         ></b-avatar>
         <b-avatar
         v-else
-        variant="primary"
+        variant="none"
         :text="slug.charAt(0)"
         ></b-avatar>
         <!--   <b-img v-else :src="`${require('~/assets/images/profile/profile.svg')}`" rounded="circle" alt="Circle image" width="30" height="30"></b-img> -->
@@ -140,8 +140,8 @@
           }"
           class="text-center"
           >
-          <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="info" :src="profiles.photo" size="1.7rem"></b-avatar>
-          <b-avatar v-else variant="primary" :text="slug.charAt(0)" size="1.7rem"></b-avatar> &nbsp; <b>{{ profiles.nama }}</b>
+          <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="none" :src="profiles.photo" size="1.7rem"></b-avatar>
+          <b-avatar v-else variant="none" :text="slug.charAt(0)" size="1.7rem"></b-avatar> &nbsp; <b>{{ profiles.nama }}</b>
         </nuxt-link>
         <!-- <mdb-icon far icon="user-circle" size="lg"/>  -->
                     <!-- <a :href="`/profile/${$username(slug)}`" class="text-center">

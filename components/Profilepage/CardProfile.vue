@@ -37,7 +37,7 @@
                 "
               >
                 <b-avatar
-                  variant="info"
+                  variant="none"
                   :src="profiles.photo"
                   :size="size"
                 ></b-avatar>
@@ -66,7 +66,7 @@
               </div>
               <div v-else>
                 <b-avatar
-                  variant="primary"
+                  variant="none"
                   :text="username.charAt(0)"
                   :size="size"
                 ></b-avatar>
