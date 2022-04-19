@@ -12,8 +12,16 @@
 					<mdb-card-image :src="item.cover" alt="Card image cap"></mdb-card-image>
 					<mdb-card-body>
 						<mdb-card-title>{{item.judul}}</mdb-card-title>
-						<mdb-card-text class="truncate2">{{item.content}}</mdb-card-text>
-						<br><br>
+						<mdb-card-text class="truncate2 mt-2">
+							<span style="font-size: 12px;"
+							><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
+							{{ $moment(item.created_at).format("LL") }}</span
+							>
+							<p  class="mt-3 mb-2 truncate2">
+								{{item.content}}
+							</p>
+						</mdb-card-text>
+						<hr />
 						<nuxt-link :to="{name: `detail-berita-id-slug`, params: {id: item.id, slug: $slug(item.judul)}}" class="mt-5 mb-2">Baca Selengkapnya <mdb-icon icon="arrow-right" /></nuxt-link>
 					</mdb-card-body>
 				</mdb-card>

@@ -15,7 +15,7 @@
           <br />
           <h1>Motto</h1>
           <p>Mencintai Allah Menyayangi Sesama</p>
-          <br />
+          
           <h1>Makna Kerja</h1>
           <p>Berkhidmat Menyelamatkan Umat</p>
           <br />

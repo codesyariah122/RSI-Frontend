@@ -13,8 +13,16 @@
 					<mdb-card-image :src="news[listIndex - 1].foto_url" alt="Card image cap"></mdb-card-image>
 					<mdb-card-body>
 						<mdb-card-title>{{news[listIndex - 1].judul}}</mdb-card-title>
-						<mdb-card-text class="truncate2">{{news[listIndex - 1].content}}</mdb-card-text>
-						<br><br>
+						<mdb-card-text class="truncate2 mt-2">
+							<span style="font-size: 12px;"
+							><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i>
+							{{ $moment(news[listIndex-1].created_at).format("LL") }}</span
+							>
+							<p  class="mt-3 mb-2 truncate2">
+								{{news[listIndex-1].content}}
+							</p>
+						</mdb-card-text>
+						<hr />
 						<nuxt-link :to="{name: `detail-berita-id-slug`, params: {id: news[listIndex - 1].id, slug: $slug(news[listIndex - 1].judul)}}" class="mt-5 mb-2">Baca Selengkapnya <mdb-icon icon="arrow-right" /></nuxt-link>
 					</mdb-card-body>
 				</mdb-card>
