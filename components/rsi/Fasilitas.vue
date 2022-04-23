@@ -13,7 +13,7 @@
           lg="12"
           xs="12"
           sm="12"
-          class="ppkc__col-2 mt-2"
+          class="rsi__col-2 mt-2"
         >
           <h5>{{ item.nama }}</h5>
           <mdb-row v-if="item.list_foto.length > 0">

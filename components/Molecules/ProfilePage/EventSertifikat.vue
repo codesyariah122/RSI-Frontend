@@ -59,7 +59,7 @@
 				<mdb-card v-else v-for="(item, index) in sertifikats" class="card-body" style="width: 100%; margin-top: 1rem;" :key="item.id">
 					<mdb-row>
 						<mdb-col lg="12" xs="12" sm="12">
-							<mdb-card-title>{{item.title}}</mdb-card-title>
+							<mdb-card-title style="color:#374151;">{{item.title}}</mdb-card-title>
 							<small class="mt-2">
 								{{$moment(item.date_start).format("LL")}} - {{$moment(item.date_end).format("LL")}}
 							</small>

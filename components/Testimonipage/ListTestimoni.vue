@@ -4,7 +4,7 @@
       <mdb-container>
         <!-- header -->
         <mdb-row class="row justify-content-center rsi__page">
-          <mdb-col lg="12" xs="12" sm="12" style="">
+          <mdb-col lg="12" xs="12" sm="12" class="rsi__col-1">
             <h2>
               Testimoni
             </h2>
