@@ -99,19 +99,23 @@
 			.profile__info{
 				margin-left: -1rem;
 				ul li{
+					h5{
+						color: $second-black;
+						font-size: 14px;
+					}
 					h6{
 						color: $gray;
 						font-weight:600!important;
-						font-size:15px;
+						font-size:13px;
 					}
 					p{
 						color:$default-gray;
 						font-weight: 500;
-						font-size: 15px!important;
+						font-size: 13px!important;
 					}
 					.info__context{
 						font-weight: 500;
-						font-size: 15px!important;
+						font-size: 13px!important;
 						margin-top: -.5rem;
 					}
 				}
@@ -129,7 +133,7 @@
 				margin-bottom: 3rem;
 				font-weight: 700;
 				line-height: 31px;
-				font-size: 13px;
+				font-size: 14px;
 				&:after{
 					content:'';
 					display: block;
@@ -167,7 +171,7 @@
 			.card-title{
 				font-size: 16px;
 				font-weight: 700;
-				color: $color-primary;
+				color: $second-black;
 				text-transform:capitalize;
 			}
 			blockquote{
@@ -270,7 +274,7 @@
 					margin-top: 2.5rem;				
 					h2{
 						color: $second-black;
-						font-size:24px;
+						font-size:25px;
 						font-weight:700;
 					}
 					ul li{
@@ -302,6 +306,10 @@
 				background-color: $second-default;
 				.profile__info{
 					ul li{
+						h5{
+							color: $second-black;
+							font-size: 18px;
+						}
 						h6{
 							color: $gray;
 							font-weight:900!important;
@@ -310,9 +318,13 @@
 						p{
 							font-size: 15px!important;
 							color:$default-gray;
+							font-weight: 600;
 						}
 						.info__context{
 							margin-top: -.5rem;
+							font-size: 15px!important;
+							color:$default-gray;
+							font-weight: 600;
 						}
 					}
 				}
@@ -344,7 +356,7 @@
 				color:$color-primary!important;
 				font-weight: 700!important;
 				line-height: 31px!important;
-				font-size: 18px!important;
+				font-size: 18.5px!important;
 			}
 
 			.nav-item.show .nav-link {
@@ -419,4 +431,29 @@
 
 .filtering__form-data{
 	@include filtering_form_data;
+}
+
+.event__diikuti-card{
+	.card__event{
+		.container{
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+			.card-title{
+				color:$second-black;
+			}
+			.date__event{
+				margin-top: -1rem!important;
+			}
+			.badge__category{
+				background-color: transparent!important;
+				color: $color-primary!important;
+				border:1px $color-primary solid;
+				font-size: 13px;
+			}
+			.idr__text{
+				color:$color-primary;
+				font-weight: 600;
+			}
+		}
+	}
 }

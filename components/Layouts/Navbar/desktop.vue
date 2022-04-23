@@ -128,7 +128,7 @@ style="font-size: 31px !important"
 >
 <mdb-dropdown-toggle tag="a" navLink slot="toggle">
   {{profiles.nama}}
-  <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="none" :src="profiles.photo"></b-avatar>
+  <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="primary" :src="profiles.photo"></b-avatar>
   <b-avatar v-else variant="primary" :text="slug.charAt(0)"></b-avatar>
   
 </mdb-dropdown-toggle>
@@ -141,7 +141,7 @@ style="font-size: 31px !important"
     }"
     class="text-center"
     >
-    <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="none" :src="profiles.photo" size="1.7rem"></b-avatar>
+    <b-avatar v-if="profiles.photo !== 'https://api.rsi-online.com/image-profiles/null'" variant="primary" :src="profiles.photo" size="1.7rem"></b-avatar>
   <b-avatar v-else variant="primary" :text="slug.charAt(0)" size="1.7rem"></b-avatar> &nbsp; <b>{{ profiles.nama }}</b>
   </nuxt-link>
 </mdb-dropdown-item>

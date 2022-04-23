@@ -65,7 +65,7 @@
 							</small>
 						</mdb-col>
 						<mdb-col lg="12" xs="12" sm="12">
-							<mdb-btn size="sm" outline="primary"><mdb-icon icon="download" /> Unduh Sertifikat</mdb-btn>
+							<mdb-btn size="sm" class="btn my__btn-primary rounded-pill"><mdb-icon icon="download" /> Unduh Sertifikat</mdb-btn>
 						</mdb-col>
 					</mdb-row>
 				</mdb-card>

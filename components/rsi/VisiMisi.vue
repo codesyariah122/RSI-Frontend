@@ -22,10 +22,10 @@
         </mdb-col>
 
         <mdb-col lg="12" xs="12" sm="12" class="rsi__col-4">
-          <h5>Motto</h5>
+          <h5 class="font-weight-bold">Motto</h5>
           <p>Mencintai Allah Menyayangi Sesama</p>
           <br />
-          <h5>Makna Kerja</h5>
+          <h5 class="font-weight-bold">Makna Kerja</h5>
           <p>Berkhidmat Menyelamatkan Umat</p>
           <br />
         </mdb-col>

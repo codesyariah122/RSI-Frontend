@@ -4,7 +4,7 @@
       <!-- header -->
       <mdb-row class="row justify-content-center rsi__page">
         <mdb-col lg="12" xs="12" sm="12">
-          <h2 style="color: #004899 !important; font-weight: 700">Fasilitas</h2>
+          <h2>Fasilitas</h2>
         </mdb-col>
 
         <mdb-col
