@@ -25,9 +25,9 @@
 
       <!-- column card testimoni -->
       <!-- Testimoni card components -->
-      <MoleculesHomepageMoleculesCardTestimoni/>
+      <MoleculesHomepageMoleculesCardTestimoni v-if="testimonis.length > 0" :testimonis="testimonis"/>
 
-        <!-- <MoleculesHomepageMoleculesListTestimoniSample v-else/> -->
+        <MoleculesHomepageMoleculesListTestimoniSample v-else/>
 
 
     </mdb-container>

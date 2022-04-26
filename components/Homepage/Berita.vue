@@ -14,12 +14,12 @@
 
 		<mdb-row class="col__berita mt-3 mb-3">
 			<!-- column card berita -->
-			<mdb-col lg="12" xs="12" sm="12" >
+			<mdb-col v-if="news.length > 0" lg="12" xs="12" sm="12" >
 				<!-- Card berita components -->
 				<MoleculesHomepageMoleculesCardBerita :news="news" ref="childBerita"/>	
 			</mdb-col>
 
-			<!-- <MoleculesHomepageMoleculesListBeritaSample v-else/> -->
+			<MoleculesHomepageMoleculesListBeritaSample v-else/>
 		</mdb-row>
 
 	</div>

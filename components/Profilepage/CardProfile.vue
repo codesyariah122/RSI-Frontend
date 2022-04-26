@@ -13,7 +13,7 @@
           <b-skeleton animation="wave" width="55%"></b-skeleton>
           <b-skeleton animation="wave" width="70%"></b-skeleton>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="6" class="mt-2">
           <b-row>
             <b-col cols="6">
               <b-skeleton animation="wave" width="85%"></b-skeleton>
@@ -93,14 +93,14 @@
           <mdb-col md="4" class="profile__options-page">
             <mdb-row class="d-flex justify-content-center">
               <mdb-col col="12" sm="6">
-                <mdb-btn class="shadow-none" outline="primary" size="sm">
-                  <nuxt-link :to="`/profile/edit/${profiles.id}`">
+                <mdb-btn class="shadow-none rounded-pill" outline="primary" size="sm">
+                  <a :href="`/profile/edit/${profiles.id}`">
                     <mdb-icon icon="user-cog" size="sm" /> Edit Profile
-                  </nuxt-link>
+                  </a>
                 </mdb-btn>
               </mdb-col>
               <mdb-col col="12" sm="6">
-                <mdb-btn class="shadow-none" color="deep-orange" size="sm" @click="LogoutProfile">
+                <mdb-btn class="shadow-none rounded-pill" color="deep-orange" size="sm" @click="LogoutProfile">
                   <mdb-icon icon="sign-out-alt" size="sm" /> Logout
                 </mdb-btn>
               </mdb-col>

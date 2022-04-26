@@ -4,8 +4,8 @@
       <mdb-col class="glow" md="12">
         <h4>{{ time }}</h4>
       </mdb-col>
-<!-- 
-      <mdb-col v-if="apiKey" md="12" class="weather">
+
+      <!-- <mdb-col v-if="apiKey" md="12" class="weather">
          <strong>Lokasi Anda :</strong> <br>
          <strong>
           {{ city.city
@@ -16,9 +16,9 @@
             :src="`http://openweathermap.org/img/wn/${weathers.icon}@2x.png`"
           /> {{ weathers.description }} {{ temp }}&#8451;
         </mdb-badge>
-      </mdb-col>
+      </mdb-col> -->
 
-      <mdb-col md="12">
+      <!-- <mdb-col md="12">
         <GlobalsMap :coord="coord" :center_coord="center" :city="city"/>
       </mdb-col> -->
     </mdb-row>

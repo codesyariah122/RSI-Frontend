@@ -44,7 +44,7 @@
 			</div>
 		</mdb-row> -->
 
-		<mdb-row col="12" class="row justify-content-center event__sertifikat-card">
+		<mdb-row col="12" class="row justify-content-center">
 			<mdb-col lg="12" xs="12" sm="12">
 				<mdb-card v-if="sertifikats.length === 0" class="card-body" style="width: 100%; margin-top: 1rem;">
 					<mdb-row>
@@ -56,16 +56,16 @@
 					</mdb-row>
 				</mdb-card>
 
-				<mdb-card v-else v-for="(item, index) in sertifikats" class="card-body mb-4" style="width: 100%; margin-top: 1rem;" :key="item.id">
+				<mdb-card v-else v-for="(item, index) in sertifikats" class="card-body" style="width: 100%; margin-top: 1rem;" :key="item.id">
 					<mdb-row>
 						<mdb-col lg="12" xs="12" sm="12">
-							<mdb-card-title>{{item.title}}</mdb-card-title>
+							<mdb-card-title style="color:#374151;">{{item.title}}</mdb-card-title>
 							<small class="mt-2">
 								{{$moment(item.date_start).format("LL")}} - {{$moment(item.date_end).format("LL")}}
 							</small>
 						</mdb-col>
-						<mdb-col lg="3" xs="12" sm="12" class="mt-3">
-							<mdb-btn size="sm" class="btn my__btn-primary rounded-pill btn-block"><mdb-icon icon="download" /> Unduh Sertifikat</mdb-btn>
+						<mdb-col lg="12" xs="12" sm="12">
+							<mdb-btn size="sm" class="btn my__btn-primary rounded-pill"><mdb-icon icon="download" /> Unduh Sertifikat</mdb-btn>
 						</mdb-col>
 					</mdb-row>
 				</mdb-card>

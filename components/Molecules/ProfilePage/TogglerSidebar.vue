@@ -4,7 +4,7 @@
 			<mdb-col :col="`${$device.isDesktop ? 1 : 3}`">
 				<mdb-tooltip trigger="hover" :options="{placement: 'bottom'}">
 					<span slot="tip"> {{close_show ? 'Tutup Menu Pelatihan' : 'Buka Menu Pelatihan'}} </span>
-					<mdb-btn id="docs-sidebar-toggler" class="toggler" gradient="blue" slot="reference" color="primary" @click="SidebarToggler(); close_show = !close_show;">
+					<mdb-btn id="docs-sidebar-toggler" class="toggler" gradient="blue" slot="reference" color="success" @click="SidebarToggler(); close_show = !close_show;">
 						<!-- <mdb-icon icon="bars" size="sm"/> -->
 						<i v-if="close_show" class="fas fa-times"></i>
 						<i v-else class="fas fa-bars"></i>
@@ -18,7 +18,7 @@
 <style lang="scss">
 	.toggler{
 		z-index: 9999;
-		margin-top: 3rem;
+		margin-top:3rem;
 		&:hover{
 			color:$bg-fourt!important;
 		}
@@ -28,6 +28,7 @@
 	@media (min-width: 992px) {
 		.toggler{
 			margin-left: -2rem;
+			margin-top:3rem;
 		}
 	}
 </style>
@@ -39,8 +40,6 @@
 				close_show: true
 			}
 		},
-		
-		
 		methods: {
 			SidebarToggler(){
 				const sidebar = document.getElementById('docs-sidebar');

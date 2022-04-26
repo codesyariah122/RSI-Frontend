@@ -33,14 +33,13 @@
 					{{lists.slice(0,6)}}
 				</pre> -->
 
-				<mdb-col v-if="empty || error_search && lists.length === 0" lg="12" xs="12" sm="12">
+				<mdb-col v-if="empty || error_search" lg="12" xs="12" sm="12">
 					<mdb-alert :color="`${error_search ? 'danger' : 'info'}`" class="text-center">
 						<mdb-icon icon="info-circle" size="lg"/> {{message}}
 					</mdb-alert>
 				</mdb-col>
-				
+
 				<mdb-col
-				v-if="listIndex <= lists.length"
 				v-for="listIndex in listToShow"
 				col="12"
 				md="4"
@@ -81,23 +80,39 @@
 
 						<!-- <mdb-btn @click="ToDetailEvent(lists[listIndex-1].kegiatan_id)" block class="btn btn-outline-primary mt-3 mb-2" color="primary">Detail Event</mdb-btn> -->
 						<hr />
-						<nuxt-link
-						:to="{
-							name: `detail-event-id-slug`,
-							params: {
-								id: lists[listIndex-1].kegiatan_id,
-								slug: $slug(lists[listIndex-1].kegiatan_title),
-							},
-						}"
-						:class="`btn my__btn-secondary rounded-pill mt-3 mb-2 btn-block shadow-none ${
-							$device.isMobile ? 'btn-sm' : ''
-						}`"
-						>Info Kelas</nuxt-link
-						>
+						<a
+						@click="
+						SetKeranjang(
+							lists[listIndex-1].kegiatan_id,
+							lists[listIndex-1].photo,
+							lists[listIndex-1].kegiatan_title,
+							lists[listIndex-1].harga
+							)
+							"
+							:class="`btn my__btn-primary rounded-pill mt-3 mb-2 btn-block shadow-none ${
+								$device.isMobile ? 'btn-sm' : ''
+							}`"
+							color="success"
+							><i class="fa fa-cart-plus fa-fw fa-lg" aria-hidden="true"></i>
+							Tambah ke keranjang</a
+							>
+							<nuxt-link
+							:to="{
+								name: `detail-event-id-slug`,
+								params: {
+									id: lists[listIndex-1].kegiatan_id,
+									slug: $slug(lists[listIndex-1].kegiatan_title),
+								},
+							}"
+							:class="`btn my__btn-secondary rounded-pill mt-3 mb-2 btn-block shadow-none ${
+								$device.isMobile ? 'btn-sm' : ''
+							}`"
+							>Info Kelas</nuxt-link
+							>
 						</mdb-card-body>
 					</mdb-card>
 				</mdb-col>
-				<mdb-col v-if="load_more" lg="12" xs="12" sm="12">
+				<mdb-col v-if="loading_more" lg="12" xs="12" sm="12">
 					<center>						
 						<div class="spinner-border text-primary" style="width:7rem; height: 7rem;" role="status">
 							<span class="sr-only">Loading...</span>
@@ -115,17 +130,17 @@
 				sm="12"
 				:class="`${$device.isDesktop ? 'mb-5 shadow-none' : 'mb-2'}`"
 				>
-				<mdb-btn
-				@click="LoadMore"
-				:class="`btn my__btn-primary rounded-pill  ${
-					$device.isMobile ? 'btn-block btn-sm' : 'btn-block'
-				}`"
-				>Lihat kelas Lainnya</mdb-btn>
-			</mdb-col>
-		</mdb-row>
+					<mdb-btn
+					@click="LoadMore"
+					:class="`btn my__btn-primary rounded-pill  ${
+						$device.isMobile ? 'btn-block btn-sm' : 'btn-block'
+					}`"
+					>Lihat kelas Lainnya</mdb-btn>
+				</mdb-col>
+			</mdb-row>
 
-	</mdb-container>
-</div>
+		</mdb-container>
+	</div>
 </template>
 
 <script>
@@ -200,10 +215,7 @@
 
 		    LoadMore(){
 		    	this.load_more = true
-		    	setTimeout(()=>{
-		    		this.load_more = false
-		    		this.$emit('load-more-event', 0)
-		    	}, 1500)
+		    	this.$emit('load-more-event', 0)
 		    }
 		}
 	}

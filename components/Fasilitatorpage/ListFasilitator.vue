@@ -8,13 +8,13 @@
       <mdb-container style="max-width: 1300px">
         <mdb-row class="rsi__page">
           <mdb-col lg="12" xs="12" sm="12" class="rsi__col-1">
-            <h2 style="font-weight: 700">
+            <h2>
               Fasilitator
             </h2>
           </mdb-col>
         </mdb-row>
+        
         <!-- delay looping data with loader spinner -->
-
         <div class="row text-center text-md-left" style="margin-top: 32px">
           <!-- Grid column -->
           <div

@@ -102,7 +102,7 @@
           <div class="col-sm-12">
             <ul class="list-group">
              <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-              <a href="/"></i>
+              <a href="/auth/login"></i>
                   Situs Resmi RSI Sultan Agung <mdb-icon icon="external-link-alt" size="sm" />
                 </a>
               </li>

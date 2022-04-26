@@ -4,26 +4,26 @@
       <!-- header -->
       <mdb-row class="row justify-content-center berita__detail-content">
         <mdb-col lg="12" xs="12" sm="12" class="mb-3">
-          <mdb-btn @click="$router.go(-1)" color="danger" class="rounded-pill">
-            <mdb-icon icon="angle-left" :size="`${$device.isDesktop ? 'md' : 'sm'}`" /> Kembali Ke Profile 
+          <mdb-btn @click="$router.push({path: `/profile/${$username(profiles.nama)}`})" color="danger" class="rounded-pill">
+            <mdb-icon icon="angle-left" size="lg" /> Kembali Ke Profile 
           </mdb-btn>
         </mdb-col>
         <mdb-col lg="12" xs="12" sm="12" class="col__berita-1">
           <h2 class="text-capitalize">Data Diri</h2>
         </mdb-col>
         <mdb-col sm="6" md="4" class="justify-content-center col__img-profile">
-          <b-avatar v-if="profiles.photo" variant="info" :src="profiles.photo" size="10rem" class="mr-5"></b-avatar>
+          <b-avatar v-if="profiles.photo" variant="primary" :src="profiles.photo" size="10rem" class="mr-5"></b-avatar>
           <b-avatar v-else variant="primary" :text="profiles.nama.charAt(0)" size="10rem" class="mr-5"></b-avatar>
           <mdb-row class="row justify-content-start mt-2">
             <mdb-col md="6">
-                <a href="#" class="edit-photo" title="Ganti foto">
-                  <input
-                  type="file"
-                  placeholder="Ganti foto"
-                  @change="previewFiles"
-                  />
-                  Ganti Foto
-                </a>
+              <a href="#" class="edit-photo" title="Ganti foto">
+                <input
+                type="file"
+                placeholder="Ganti foto"
+                @change="previewFiles"
+                />
+                Ganti Foto
+              </a>
             </mdb-col>
           </mdb-row>
           
@@ -327,6 +327,7 @@
             const formData = new FormData();
             formData.append("no_anggota", this.profiles.no_anggota);
             formData.append("email", this.profiles.email);
+            formData.append("phone", this.profiles.phone)
             formData.append("nama", this.profiles.nama);
             formData.append("tempat_lahir", this.profiles.tempat_lahir);
             formData.append("no_ktp", this.profiles.no_ktp);
@@ -356,11 +357,11 @@
             .then(({ data }) => {
               console.log(data);
               this.$router.push({
-                name: "profile",
+                path: `/profile/${this.$username(res.user.nama)}`
               });
             })
             .catch((err) => {
-              console.log(err);
+              console.log(err.response);
               alert("Gagal menyimpan profile. Coba lagi");
             })
             .finally(() => {
