@@ -15,7 +15,7 @@
       <div class="docs-content">
         <div class="container">
           <!-- Sidebar Toggler -->
-          <MoleculesProfilePageTogglerSidebar  />
+          <MoleculesProfilePageTogglerSidebar />
 
           <!-- <ColorModePicker/> -->
 
@@ -104,7 +104,6 @@
             :kegiatan_id="kegiatan_id"
             :pelatihan_id="pelatihan_id"
             :evaluasi="evaluasi"
-            :kegiatan_title="kegiatan_title"
             />
           </div>
         </article>
@@ -142,7 +141,6 @@
         pelatihans: [],
         kegiataan: [],
         kegiatan_id: "",
-        kegiatan_title: null,
         pelatihan_id: "",
         evaluasi: [],
         categories: "",
@@ -275,14 +273,12 @@
           });
         });
       },
-      ShowField(raw, id_kategori = "", type, kegiatan_title) {
+      ShowField(raw, id_kategori = "", type) {
         window.scrollTo(0, 0);
         this.loading_file = true;
         this.show_file = true;
         this.show_close = true;
         this.detailed_data = raw;
-        this.kegiatan_title = kegiatan_title
-        
         let field = "";
         switch (type) {
           case 1:
