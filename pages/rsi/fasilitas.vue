@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "rsi-visi_misi",
+  name: "rsi-fasilitas",
   layout: "default",
 
   data() {

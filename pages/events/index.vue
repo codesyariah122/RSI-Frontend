@@ -4,13 +4,12 @@
 		<EventpageHeader @update-list-event="SearchEvent" :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" @load-more-event="LoadListEvent" :categories="categories" ref="eventChild"/>
 
 		<!-- List event page content -->
-		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :loading_more="loading_more" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
+		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
 
 	</div>
 </template>
 
 <script>
-	import {SampleEvents} from '@/helpers'
 	export default{
 		name: 'events',
 		layout: 'default',
@@ -20,17 +19,19 @@
 				loadingBtn: null,
 				lists: [],
 				categories: [],
-				listToShow: 6,
+				listToShow: 3,
 				message:'',
 				empty: null,
-				error_search: null,
-				loading_more: null
+				error_search: null
 			}
 		},
 
 		beforeMount(){
-			this.ConfigApiUrl(),
-			this.FetchListEvent()
+			this.ConfigApiUrl()
+		},
+
+		mounted(){
+			this.ListEvent()
 		},
 
 		methods:{
@@ -38,7 +39,7 @@
 				this.$store.dispatch('config/checkAuthLogin', 'token')
 			},
 
-			FetchListEvent(keyword, page, category, month, loadingBtn=null){
+			ListEvent(keyword, page, category, month, loadingBtn=null){
 				this.loading = true
 				this.loadingBtn = loadingBtn
 				const url = `${this.api_url}/web/event/paging?keyword=${keyword ? keyword : ''}&page=${page ? page : 1}&jenis_pelatihan=${category ? category : ''}&bulan_pelatihan=${month ? month : ''}`
@@ -49,14 +50,9 @@
 					if(data.list_kegiatan_terdekat.length > 0){
 						this.empty = false
 						this.lists = data.list_kegiatan_terdekat
-						// console.log(this.lists.length)
-						if(this.lists.length <= 3 || !category || !month){
-							SampleEvents.map(d => this.lists.push(d))
-							this.lists.slice(3)
-						}
 					}else{
 						this.empty = true
-						this.message = `Tidak ada event terdekat / tidak ada event yang dicari !!`
+						this.message = `Tidak ada event terdekat / tidak ada event yang dicari !`
 						// setTimeout(() => {
 						// 	this.empty = false
 						// }, 2500)
@@ -82,40 +78,12 @@
 			},
 
 			LoadListEvent(page){
-				// Clear list base on page == 1
-				// console.log(page)
-				// if(page == 1){
-				// 	page = 0
-				// }
-				// console.log(page)
-				window.scrollTo(0,document.body.scrollHeight);
-				this.loading_more=true
-				setTimeout(() => {
-					this.listToShow = (this.lists.length - this.listToShow) + this.listToShow
-					this.loading_more=false
-				}, 1000)
-				setTimeout(() => {
-					this.FetchListEvent(page,'', '', '', false)
-				}, 1500)
+				this.listToShow+=3
+				this.ListEvent(page,'', '', '')
 			},
 
 			SearchEvent(page, keyword, category, month, loadingBtn){
-				console.log(typeof category)
-				this.FetchListEvent(keyword, page, category, month, loadingBtn)
-				// if(month === undefined || month === ""){
-				// 	this.error_search = true
-				// 	this.message = "Pilih bulan pelatihan terlebih dahulu"
-				// 	setTimeout(() => {
-				// 		this.error_search= false
-				// 	}, 500)
-				// 	setTimeout(() => {
-				// 		this.FetchListEvent(keyword="", page=0, category="", month="", loadingBtn)
-				// 	}, 1500)
-				// }else{
-				// 	this.empty = false
-				// 	this.error_search = false
-				// 	this.FetchListEvent(keyword, page, category, month, loadingBtn)
-				// }
+				this.ListEvent(keyword, page, category, month, loadingBtn)
 			},
 
 			ConfigApiUrl(){

@@ -2,7 +2,7 @@
 	<div>
 		<LayoutsNavigation :token="token" :profiles="profiles" :slug="slug"/>
 		
-		<Nuxt/>
+		<Nuxt :style="style"/>
 
 		<!-- Scrolling back to top page -->
 		<GlobalsToTop/>
@@ -17,7 +17,14 @@
 		data(){
 			return{
 				profiles:[],
-				slug: ''
+				slug: '',
+				profiles: [],
+				style: `${this.$device.isDesktop ? 'margin-top: 4.5rem;' : 'margin-top:7rem;'}`,
+				data_event_path: {
+					event_id: this.$route.params.id,
+					event_path: this.$route.path
+				},
+				status_pendaftaran: ''
 			}
 		},
 
@@ -25,11 +32,9 @@
 			this.ConfigApiUrl(),
 			this.CheckToken()
 		},
-
 		mounted(){
 			this.UserProfileData()
 		},
-
 		methods: {
 			CheckToken(){
 				this.$store.dispatch('config/checkAuthLogin', 'token')
@@ -51,7 +56,6 @@
 				}
 			}
 		},
-
 		computed: {
 			token(){
 				return this.$store.getters['config/ConfigCheckLogin']

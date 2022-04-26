@@ -13,9 +13,6 @@
           />
         </mdb-col>
       </mdb-row>
-      <!-- <pre>
-        {{ data_cart.status }}
-      </pre> -->
     </mdb-container>
   </div>
 </template>
@@ -34,34 +31,21 @@ export default {
       profiles: [],
       username: "",
       loading: null,
-      carts: [],
-      data_cart: {},
     };
   },
 
   beforeMount() {
-    this.ConfigApiUrl(), this.CheckToken(), this.CheckKeranjang();
+    this.ConfigApiUrl(), this.CheckToken();
   },
 
   mounted() {
     this.EventDataLogin(),
-    this.UserProfileData(),
-    this.IsLoggedIn(),
-    this.CheckLogout(),
-    this.CheckKeranjang()
+      this.UserProfileData(),
+      this.IsLoggedIn(),
+      this.CheckLogout();
   },
 
   methods: {
-    CheckKeranjang() {
-      // this.data_cart = localStorage.getItem("data_keranjang")
-      //   ? JSON.parse(localStorage.getItem("data_keranjang"))
-      //   : "";
-      // if (localStorage.getItem("data_keranjang")) {
-      //   this.carts.push(JSON.parse(localStorage.getItem("data_keranjang")));
-      // }
-      this.data_cart = localStorage.getItem('go-to-cart') ? JSON.parse(localStorage.getItem('go-to-cart')) : ''
-    },
-
     IsLoggedIn() {
       if (this.token.accessToken) {
         this.Alert("success", `Anda sedang login`);
@@ -113,7 +97,6 @@ export default {
       // Method from helpers
       LoginProfile(url, params)
         .then((res) => {
-          console.log(res)
           if (res.message) {
             this.Alert("error", res.message);
             this.show_alert = true;
@@ -127,29 +110,20 @@ export default {
           // assignment
           this.profiles = res.user;
 
-          // redirect keranjang page
-          if (this.data_cart.status) {
-            console.log(this.data_cart.status)
-            // this.$router.back();
+          // redirect
+          if (event_id) {
+            // console.log("ok send event")
             this.$router.push({
-              path: `/profile/${this.$username(res.user.nama)}/keranjang`
-            })
-          }else{
-            // redirect event details
-            if (event_id) {
-              // console.log("ok send event")
-              this.$router.push({
-                path: event_path,
-              });
-            } else {
-              // console.log("no event data")
-              this.$router.push({
-                path: `/profile/${this.$username(res.user.nama)}`,
-                // params: {
-                // 	slug: this.$username(res.user.nama)
-                // }
-              });
-            }
+              path: event_path,
+            });
+          } else {
+            // console.log("no event data")
+            this.$router.push({
+              path: `/profile/${this.$username(res.user.nama)}`,
+              // params: {
+              // 	slug: this.$username(res.user.nama)
+              // }
+            });
           }
         })
         .catch((err) => console.log(err))

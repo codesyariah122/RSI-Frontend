@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="parallax overlay"
+      class="parallax overlay mt-5"
       :style="`background-image: url(${parallax.data.bg});`"
     >
       <div class="caption">
@@ -15,7 +15,7 @@
             </b-col>
             <b-col md="4">
               <a
-                href="#!"
+                href="#"
                 target="_blank"
                 style="cursor: pointer"
               >

@@ -39,7 +39,7 @@
 			</mdb-col>
 		</mdb-row>
 
-		<mdb-row v-if="loading_filter" class="row justify-content-center">
+		<mdb-row v-if="loading_filter" class="row justify-content-center mt-2">
 			<mdb-col lg="12" xs="12" sm="12">
 				<b-skeleton animation="throb" width="85%"></b-skeleton>
 				<b-skeleton animation="throb" width="55%"></b-skeleton>
@@ -47,7 +47,7 @@
 			</mdb-col>
 		</mdb-row>
 
-		<mdb-row v-else col="12" class="row justify-content-center event__diikuti-card">
+		<mdb-row v-else col="12" class="row justify-content-center event__diikuti-card mb-3">
 			<mdb-col lg="12" xs="12" sm="12">
 				<mdb-card v-if="empty_filter" class="card-body" style="width: 100%; margin-top: 1rem;">
 					<mdb-row>
@@ -59,7 +59,7 @@
 					</mdb-row>
 				</mdb-card>
 
-				<mdb-card v-else v-for="(item, index) in pelatihans" class="card__event" style="width: 100%; margin-top: 1rem;" :key="item.id">
+				<mdb-card v-else v-for="(item, index) in pelatihans" class="card-body" style="width: 100%; margin-top: 1rem;" :key="item.id">
 					<mdb-container>
 						<mdb-row>
 							<mdb-col lg="12" xs="12" sm="12">
@@ -67,44 +67,45 @@
 								<small class="date__event">
 									{{$moment(item.tanggal_awal).format("LL")}} - {{$moment(item.tanggal_akhir).format("LL")}}
 								</small>
-
-								<mdb-row class="mt-2 mb-3 d-flex justify-content-start">
+								<mdb-row class="d-flex justify-content-start">
 									<mdb-col md="3">
 										<span>Status : </span> 
 									</mdb-col>
-									<mdb-col md="1">
-										<mdb-badge class="mb-2 badge__category shadow-none">{{item.status_pendaftaran_value}}</mdb-badge>
+									<mdb-col md="4">
+										<mdb-badge size="sm" class="mb-2 badge__category shadow-none" >{{item.status_pendaftaran_value}}</mdb-badge>
 									</mdb-col>
-								</mdb-row>
-
-								<mdb-row class="row justify-content-start">
 									<mdb-col md="12">
 										<blockquote class="blockquote-footer">
 											{{item.kegiatan_desc}}
 										</blockquote>
 									</mdb-col>
 								</mdb-row>
+							<!-- <mdb-row class="d-flex justify-content-start mb-3">
+								<mdb-col md="3">
+									<span>Kategori : </span>
+								</mdb-col>
+								<mdb-col md="1">
+									<mdb-badge v-if="index+1" size="sm" class="badge btn-primary mb-4 badge__category text-white" >{{categories[index].value}}</mdb-badge>
+								</mdb-col>
+							</mdb-row> -->
+							<mdb-row>
+								<mdb-col md="6">
+									<h4 class="idr__color">{{$format(item.harga)}}</h4>
+								</mdb-col>
+							</mdb-row>
+						</mdb-col>
 
-								<mdb-row>
-									<mdb-col md="6">
-										<h4 class="idr__text">{{$format(item.harga)}}</h4>
-									</mdb-col>
-								</mdb-row>
-							</mdb-col>
+						<mdb-col lg="6" xs="12" sm="12" class="mt-3">
+							<nuxt-link :to="`/detail/event/${item.kegiatan_id}/${$slug(item.kegiatan_title)}`" size="sm" class="btn my__btn-primary rounded-pill btn-block">Akses Pelatihan</nuxt-link>
+						</mdb-col>
+					</mdb-row>
+				</mdb-container>
+			</mdb-card>
+		</mdb-col>
 
-							<mdb-col lg="6" xs="12" sm="12">
-								<hr />
-								<!-- <nuxt-link :to="`/detail/event/${item.kegiatan_id}/${$slug(item.kegiatan_title)}`" size="sm" class="btn btn-outline-primary font-weight-bold btn__link-event">Lihat Detail Pelatihan</nuxt-link> -->
-								<nuxt-link :to="`/profile/${username}/events/${item.kegiatan_id}/${$slug(item.kegiatan_title)}`" size="md" class="btn my__btn-primary rounded-pill btn-block">Akses Pelatihan</nuxt-link>
-							</mdb-col>
-						</mdb-row>
-					</mdb-container>
-				</mdb-card>
-			</mdb-col>
+	</mdb-row>
 
-		</mdb-row>
-
-	</div>
+</div>
 </template>
 
 <script>

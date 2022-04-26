@@ -2,53 +2,50 @@
 <template>
   <div>
     <TestimonipageListTestimoni
-    :path="path"
-    :lists="lists"
-    :loading="loading"
-    :error="error"
-    :end="end"
-    @load-more-testi="LoadListTestimoni"
+      :path="path"
+      :lists="lists"
+      :loading="loading"
+      :error="error"
+      :end="end"
+      @load-more-testi="LoadListTestimoni"
     />
-
   </div>
 </template>
 
 <script>
-  import {TestimoniSamples} from '@/helpers'
+export default {
+  name: "rsi-testimoni",
+  layout: "default",
 
-  export default {
-    name: "rsi-testimoni",
-    layout: "default",
+  data() {
+    return {
+      loading: null,
+      error: false,
+      end: false,
+      lists: [],
+      path: this.$route.name,
+    };
+  },
 
-    data() {
-      return {
-        loading: null,
-        error: false,
-        end: false,
-        lists: [],
-        path: this.$route.name,
-      };
-    },
+  beforeMount() {
+    this.ConfigApiUrl();
+  },
 
-    beforeMount() {
-      this.ConfigApiUrl(),
-      this.ListTestimoni()
-    },
-    
-    methods: {
-      ListTestimoni() {
-        this.loading = true;
-        this.error = false;
-        this.$axios
+  mounted() {
+    this.ListTestimoni();
+  },
+
+  methods: {
+    ListTestimoni() {
+      this.loading = true;
+      this.error = false;
+      this.$axios
         .get(`${this.api_url}/web/testimoni/page?start=${this.lists.length}`)
         .then((res) => {
           if (res.data.list_data.length > 0) {
             this.lists.push(...res.data.list_data);
           } else {
             this.end = true;
-            TestimoniSamples.map(d => {
-              this.lists.push(d)
-            })
           }
         })
         .catch((err) => {
@@ -60,21 +57,21 @@
             this.loading = false;
           }, 800);
         });
-      },
-
-      LoadListTestimoni() {
-        this.ListTestimoni();
-      },
-
-      ConfigApiUrl() {
-        const api_url = process.env.NUXT_ENV_API_URL;
-        this.$store.dispatch("config/storeConfigApiUrl", api_url);
-      },
     },
-    computed: {
-      api_url() {
-        return this.$store.getters["config/ConfigApiUrl"];
-      },
+
+    LoadListTestimoni() {
+      this.ListTestimoni();
     },
-  };
+
+    ConfigApiUrl() {
+      const api_url = process.env.NUXT_ENV_API_URL;
+      this.$store.dispatch("config/storeConfigApiUrl", api_url);
+    },
+  },
+  computed: {
+    api_url() {
+      return this.$store.getters["config/ConfigApiUrl"];
+    },
+  },
+};
 </script>

@@ -30,7 +30,6 @@ export default {
       show_alert: null,
       profiles: [],
       loading: null,
-      username:''
     };
   },
 
@@ -48,7 +47,7 @@ export default {
   methods: {
     IsLoggedIn(){
       if(this.token.accessToken){
-        this.Alert('success', `Anda telah login`)
+        this.Alert('success', `Anda sedang login`)
         setTimeout(() => {
           this.$router.push({
             name: 'profile-name',
@@ -92,7 +91,7 @@ export default {
           this.Alert("success", alert_data);
 
           // store access token
-          // this.ConfigAuthLogin(JSON.stringify(res.token));
+          this.ConfigAuthLogin(JSON.stringify(res.token));
 
           // assignment
           this.profiles = res.user;
@@ -103,7 +102,7 @@ export default {
           // redirect
         })
         .catch((err) => {
-          console.log(err.response);
+          console.log(err);
         })
         .finally(() => {
           setTimeout(() => {

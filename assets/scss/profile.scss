@@ -99,14 +99,10 @@
 			.profile__info{
 				margin-left: -1rem;
 				ul li{
-					h5{
-						color: $second-black;
-						font-size: 14px;
-					}
 					h6{
 						color: $gray;
 						font-weight:600!important;
-						font-size:13px;
+						font-size:15px;
 					}
 					p{
 						color:$default-gray;
@@ -115,7 +111,7 @@
 					}
 					.info__context{
 						font-weight: 500;
-						font-size: 13px!important;
+						font-size: 15px!important;
 						margin-top: -.5rem;
 					}
 				}
@@ -133,7 +129,7 @@
 				margin-bottom: 3rem;
 				font-weight: 700;
 				line-height: 31px;
-				font-size: 14px;
+				font-size: 13px;
 				&:after{
 					content:'';
 					display: block;
@@ -156,7 +152,7 @@
 				color:$color-primary!important;
 				font-weight: 700;
 				line-height: 31px;
-				font-size: 18px;
+				font-size: 15px;
 			}
 			
 
@@ -171,7 +167,7 @@
 			.card-title{
 				font-size: 16px;
 				font-weight: 700;
-				color: $second-black;
+				color: $color-primary;
 				text-transform:capitalize;
 			}
 			blockquote{
@@ -209,7 +205,38 @@
 
 	}
 }
+.filtering__form-data{
+	@include filtering_form_data;
+}
 
+.event__diikuti-card{
+	.card{
+		.container{
+			.card-title{
+				color:$second-black;
+			}
+			.badge__category{
+				background-color: transparent!important;
+				color: $color-primary!important;
+				border:1px $color-primary solid;
+				font-size: 13px;
+			}
+			.idr__color {
+				color: $color-primary;
+				font-weight: 700;
+				font-size:18px;
+				line-height: 24.51px;
+			}
+		}
+	}
+}
+.event__sertifikat-card{
+	.card{
+		.card-title{
+			color:$second-black!important;
+		}
+	}
+}
 // Desktop
 @media (min-width: 992px) {
 	.profile__page{
@@ -274,7 +301,7 @@
 					margin-top: 2.5rem;				
 					h2{
 						color: $second-black;
-						font-size:25px;
+						font-size:24px;
 						font-weight:700;
 					}
 					ul li{
@@ -306,25 +333,18 @@
 				background-color: $second-default;
 				.profile__info{
 					ul li{
-						h5{
-							color: $second-black;
-							font-size: 18px;
-						}
 						h6{
 							color: $gray;
-							font-weight:900!important;
+							font-weight:700!important;
 							font-size:16px!important;
 						}
 						p{
 							font-size: 15px!important;
 							color:$default-gray;
-							font-weight: 600;
+							font-weight: 500;
 						}
 						.info__context{
 							margin-top: -.5rem;
-							font-size: 15px!important;
-							color:$default-gray;
-							font-weight: 600;
 						}
 					}
 				}
@@ -354,9 +374,9 @@
 
 			.nav-link{
 				color:$color-primary!important;
-				font-weight: 700!important;
+				font-weight: 600!important;
 				line-height: 31px!important;
-				font-size: 18.5px!important;
+				font-size: 18px!important;
 			}
 
 			.nav-item.show .nav-link {
@@ -426,34 +446,39 @@
 
 		}
 	}
-}
 
+	.filtering__form-data{
+		@include filtering_form_data;
+	}
 
-.filtering__form-data{
-	@include filtering_form_data;
-}
-
-.event__diikuti-card{
-	.card__event{
-		.container{
-			margin-top: 2rem;
-			margin-bottom: 2rem;
+	.event__diikuti-card{
+		.card{
+			.container{
+				.card-title{
+					color:$second-black;
+				}
+				.badge__category{
+					background-color: transparent!important;
+					color: $color-primary!important;
+					border:1px $color-primary solid;
+					font-size: 13px;
+				}
+				.idr__color {
+					color: $color-primary;
+					font-weight: 700;
+					font-size:18px;
+					line-height: 24.51px;
+				}
+			}
+		}
+	}
+	.event__sertifikat-card{
+		.card{
 			.card-title{
-				color:$second-black;
-			}
-			.date__event{
-				margin-top: -1rem!important;
-			}
-			.badge__category{
-				background-color: transparent!important;
-				color: $color-primary!important;
-				border:1px $color-primary solid;
-				font-size: 13px;
-			}
-			.idr__text{
-				color:$color-primary;
-				font-weight: 600;
+				color:$second-black!important;
 			}
 		}
 	}
 }
+
+

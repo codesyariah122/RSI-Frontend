@@ -41,8 +41,8 @@
             </small>
             <br />
                 <!-- <pre>
-                    {{coordinate.id}}
-                  </pre> -->
+										{{coordinate.id}}
+									</pre> -->
                   <img :src="icons[3]" width="155" />
                   <br /><br />
                   <a
