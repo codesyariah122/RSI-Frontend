@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-jumbotron
-      class="jumbotron__home shadow-none"
+      class="jumbotron__home mt-5 shadow-none"
     >
       <b-container class="container__jumbotron">
         <b-row cols="12" class="row justify-content-start">

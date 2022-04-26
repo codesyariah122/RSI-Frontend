@@ -67,29 +67,12 @@
 						<div v-else>
 
 							<mdb-row class="row justify-content-start">
-								<mdb-col md="5">
+								<mdb-col md="12" sm="12" col="12">
 									<mdb-btn @click="BeliKelas(details.kegiatan_id, details)" class="btn my__btn-secondary rounded-pill btn-block shadow-none mb-2" :size="`${$device.isDesktop ? 'lg' : 'sm'}`">
 										{{status_pendaftaran == "Daftar" ? "Beli Kelas" : status_pendaftaran}}
 									</mdb-btn>
 								</mdb-col>
-								<mdb-col md="7">
-									<mdb-btn
-									@click="
-									SetKeranjang(
-										item.kegiatan_id,
-										item.photo,
-										item.kegiatan_title,
-										item.harga
-										)
-										"
-										:class="`btn my__btn-primary rounded-pill btn-block shadow-none ${
-											$device.isMobile ? 'btn-sm' : ''
-										}`"
-										color="success"
-										><i class="fa fa-cart-plus fa-fw fa-lg" aria-hidden="true"></i>
-										Tambah ke keranjang
-									</mdb-btn>
-								</mdb-col>
+								
 							</mdb-row>
 						</div>
 					</mdb-col>
@@ -205,7 +188,7 @@
 								<b-card no-body class="shadow-none overflow-hidden">
 									<b-row no-gutters class="row justify-content-center mt-4">
 										<b-col md="2" col="12" class="profile__pic">
-											<b-avatar :size="`${$device.isMobile ? '5rem' : '4rem'}`" variant="info" :src="require('~/assets/images/Avatar/5.jpg')"></b-avatar>
+											<b-avatar :size="`${$device.isMobile ? '5rem' : '4rem'}`" variant="none" :src="require('~/assets/images/Avatar/5.jpg')"></b-avatar>
 											<div :class="`${$device.isMobile ? 'd-flex justify-content-start mt-3 mx-auto' : 'row justify-content-start mt-3'}`">
 												<div class="col-md-4 col-sm-4">
 													<mdb-icon class="text-primary" fab icon="facebook-square" size="lg"/>

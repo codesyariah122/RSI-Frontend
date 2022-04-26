@@ -16,9 +16,6 @@
             </div>
             <div class="p-2 bd-highlight mr-2">
               <div class="form-group">
-                <!-- <pre>
-                  {{categories}}
-                </pre> -->
                 <select
                 @change="ChangeCategory($event)"
                 v-model="field.category_id"
@@ -27,7 +24,7 @@
                     <option selected :value="undefined">Jenis Pelatihan</option>
                     <option
                     v-for="(item, index) in categories"
-                    :value="parseInt(item.code)" :key="item.id"
+                    :value="index + 1"
                     >
                     {{ item.value }}
                   </option>
@@ -52,7 +49,7 @@
                 </select>
               </div>
             </div>
-            <div :class="`p-2 bd-highlight mr-3 ${$device.isDesktop ? 'count__event' : 'mb-5'}`">
+            <div :class="`p-2 bd-highlight mr-3 ${$device.isDesktop ? 'count__event' : ''}`">
               <div class="float-right">
                   <h6>
                     Menampilkan <strong> {{listToShow}} </strong> dari <strong> {{lists.length < listToShow ? listToShow : lists.length}} </strong>

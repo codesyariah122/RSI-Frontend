@@ -58,7 +58,7 @@
             v-model="fields.password"
           />
         </div>
-        <div class="form-group has-input">
+        <!-- <div class="form-group has-input">
           <img :src="require('~/assets/icons/web/ic_round-password.svg')" class="form-control-feedback">
           <input
             id="password2"
@@ -67,7 +67,7 @@
             placeholder="Ulangi Password"
             v-model="fields.confirm_password"
           />
-        </div>
+        </div> -->
 
         <div class="form-group">
           <div @click="showPassword">
@@ -166,21 +166,19 @@ export default {
         phone: this.fields.phone,
         email: this.fields.email,
         password: this.fields.password,
-        confirm_password: this.fields.confirm_password,
+        // confirm_password: this.fields.confirm_password,
       };
       this.$emit("registrasi-profile", params);
     },
 
     showPassword() {
       const password1 = document.querySelector("#password1");
-      const password2 = document.querySelector("#password2");
-      if (password1.type === "password" && password2.type === "password") {
+      // const password2 = document.querySelector("#password2");
+      if (password1.type === "password" ) {
         password1.type = "text";
-        password2.type = "text";
         this.showing_pass = true;
       } else {
         password1.type = "password";
-        password2.type = "password";
         this.showing_pass = false;
       }
     },

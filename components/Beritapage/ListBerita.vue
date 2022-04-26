@@ -2,14 +2,12 @@
   <div>
     <div ref="berita_square" class="card__list" :style="berita__list_style">
       <mdb-container>
-        <mdb-row class="row justify-content-center rsi__page">
-          <mdb-col lg="12" xs="12" sm="12" >
+        <mdb-row class="rsi__page">
+          <mdb-col lg="12" xs="12" sm="12" class="rsi__col-1">
             <h2>Berita</h2>
-          </mdb-col>
-          <mdb-col lg="12" xs="12" sm="12" style="margin-top: 8px">
-            <span style="color: #666666 !important; font-size: 14px">
-              Ikuti semua kegiatan dan berita dari RSI Sultan Agung
-            </span>
+            <p>
+               Ikuti semua kegiatan dan berita dari RSI Sultan Agung
+            </p>
           </mdb-col>
         </mdb-row>
         <!-- delay looping data with loader spinner -->
@@ -74,7 +72,7 @@
     </mdb-col>
   </mdb-row>
 
-  <mdb-row v-if="listToShow !== lists.length" class="row justify-content-center mt-2">
+  <mdb-row v-if="listToShow <= lists.length || lists.length !== 0" class="row justify-content-center mt-2">
     <mdb-col
     col="12"
     xl="5"
@@ -104,8 +102,8 @@
         currentPage: 1,
         items:[],
         berita__list_style:
-        this.$router.path == "berita" && this.$device.isDeskktop
-        ? "margin-top: 15rem;"
+        this.$device.isDesktop
+        ? "margin-top: 7rem;"
         : "margin-top: 10rem;",
       };
     },

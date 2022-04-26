@@ -62,23 +62,7 @@
 
               <!-- <mdb-btn @click="ToDetailEvent(lists[listIndex-1].kegiatan_id)" block class="btn btn-outline-primary mt-3 mb-2" color="primary">Detail Event</mdb-btn> -->
               <hr />
-              <a
-              @click="
-              SetKeranjang(
-                item.kegiatan_id,
-                item.photo,
-                item.kegiatan_title,
-                item.harga
-                )
-                "
-                :class="`btn my__btn-primary rounded-pill mt-3 mb-2 btn-block shadow-none ${
-                  $device.isMobile ? 'btn-sm' : ''
-                }`"
-                color="success"
-                ><i class="fa fa-cart-plus fa-fw fa-lg" aria-hidden="true"></i>
-                Tambah ke keranjang</a
-                >
-                
+              
                 <nuxt-link
                 :to="{
                   name: `detail-event-id-slug`,
