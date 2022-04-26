@@ -227,7 +227,7 @@ v-model="pekerjaan.akhir_kerja"
     data() {
       return {
         berita__list_style: this.$device.isDesktop
-        ? "margin-top: 15rem;"
+        ? "margin-top: 10rem;"
         : "margin-top: 7rem;",
         id: this.$route.params.id,
         path: this.$route.name,
