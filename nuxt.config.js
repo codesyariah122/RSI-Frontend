@@ -2,8 +2,8 @@ require('dotenv').config()
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-  // mode: 'spa',
-  // target: 'static',
+  mode: 'spa',
+  target: 'static',
   loading: {
     color: '#10B981',
     height: '15px'
@@ -75,10 +75,10 @@ export default {
       }
     ],
     script: [
-      {
-        src: "https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",
-        body: true,
-      },
+      // {
+      //   src: "https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver",
+      //   body: true,
+      // },
       // {
       //   src: "/assets/js/getButton.js",
       //   body: true,
@@ -101,7 +101,11 @@ export default {
       {
         src: "/assets/js/tiny-slider.js",
         type: "text/javascript",
-      }
+      },
+      // {
+        //  src: '/assets/docs/fontawesome/js/all.min.js',
+        //  type: 'text/javascript'
+        // },
     ],
   },
 
@@ -147,7 +151,8 @@ export default {
     '~assets/scss/event-test.scss',
     '~assets/scss/docs-event.scss',
     '~assets/scss/keranjang.scss',
-    '~assets/scss/pembayaran.scss'
+    '~assets/scss/pembayaran.scss',
+    '~assets/scss/search.scss'
     ]
   },
 
