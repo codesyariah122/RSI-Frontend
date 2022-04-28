@@ -1,0 +1,148 @@
+.search__event{
+	margin-top: 11rem;
+	height: 100%;
+	overflow: hidden;
+	h2{
+		font-weight: 600;
+	}
+	.form__search{
+		width: 100%;
+		border-radius: 13px;
+		margin-left: -.2rem;
+		background-color: $button-gray;
+		.col__form-search {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			.has-search .form-control {
+				padding-left: 2.250rem;
+			}
+			.has-search .form-control-feedback {
+				position: absolute;
+				z-index: 2;
+				display: block;
+				width: 2.375rem;
+				height: 2.375rem;
+				line-height: 2.375rem;
+				text-align: center;
+				pointer-events: none;
+				color: #aaa;
+			}
+			button{
+				margin-top: -.1rem;
+				background-color:$primary-button!important;
+				color:$default;
+				font-weight: 600;
+				font-size:14px;
+				text-transform: capitalize;
+				letter-spacing: 1.3px;
+				&:hover{
+					color: $bg-blue-gray!important;
+				}
+			}
+		}
+	}
+	.event__list-search{
+		margin-top: 2rem;
+		margin-bottom: 7rem;
+		height: auto;
+		.card__event-content{
+			.card {
+				height: auto;
+				.event__image-wrap{
+					position: relative;
+					width: 350px;
+					height: 250px;
+					object-fit: cover;
+				}
+				.card-body{
+					.card-title{
+						color:$second-black;
+					}				
+					.badge__category{
+						background-color: transparent!important;
+						color: $color-primary!important;
+						border:1px $color-primary solid;
+
+					}
+				}
+				@include card_rounded_desktop;
+			}
+		}
+	}
+}
+
+// Desktop
+@media (min-width: 992px) {
+	.search__event{
+		margin-top: 11rem;
+		height: 100%;
+		overflow: hidden;
+		h2{
+			font-weight: 600;
+		}
+		.form__search{
+			width: 70%;
+			border-radius: 13px;
+			margin-left: 15rem;
+			background-color: $button-gray;
+			.col__form-search {
+				margin-top: 1rem;
+				margin-left: 7rem;
+				.has-search .form-control {
+					padding-left: 2.250rem;
+				}
+				.has-search .form-control-feedback {
+					position: absolute;
+					z-index: 2;
+					display: block;
+					width: 2.375rem;
+					height: 2.375rem;
+					line-height: 2.375rem;
+					text-align: center;
+					pointer-events: none;
+					color: #aaa;
+				}
+				button{
+					margin-top: -.1rem;
+					background-color:$primary-button!important;
+					color:$default;
+					font-weight: 600;
+					font-size:14px;
+					text-transform: capitalize;
+					letter-spacing: 1.3px;
+					&:hover{
+						color: $bg-blue-gray!important;
+					}
+				}
+			}
+		}
+		.event__list-search{
+			margin-top: 2rem;
+			margin-bottom: 7rem;
+			height: auto;
+			.card__event-content{
+				.card {
+					height: auto;
+					.event__image-wrap{
+						position: relative;
+						width: 350px;
+						height: 250px;
+						object-fit: cover;
+					}
+					.card-body{
+						.card-title{
+							color:$second-black;
+						}				
+						.badge__category{
+							background-color: transparent!important;
+							color: $color-primary!important;
+							border:1px $color-primary solid;
+
+						}
+					}
+					@include card_rounded_desktop;
+				}
+			}
+		}
+	}
+}
