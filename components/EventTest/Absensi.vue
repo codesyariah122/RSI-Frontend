@@ -53,54 +53,54 @@
                 </div>
               </td>
             </tr>
-            <tr v-else v-for="(item, index) in data.rows" :key="index">
-              <td>{{ index + 1 }}</td>
-              <td>{{ item.title }}</td>
-              <td>{{ $moment(item.tanggal).format("LL") }}</td>
+            <tr v-else>
+              <td>{{ 1 }}</td>
+              <td>{{ data.rows.title }}</td>
+              <td>{{ $moment(data.rows.tanggal).format("LL") }}</td>
               <td>
-                <span v-if="item.jam_absensi_pagi">{{
-                  $moment(item.jam_absensi_pagi).format("DD MMMM YYYY HH:mm:ss")
+                <span v-if="data.rows.jam_absensi_pagi">{{
+                  $moment(data.rows.jam_absensi_pagi).format("DD MMMM YYYY HH:mm:ss")
                 }}</span>
                 <a
-                  v-else
-                  href=""
-                  class="btn my__btn-primary rounded-pill btn-md btn-block"
-                  @click.prevent="openModalAbsensiPagi(item)"
+                v-else
+                href=""
+                class="btn my__btn-primary rounded-pill btn-md btn-block text-white"
+                @click.prevent="openModalAbsensiPagi(data.rows)"
                 >
-                  <div v-if="loading_answer">
-                    <span
-                      class="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                    loading_answer...
-                  </div>
-                  <div v-else>Absen</div>
-                </a>
-              </td>
-              <td>
-                <span v-if="item.jam_absensi_siang">{{
-                  $moment(item.jam_absensi_siang).format(
-                    "DD MMMM YYYY HH:mm:ss"
+                <div v-if="loading_answer">
+                  <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                  ></span>
+                  loading_answer...
+                </div>
+                <div v-else>Absen</div>
+              </a>
+            </td>
+            <td>
+              <span v-if="data.rows.jam_absensi_siang">{{
+                $moment(data.rows.jam_absensi_siang).format(
+                  "DD MMMM YYYY HH:mm:ss"
                   )
                 }}</span>
                 <a
-                  v-else
-                  href=""
-                  class="btn my__btn-primary rounded-pill btn-md btn-block"
-                  @click.prevent="openModalAbsensiSiang(item)"
+                v-else
+                href=""
+                class="btn my__btn-primary rounded-pill btn-md btn-block text-white"
+                @click.prevent="openModalAbsensiSiang(item)"
                 >
-                  <div v-if="loading_answer">
-                    <span
-                      class="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                    loading_answer...
-                  </div>
-                  <div v-else>Absen</div>
-                </a>
-              </td>
+                <div v-if="loading_answer">
+                  <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                  ></span>
+                  loading_answer...
+                </div>
+                <div v-else>Absen</div>
+              </a>
+            </td>
             </tr>
           </tbody>
         </table>
@@ -114,7 +114,7 @@
                 <div class="form-group m-3">
                   <button
                     type="button"
-                    class="btn my__btn-primary rounded-pill btn-md btn-block"
+                    class="btn my__btn-primary rounded-pill btn-md btn-block text-white"
                   >
                     <div v-if="loading_input">
                       <span
@@ -173,7 +173,9 @@ export default {
     "tests",
     "evaluasi",
     "max",
-    "value"
+    "value",
+    "detailed",
+    "title"
   ],
   data() {
     return {
@@ -213,17 +215,19 @@ export default {
 
   methods: {
     ListsData() {
+      console.log(this.evaluasi)
       this.loading = true;
       const url = `${this.api_url}/web/absensi/${this.kegiatan_id}`;
       this.$axios.defaults.headers.common.Authorization = `Bearer ${this.token.accessToken}`;
       this.$axios
         .get(url)
         .then(({ data }) => {
-          console.log("list data");
-          console.log(data)
-          console.log(data.list_data);
-          this.data.rows = data.list_data;
-
+          // console.log("list data");
+          // console.log(data)
+          // console.log(data.list_data);
+          this.data.rows = data.list_data.map(d=>d);
+          this.data.rows = this.data.rows.find(d => d.title === this.title)
+          console.log(this.data.rows)
           this.IsAlready(this.is_already);
         })
         .catch((err) => console.log(err.response))

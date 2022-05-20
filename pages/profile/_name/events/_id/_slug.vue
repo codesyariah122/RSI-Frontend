@@ -104,6 +104,7 @@
             :kegiatan_id="kegiatan_id"
             :pelatihan_id="pelatihan_id"
             :evaluasi="evaluasi"
+            :title="title"
             />
           </div>
         </article>
@@ -165,6 +166,7 @@
         timer: 0,
         value: 0,
         max: 200,
+        title: ""
       };
     },
 
@@ -273,7 +275,8 @@
           });
         });
       },
-      ShowField(raw, id_kategori = "", type) {
+      ShowField(raw, id_kategori = "", type, title="") {
+        // console.log(id_kategori)
         window.scrollTo(0, 0);
         this.loading_file = true;
         this.show_file = true;
@@ -310,6 +313,7 @@
         }, {});
       // const yt_link  = this.detailed.video ? this.$ytString(this.detailed.video) : ''
       const yt_link = this.detailed.video;
+      this.title=title
       // console.log(yt_link)
       this.link_yt = yt_link ? true : false;
       this.startTimer();

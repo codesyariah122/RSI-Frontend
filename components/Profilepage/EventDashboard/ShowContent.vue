@@ -266,6 +266,8 @@
         :tests="tests"
         :evaluasi="evaluasi"
         :max="max" :value="value"
+        :detailed="detailed"
+        :title="title"
       />
     </section>
   </div>
@@ -292,7 +294,8 @@ export default {
     "kegiatan_id",
     "pelatihan_id",
     "evaluasi",
-    "tests"
+    "tests",
+    "title"
   ],
 };
 </script>

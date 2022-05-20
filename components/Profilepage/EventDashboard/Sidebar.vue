@@ -152,7 +152,7 @@
                           class="link__text"
                           :href="`#item-${evaluasi.id}`"
                           @click="ShowField(evaluasi, evaluasi.id, evaluasi.id)"
-                          >{{ evaluasi.nama }}
+                          >{{ evaluasi.nama }} 
                         </a>
                       </mdb-col>
                       <mdb-col md="2" xs="2" sm="2" col="2">
