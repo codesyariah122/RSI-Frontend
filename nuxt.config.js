@@ -2,8 +2,8 @@ require('dotenv').config()
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-  mode: 'spa',
-  target: 'static',
+  // mode: 'spa',
+  // target: 'static',
   loading: {
     color: '#10B981',
     height: '15px'
