@@ -2,8 +2,8 @@ require('dotenv').config()
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-  // mode: 'spa',
-  // target: 'static',
+  mode: 'spa',
+  target: 'static',
   loading: {
     color: '#10B981',
     height: '15px'
@@ -50,6 +50,10 @@ export default {
         href: "https://rsisultanagung.halomedika.com/",
       },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { 
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins&display=swap",      
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Open+Sans",
@@ -151,7 +155,8 @@ export default {
     '~assets/scss/event-test.scss',
     '~assets/scss/docs-event.scss',
     '~assets/scss/keranjang.scss',
-    '~assets/scss/pembayaran.scss'
+    '~assets/scss/pembayaran.scss',
+    '~assets/scss/search.scss'
     ]
   },
 

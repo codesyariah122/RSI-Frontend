@@ -12,7 +12,7 @@
           <!-- Context -->
           <b-col md="7" xs="12" sm="12">
             <h2 class="display-6 text-capitalize">
-              kembangkan kompetensi tenaga kesehatan
+              kembangkan kompetensi tenaga <span class="block-text">kesehatan</span>
             </h2>
             <p>
              Tingkatkan kemampuan kompetensi sebagai tenaga kesehatan dengan ratusan kelas online bersertifikat resmi
@@ -24,7 +24,7 @@
               >Daftar Sekarang</b-button
             >
             <b-button
-              v-if="!token.accessToken"
+              v-if="token.accessToken"
               :class="`my__btn-secondary rounded-pill ${$device.isMobile ? 'btn-block btn-sm mt-3' : ''}`"
               @click="$router.push({ name: 'auth-registrasi' })"
               >Lihat kelas saya</b-button
