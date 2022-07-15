@@ -5,7 +5,7 @@
     <mdb-container>
       <mdb-row class="justify-content-center mt-5">
         <mdb-col lg="12" sm="12" xs="12">
-          <div v-if="$device.isDesktop" class="banner">
+          <!-- <div v-if="$device.isDesktop" class="banner">
             <mdb-carousel 
             :interval="8000"
             slide
@@ -18,7 +18,7 @@
             customClass="rounded"
             >
           </mdb-carousel>
-        </div>
+        </div> -->
         <HomepageHeaderCard :items="items" :token="token" />
 
         <div v-if="$device.isMobile" class="banner mt-1" style="margin-bottom:10rem!important;">
