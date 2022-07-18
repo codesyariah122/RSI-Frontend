@@ -65,12 +65,12 @@
 				border-radius:13px;
 				width: 165px!important;
 				height: 80px!important;
-				// img{
-				// 	margin-left: 7.7rem;
-				// 	margin-top: -9rem;
-				// 	border-radius:10px;
-				// 	height: 55px;
-				// }
+				img{
+					margin-left: 7.7rem;
+					margin-top: -9rem;
+					border-radius:10px;
+					height: 55px;
+				}
 				.container{
 					margin-top: .3rem;					
 					h1{
@@ -122,8 +122,8 @@
 			border-radius:13px;
 			padding: 5px;
 			margin-top: 2rem;
-			margin-left:6.5rem!important;
-			height: 33vh;
+			margin-left:6rem!important;
+			height: 37vh;
 			background-color: transparent;
 			z-index: -1;
 		}
@@ -174,21 +174,15 @@
 		margin-top: 190px;
 		font-weight: 700;
 		font-size:45px;
-		width: 90%;
-		line-height: 75px;
-		.block-text{
-			background-color: $color-primary;
-			color:$default;
-			padding: 11px;
-		}
+		width: 80%;
+		line-height: 55px;
 	}
 	p{
-		margin-top: 1rem;
 		color:$second-gray;
-		font-weight: 500;
-		font-size:21px;
+		font-weight: 400;
+		font-size:16px;
 		text-align: left;
-		line-height: 33px;
+		line-height: 21px;
 		word-spacing: 12px;
 		width:80%;
 	}
@@ -219,11 +213,9 @@
 					}
 					p{
 						color: $second-black;
-						font-size:14px;
+						font-size:13px;
 						text-align: left;
-						width: 200px;
-						line-height: 17px!important;
-						word-spacing: 11px!important;
+						width: 150px;
 						font-weight:500;
 					}
 				}
@@ -262,9 +254,9 @@
 			border: solid $primary-button 4px;
 			border-radius:13px;
 			padding: 5px;
-			margin-top: 7.5rem!important;
+			margin-top: 8.5rem!important;
 			margin-left: 7.5rem!important;
-			height: 36vh;
+			height: 37vh;
 			background-color: transparent;
 			z-index: -1;
 		}
@@ -296,8 +288,6 @@
 						font-size:13px;
 						text-align: left;
 						width: 200px;
-						line-height: 17px!important;
-						word-spacing: 11px!important;
 						font-weight:500;
 					}
 				}
