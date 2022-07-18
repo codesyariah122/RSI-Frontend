@@ -16,6 +16,9 @@
             </div>
             <div class="p-2 bd-highlight mr-2">
               <div class="form-group">
+                <!-- <pre>
+                  {{categories}}
+                </pre> -->
                 <select
                 @change="ChangeCategory($event)"
                 v-model="field.category_id"
@@ -24,7 +27,7 @@
                     <option selected :value="undefined">Jenis Pelatihan</option>
                     <option
                     v-for="(item, index) in categories"
-                    :value="index + 1"
+                    :value="parseInt(item.code)" :key="item.id"
                     >
                     {{ item.value }}
                   </option>
@@ -43,13 +46,14 @@
                     v-for="(month, index) in $moment.months()"
                     :value="index + 1"
                     :data-month="index + 1"
+                    :data-name="month"
                     >
                     {{ month }}
                   </option>
                 </select>
               </div>
             </div>
-            <div :class="`p-2 bd-highlight mr-3 ${$device.isDesktop ? 'count__event' : ''}`">
+            <div v-if="!search || search == null" :class="`p-2 bd-highlight mr-3 ${$device.isDesktop ? 'count__event' : ''}`">
               <div class="float-right">
                   <h6>
                     Menampilkan <strong> {{listToShow}} </strong> dari <strong> {{lists.length < listToShow ? listToShow : lists.length}} </strong>
@@ -66,7 +70,7 @@
 
 <script>
 export default {
-  props: ["lists", "loading", "loadingBtn", "listToShow", "categories"],
+  props: ["lists", "loading", "loadingBtn", "listToShow", "categories", "search"],
   data() {
     return {
       field: {
@@ -74,8 +78,10 @@ export default {
         category_id: null,
         month: null,
       },
+      month: "",
       selected: undefined,
       currentPage: 1,
+      basedOn: null
     };
   },
 
@@ -87,7 +93,9 @@ export default {
         this.field.keyword,
         this.field.category_id,
         this.field.month,
-        true
+        true,
+        this.month,
+        this.basedOn
       );
     },
 
@@ -99,12 +107,15 @@ export default {
 
     ChangeCategory(e) {
       this.field.category_id = e.target.value;
+      this.basedOn = "category"
       this.SearchEvent()
     },
 
     ChangeMonth(e) {
       const options = e.target.options;
       this.field.month = options[options.selectedIndex].getAttribute("data-month");
+      this.month = options[options.selectedIndex].getAttribute("data-name");
+      this.basedOn = "month"
       this.SearchEvent()
     },
 

@@ -30,7 +30,7 @@
 					<mdb-card-image :src="require('~/assets/images/homepage/jumbo-img-1.svg')" alt="Card image cap"></mdb-card-image>
 				</mdb-card>
 			</b-col>
-			<b-col  sm="9" class="second-box float-right"></b-col>
+			<b-col  sm="9" class="second-box"></b-col>
 			<b-col  sm="9" class="col-card-2">
 				<mdb-card class="z-depth-2">
 					<mdb-row  class="d-flex justify-content-between">

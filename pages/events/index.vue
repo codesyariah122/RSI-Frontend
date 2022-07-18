@@ -1,15 +1,17 @@
 <template>
 	<div class="webinar__list">
 		<!-- Header filter event page -->
-		<EventpageHeader @update-list-event="SearchEvent" :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" @load-more-event="LoadListEvent" :categories="categories" ref="eventChild"/>
-
+		<EventpageHeader @update-list-event="SearchEvent" :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" @load-more-event="LoadListEvent" :categories="categories" ref="eventChild" :search="search"/>
+		
 		<!-- List event page content -->
-		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent"/>
+		<EventpageListEvents :lists="lists" :loading="loading" :loadingBtn="loadingBtn" :listToShow="listToShow" :message="message" :empty="empty" :token="token" :data_event="data_event" :error_search="error_search" @load-more-event="LoadListEvent" :page="page" :search="search"/>
 
 	</div>
 </template>
 
 <script>
+	import {SampleEvents} from '@/helpers'
+
 	export default{
 		name: 'events',
 		layout: 'default',
@@ -19,10 +21,14 @@
 				loadingBtn: null,
 				lists: [],
 				categories: [],
-				listToShow: 3,
+				listToShow: 9,
+				page: 1,
+				start: 20,
 				message:'',
 				empty: null,
-				error_search: null
+				error_search: null,
+				month: '',
+				search: null
 			}
 		},
 
@@ -31,7 +37,7 @@
 		},
 
 		mounted(){
-			this.ListEvent()
+			this.FetchListEvent()
 		},
 
 		methods:{
@@ -39,10 +45,10 @@
 				this.$store.dispatch('config/checkAuthLogin', 'token')
 			},
 
-			ListEvent(keyword, page, category, month, loadingBtn=null){
+			FetchListEvent(keyword, start, category, month, loadingBtn=null, basedOn=null){
 				this.loading = true
 				this.loadingBtn = loadingBtn
-				const url = `${this.api_url}/web/event/paging?keyword=${keyword ? keyword : ''}&page=${page ? page : 1}&jenis_pelatihan=${category ? category : ''}&bulan_pelatihan=${month ? month : ''}`
+				const url = `${this.api_url}/web/event/paging?keyword=${keyword ? keyword : ''}&start=${start ? start : this.start}&jenis_pelatihan=${category ? category : ''}&bulan_pelatihan=${month ? month : ''}`
 				this.$axios.get(url)
 				.then(({data}) => {
 					this.categories = data.list_jenis_kegiatan
@@ -50,9 +56,31 @@
 					if(data.list_kegiatan_terdekat.length > 0){
 						this.empty = false
 						this.lists = data.list_kegiatan_terdekat
+						// console.log(this.lists.length)
+						if(this.lists.length < 9){
+							this.listToShow = 3
+						}else{
+							this.listToShow = 9
+						}
+						// if (this.lists.length <= this.listToShow) {
+						// 	SampleEvents.map(d => {
+						// 		this.lists.push(d)
+						// 	})
+						// }
 					}else{
+						
 						this.empty = true
-						this.message = `Tidak ada event terdekat / tidak ada event yang dicari !`
+						this.search = false
+						if(basedOn === "category"){
+							this.message = "Event dengan kategori yang di cari belum tersedia !"
+						}else{
+							this.message = `Tidak ada event terdekat di bulan ${this.month}!`
+						}
+						this.lists = []
+						// setTimeout(() => {
+						// 	this.empty = false
+						// 	this.LoadListEvent(this.start)
+						// }, 3000)
 						// setTimeout(() => {
 						// 	this.empty = false
 						// }, 2500)
@@ -77,13 +105,38 @@
 				})
 			},
 
-			LoadListEvent(page){
-				this.listToShow+=3
-				this.ListEvent(page,'', '', '')
+			LoadListEvent(start){
+				// Clear list base on page == 1
+				// console.log(page)
+				// if(page == 1){
+				// 	page = 0
+				// }
+				this.listToShow += 9
+				this.search = false
+				this.FetchListEvent('', this.start+=start,'', '', true)
 			},
 
-			SearchEvent(page, keyword, category, month, loadingBtn){
-				this.ListEvent(keyword, page, category, month, loadingBtn)
+			SearchEvent(page, keyword, category, month, loadingBtn, month_name, basedOn){
+				this.search = true
+				this.month = month_name
+				console.log(keyword)
+				if(month === undefined && month === ""){
+					this.error_search = true
+					this.message = "Pilih bulan pelatihan terlebih dahulu"
+					this.error_search= false
+					this.lists = []
+					this.search = false
+					// setTimeout(() => {
+					// }, 500)
+					// setTimeout(() => {
+					// 	this.FetchListEvent(keyword="",  this.start, category="", month="", loadingBtn)
+					// }, 1500)
+				}else{
+					this.search = true
+					this.empty = false
+					this.error_search = false
+					this.FetchListEvent(keyword, page, category, month, loadingBtn, basedOn)
+				}
 			},
 
 			ConfigApiUrl(){
